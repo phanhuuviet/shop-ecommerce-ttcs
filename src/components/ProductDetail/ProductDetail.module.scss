@@ -1,0 +1,105 @@
+.row-sub-img {
+    justify-content: space-between;
+    padding-top: 16px;
+}
+
+.description {
+    font-size: 1.4rem;
+    line-height: 22px;
+    color: rgb(120, 120, 120);
+}
+
+.sold {
+    font-size: 15px;
+    line-height: 24px;
+    color: rgb(120, 120, 120);
+}
+
+.price-description {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+.address {
+    text-decoration: underline;
+    font-size: 15px;
+    line-height: 24px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 4px;
+}
+
+.change-address {
+    color: rgb(11, 116, 229);
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+
+    & > * {
+        font-size: 2rem;
+    }
+
+    & > span {
+        font-weight: 500;
+    }
+}
+
+.quantity-btn {
+    margin: 8px 20px 0px 12px;
+}
+
+.plus-btn {
+    padding: 10px;
+}
+
+.count-in-stock {
+    font-size: 1.4rem;
+    line-height: 24px;
+    color: rgb(120, 120, 120);
+
+    & > span {
+        color: var(--primary-color);
+    }
+}
+
+.buy-wrapper {
+    margin-top: 16px;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: underline;
+
+    &:hover {
+        color: #000;
+        text-decoration: underline;
+    }
+}
+
+.footer-wrapper {
+    margin-top: 40px;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    width: fit-content;
+}
+
+.footer-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.footer-icon {
+    margin-right: 10px;
+    color: var(--primary-color);
+}

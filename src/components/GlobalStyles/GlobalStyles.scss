@@ -1,0 +1,89 @@
+// Slide-slick
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+
+:root {
+    --primary-color: #003d29;
+    --primary-color-hover: #006b47;
+
+    --width-page: 1470px;
+
+    --text-item-header: rgb(128, 128, 137);
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+span {
+    font-size: 1.4rem;
+}
+
+.text-item-header {
+    color: rgb(128, 128, 137);
+    font-weight: 500;
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.-mt-20 {
+    margin-top: -2rem;
+}
+
+.icon + .icon {
+    margin-left: 4px;
+}
+
+.color-star {
+    color: rgb(253, 216, 54);
+}
+
+.line {
+    width: 100%;
+    border: 1px solid rgb(242, 242, 242);
+    margin: 10px 0;
+}
+
+.text-right {
+    text-align: right;
+}
+
+// ----- CUSTOM ANT DESIGN -----
+.ant-btn-primary {
+    float: right;
+}
+
+.ant-input-affix-wrapper-focused {
+    border-color: var(--primary-color) !important;
+}
+
+.shipping-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.ant-card {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
+}

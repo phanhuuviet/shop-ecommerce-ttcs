@@ -1,0 +1,18 @@
+.wrapper {
+    padding: 30px 0px;
+    position: relative;
+}
+
+.list-product {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.see-more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}

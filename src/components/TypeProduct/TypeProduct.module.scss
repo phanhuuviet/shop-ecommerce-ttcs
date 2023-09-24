@@ -1,0 +1,15 @@
+.product-list {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.product-item {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--text-item-header);
+
+    &:hover {
+        cursor: pointer;
+    }
+}

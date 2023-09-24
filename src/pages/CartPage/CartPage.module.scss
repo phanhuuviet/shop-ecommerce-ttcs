@@ -1,0 +1,14 @@
+.wrapper {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    margin-bottom: 12px;
+
+    span {
+        font-size: 1.6rem;
+        cursor: pointer;
+    }
+}

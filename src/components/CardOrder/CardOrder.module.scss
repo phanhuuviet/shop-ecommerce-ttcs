@@ -1,0 +1,52 @@
+.status-order {
+    span {
+        color: red;
+    }
+}
+
+.item-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    article {
+        position: relative;
+
+        span {
+            position: absolute;
+            width: max-content;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        img {
+            width: 80px;
+            height: 80px;
+            margin-right: 20px;
+        }
+    }
+
+    & + .item-order {
+        margin-top: 10px;
+    }
+}
+
+.control-order {
+    display: flex;
+    flex-direction: column;
+
+    & > * {
+        align-self: flex-end;
+    }
+
+    p {
+        color: red;
+        font-size: 1.6rem;
+        margin: 0 0 12px;
+
+        span {
+            color: #000;
+            font-weight: 500;
+        }
+    }
+}
