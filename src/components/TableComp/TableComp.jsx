@@ -1,5 +1,5 @@
 import { Button, Dropdown, Table } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import Loading from '../Loading/Loading';
@@ -24,6 +24,18 @@ function TableComp({
             setRowSelectedKey(selectedRowKeys);
         },
     };
+    // add _id to data table
+    const dataTable = useMemo(
+        () =>
+            data?.data?.length &&
+            data?.data?.map((product) => {
+                return { ...product, key: product._id };
+            }),
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        [],
+    );
+
+    // -----
 
     useEffect(() => {
         if (mutation?.isSuccess) {
@@ -61,7 +73,6 @@ function TableComp({
             ),
         },
     ];
-
     return (
         <Loading isLoading={isUpdateLoading || isLoading}>
             {rowSelectedKey.length > 0 && (
@@ -76,10 +87,12 @@ function TableComp({
                     ...rowSelection,
                 }}
                 columns={columns}
-                dataSource={data}
+                dataSource={dataTable}
                 onRow={onRow}
                 pagination={{
                     position: ['bottomCenter'],
+                    defaultPageSize: 8,
+                    total: data?.total,
                 }}
                 style={{ marginTop: '12px' }}
             />

@@ -171,19 +171,11 @@ function TableProduct() {
         },
     ];
     const getAllProduct = async () => {
-        const res = await productService.getAllProduct();
+        const res = await productService.getAllProduct({ limit: 100 });
         return res;
     };
 
     const { isLoading: isLoadingProduct, data: dataProduct, refetch } = useQuery(['products'], getAllProduct);
-
-    // add _id to data table
-    const dataTable =
-        dataProduct?.data?.length &&
-        dataProduct?.data?.map((product) => {
-            return { ...product, key: product._id };
-        });
-    // -----
 
     // ----- DELETE PRODUCT -----
     const mutation = useMutation({
@@ -194,7 +186,6 @@ function TableProduct() {
         mutationFn: (data) => productService.deleteManyProduct(data),
     });
     // -----
-
     return (
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>Product management</h2>
@@ -204,7 +195,7 @@ function TableProduct() {
             <div className={cx('table')}>
                 <TableComp
                     columns={columns}
-                    data={dataTable}
+                    data={dataProduct}
                     isLoading={isLoadingProduct}
                     onRow={(record, rowIndex) => {
                         return {
