@@ -7,7 +7,7 @@ import * as productService from '../../../services/productService';
 import InputUpload from '../../InputUpload/InputUpload';
 import * as message from '../../Message/Message';
 
-function ModalCreateProduct({ isOpen, setIsOpen }) {
+function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
     const initialProduct = {
         name: '',
         price: '',
@@ -31,6 +31,7 @@ function ModalCreateProduct({ isOpen, setIsOpen }) {
             setIsOpen(false);
             form.resetFields();
             setStateProduct(initialProduct);
+            refetch();
             message.success('Create product successfully');
         } else if (data?.status === 'err') {
             message.error(data?.message);

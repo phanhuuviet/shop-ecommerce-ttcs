@@ -12,7 +12,7 @@ function ProductDetailPage() {
     return (
         <div className={cx('wrapper')}>
             <h3 className={cx('title')}>
-                <span onClick={() => navigate('/')}>Trang chủ</span> - Chi tiết sản phẩm
+                <span onClick={() => navigate('/')}>Home</span> - Product details
             </h3>
             <ProductDetail id={id} />
         </div>

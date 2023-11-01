@@ -12,10 +12,7 @@ const cx = classNames.bind(styles);
 
 function AdminPage() {
     const [keySelected, setKeySelected] = useState('user');
-    const items = [
-        getItem('Người dùng', 'user', <UserOutlined />),
-        getItem('Sản phẩm', 'product', <AppstoreOutlined />),
-    ];
+    const items = [getItem('User', 'user', <UserOutlined />), getItem('Product', 'product', <AppstoreOutlined />)];
     const handleOnClick = ({ key }) => {
         setKeySelected(key);
     };
