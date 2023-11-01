@@ -21,7 +21,11 @@ function SliderComponent({ images }) {
         <Slider className={cx('slider')} {...settings}>
             {images.map((image, index) => {
                 return (
-                    <Image className={cx('slide')} key={index} src={image} alt="slide" preview={false} width="100%" />
+                    <div>
+                        <div className={cx('slide')}>
+                            <Image key={index} src={image} alt="slide" preview={false} width="100%" />
+                        </div>
+                    </div>
                 );
             })}
         </Slider>

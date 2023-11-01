@@ -6,7 +6,7 @@
 }
 
 .list-product {
-    margin: 20px 10px 0px 10px;
+    margin: 20px 2% 0px 2%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
@@ -17,4 +17,22 @@
     display: flex;
     justify-content: center;
     margin-top: 20px;
+}
+.slide {
+    width: 67%;
+    position: relative;
+}
+.slide-image-right1 {
+    position: absolute;
+    width: 32.5%;
+    top: 3px;
+    right: 0;
+    z-index: 10;
+}
+.slide-image-right2 {
+    position: absolute;
+    width: 32.5%;
+    top: 16.7%;
+    right: 0;
+    z-index: 10;
 }

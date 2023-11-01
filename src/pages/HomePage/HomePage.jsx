@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import SliderComponent from '../../components/Slider/Slider';
-import { slide } from '../../assets/images';
+import images, { slide } from '../../assets/images';
 import styles from './HomePage.module.scss';
 import CardProduct from '../../components/CardProduct/CardProduct';
 import Button from '../../components/Button/Button';
@@ -34,6 +34,12 @@ function HomePage() {
                 <div className={cx('wrapper')}>
                     <div className={cx('slide')}>
                         <SliderComponent alt="slider" width="20%" images={slide} />
+                    </div>
+                    <div className={cx('slide-image-right1')}>
+                        <img src={images.slideImageRight1} alt="slide1" width="100%" />
+                    </div>
+                    <div className={cx('slide-image-right2')}>
+                        <img src={images.slideImageRight2} alt="slide1" width="100%" />
                     </div>
                     <div className={cx('list-product')}>
                         {stateProducts?.map((product) => {
