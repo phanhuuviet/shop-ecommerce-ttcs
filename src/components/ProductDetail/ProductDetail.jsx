@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import { Col, Image, InputNumber, Rate, Row } from 'antd';
 import { AccountBookOutlined, CarOutlined } from '@ant-design/icons';
@@ -8,9 +10,8 @@ import styles from './ProductDetail.module.scss';
 import Button from '../Button/Button';
 import * as productService from '../../services/productService';
 import Loading from '../Loading/Loading';
-import { useDispatch, useSelector } from 'react-redux';
 import { addOrderProduct } from '../../redux/slice/orderSlice';
-import { useState } from 'react';
+import * as messages from '../Message/Message';
 
 const cx = classNames.bind(styles);
 
@@ -51,6 +52,7 @@ function ProductDetail() {
                     },
                 }),
             );
+            messages.success('Add to cart success!');
         }
     };
 

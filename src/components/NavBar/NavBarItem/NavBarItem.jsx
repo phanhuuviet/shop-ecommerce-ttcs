@@ -52,9 +52,9 @@ function NavBarItem({ data }) {
     return (
         <>
             <div className={cx('title')}>
-                <BarsOutlined style={{ fontSize: '20px', color: 'black' }} /> {data.title}
+                <BarsOutlined style={{ fontSize: '20px', color: 'black' }} /> {data?.title}
             </div>
-            <div className={cx('content')}>{renderContent(data.type, data.options)}</div>
+            <div className={cx('content')}>{renderContent(data?.type, data?.options)}</div>
         </>
     );
 }

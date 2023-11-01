@@ -31,8 +31,7 @@ function TableComp({
             data?.data?.map((product) => {
                 return { ...product, key: product._id };
             }),
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [],
+        [data],
     );
 
     // -----

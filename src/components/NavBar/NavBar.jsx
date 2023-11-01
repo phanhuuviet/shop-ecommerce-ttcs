@@ -13,19 +13,16 @@ function NavBar() {
     };
 
     const { data } = useQuery(['types'], getAllType);
-    console.log(data?.data);
 
-    //fake data
-    const data1 = {
+    const typeProduct = {
         title: 'Product portfolio',
         type: 'text',
-        // options: ['Apple', 'Pear', 'Orange'],
         options: data?.data,
     };
 
     return (
         <div style={{ paddingLeft: '5px' }}>
-            <NavBarItem data2={data1} />
+            <NavBarItem data={typeProduct} />
         </div>
     );
 }

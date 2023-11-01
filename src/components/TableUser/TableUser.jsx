@@ -176,14 +176,6 @@ function TableUser() {
 
     const { isLoading: isLoadingUser, data: dataUser, refetch } = useQuery(['users'], getAllUser);
 
-    // add _id to data table
-    const dataTable =
-        dataUser?.data?.length &&
-        dataUser?.data?.map((product) => {
-            return { ...product, key: product._id };
-        });
-    // -----
-
     // ----- DELETE PRODUCT -----
     const mutation = useMutation({
         mutationFn: (data) => userService.deleteUser(data),
@@ -201,7 +193,7 @@ function TableUser() {
             <div className={cx('table')}>
                 <TableComp
                     columns={columns}
-                    data={dataTable}
+                    data={dataUser}
                     isLoading={isLoadingUser}
                     onRow={(record, rowIndex) => {
                         return {

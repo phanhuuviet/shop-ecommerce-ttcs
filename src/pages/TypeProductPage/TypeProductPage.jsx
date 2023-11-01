@@ -51,16 +51,16 @@ function TypeProductPage() {
                 {products.map((product) => {
                     return (
                         <CardProduct
-                            key={product._id}
-                            _id={product._id}
-                            name={product.name}
-                            countInStock={product.countInStock}
-                            description={product.description}
-                            image={product.image}
-                            price={product.price}
-                            rating={product.rating}
-                            type={product.type}
-                            sold={product.sold}
+                            key={product?._id}
+                            _id={product?._id}
+                            name={product?.name}
+                            countInStock={product?.countInStock}
+                            description={product?.description}
+                            image={product?.image}
+                            price={product?.price}
+                            rating={product?.rating}
+                            type={product?.type}
+                            sold={product?.sold}
                         />
                     );
                 })}
