@@ -1,3 +1,10 @@
+.div-card {
+    padding-top: 3px;
+}
+.div-card:hover {
+    margin-top: -3px;
+}
+
 .header {
     display: flex;
     align-items: center;

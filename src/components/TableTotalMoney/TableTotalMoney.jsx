@@ -85,19 +85,19 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                     </thead>
                     <tbody className={cx('table-body')}>
                         <tr>
-                            <td>Tạm tính</td>
+                            <td>Provisional</td>
                             <td>{priceMemo}</td>
                         </tr>
                         <tr>
-                            <td>Giảm giá</td>
+                            <td>Discount</td>
                             <td>5%</td>
                         </tr>
                         <tr>
-                            <td>Thuế</td>
+                            <td>Tax</td>
                             <td>{taxMemo * 100}%</td>
                         </tr>
                         <tr>
-                            <td>Phí giao hàng</td>
+                            <td>Delivery charges</td>
                             <td>${deliveryChargeMemo}</td>
                         </tr>
                         <tr>
@@ -106,7 +106,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                             </td>
                         </tr>
                         <tr className={cx('total-money')}>
-                            <td>Tổng tiền</td>
+                            <td>Total amount</td>
                             <td>${totalMemo}</td>
                         </tr>
                     </tbody>

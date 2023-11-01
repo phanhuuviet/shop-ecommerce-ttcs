@@ -1,17 +1,25 @@
 import { Checkbox, Rate } from 'antd';
 import classNames from 'classnames/bind';
+import { useNavigate } from 'react-router-dom';
+import { BarsOutlined, PlusOutlined } from '@ant-design/icons';
+
 import styles from './NavBarItem.module.scss';
 
 const cx = classNames.bind(styles);
 
 function NavBarItem({ data }) {
-    const renderContent = (type, options) => {
-        switch (type) {
+    const navigate = useNavigate();
+    const handleNavigateType = (type) => {
+        navigate(`/product/${type}`, { state: type });
+    };
+
+    const renderContent = (typ, options) => {
+        switch (typ) {
             case 'text':
-                return options.map((option, index) => {
+                return options?.map((option, index) => {
                     return (
-                        <span key={index} className={cx('text-option')}>
-                            {option}
+                        <span key={index} className={cx('text-option')} onClick={() => handleNavigateType(option)}>
+                            <PlusOutlined /> {option}
                         </span>
                     );
                 });
@@ -43,7 +51,9 @@ function NavBarItem({ data }) {
 
     return (
         <>
-            <h4 className={cx('title')}>{data.title}</h4>
+            <div className={cx('title')}>
+                <BarsOutlined style={{ fontSize: '20px', color: 'black' }} /> {data.title}
+            </div>
             <div className={cx('content')}>{renderContent(data.type, data.options)}</div>
         </>
     );

@@ -210,7 +210,7 @@ function TableProduct() {
             </div>
 
             {/* Modal create product */}
-            <ModalCreateProduct setIsOpen={setIsModalOpen} isOpen={isModalOpen} />
+            <ModalCreateProduct setIsOpen={setIsModalOpen} isOpen={isModalOpen} refetch={refetch} />
 
             {/* Drawer update product */}
             <DrawerUpdateProduct

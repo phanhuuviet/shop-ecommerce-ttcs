@@ -197,10 +197,10 @@ function SignUpPage() {
                         </Loading>
                     </div>
                 </form>
-                <div className={cx('content')}>
+                <div className={cx('content-image')}>
                     <Image
                         preview={false}
-                        style={{ height: '100%', objectFit: 'cover' }}
+                        style={{ height: '400px', objectFit: 'cover' }}
                         src={logo.signIn}
                         alt="sign in"
                     />

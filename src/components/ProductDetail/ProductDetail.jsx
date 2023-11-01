@@ -62,7 +62,7 @@ function ProductDetail() {
         <Loading isLoading={isLoading}>
             <Row>
                 <Col span={10}>
-                    <Image src={data?.image} alt="image product" />
+                    <Image src={data?.image} alt="image product" width="420px" height="420px" />
                     <Row className={cx('row-sub-img')}>
                         <Col span={6} style={{ flexBasis: 'unset' }}>
                             <Image src={data?.image} alt="image product small" />
@@ -83,7 +83,7 @@ function ProductDetail() {
                     <p className={cx('description')}>{data?.description}</p>
                     <div>
                         <Rate allowHalf disabled value={data?.rating} />
-                        <span className={cx('sold')}> | đã bán {data?.sold}</span>
+                        <span className={cx('sold')}> | sold {data?.sold}</span>
                     </div>
                     <div className={cx('line')}></div>
                     <div>
@@ -101,12 +101,7 @@ function ProductDetail() {
                     <div className={cx('quantity-wrapper')}>
                         <span>Amount</span>
                         <div className={cx('quantity-btn')}>
-                            <InputNumber
-                                min={amountProduct}
-                                max={data?.countInStock}
-                                defaultValue={1}
-                                onChange={onChange}
-                            />
+                            <InputNumber min={1} max={data?.countInStock} defaultValue={1} onChange={onChange} />
                         </div>
                         <span className={cx('count-in-stock')}>
                             Only <span>{data?.countInStock} items</span> left! Don't miss it

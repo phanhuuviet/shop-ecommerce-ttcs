@@ -30,7 +30,7 @@ function CardOrder({ data, refetch }) {
     };
 
     return (
-        <div style={{ marginTop: '20px', width: '100%' }}>
+        <div style={{ marginTop: '20px', width: '80%' }}>
             <Card bordered={false}>
                 <section className={cx('status-order')}>
                     <h2>Status</h2>
@@ -41,7 +41,7 @@ function CardOrder({ data, refetch }) {
                         <span>Paid:</span> {data?.isPaid ? 'Paid' : 'Not paid'}
                     </p>
                 </section>
-                <Divider />
+                <Divider style={{ margin: '16px 0px' }} />
                 <section className={cx('list-order')}>
                     {data?.orderItems &&
                         data?.orderItems?.map((orderItem, index) => {
@@ -55,16 +55,16 @@ function CardOrder({ data, refetch }) {
                                         Amount: <span>{orderItem?.amount}</span>
                                     </sub>
                                     <sub>
-                                        <span>${orderItem?.price}</span>
+                                        Price: <span>${orderItem?.price}</span>
                                     </sub>
                                 </div>
                             );
                         })}
                 </section>
-                <Divider />
+                <Divider style={{ margin: '16px 0px' }} />
                 <section className={cx('control-order')}>
                     <p>
-                        Tổng tiền: <span>${data?.totalPrice}</span>
+                        Total amount: <span>${data?.totalPrice}</span>
                     </p>
                     <div>
                         <Button outline onClick={() => handleCancelOrder(data)}>

@@ -1,19 +1,26 @@
 .title {
     color: rgb(56, 56, 61);
-    font-size: 1.4rem;
+    font-size: 2rem;
+    margin-top: 20px;
+    font-weight: 500;
 }
 
 .text-option {
     color: rgb(56, 56, 61);
-    font-size: 1.2rem;
+    font-size: 16px;
     font-weight: 400;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+    margin-right: 50px;
+    padding: 5px 0px 5px 5px;
+    background-color: #f4f3f3;
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
+    gap: 16px;
+    margin-top: 15px;
+    padding-left: 20px;
 }
 
 .rating {

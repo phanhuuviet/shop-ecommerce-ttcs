@@ -76,18 +76,18 @@ function Header() {
         return (
             <div>
                 <p className={cx('text-option-header')} onClick={handleNavigateProfile}>
-                    Thông tin người dùng
+                    User information
                 </p>
                 {user?.isAdmin && (
                     <p className={cx('text-option-header')} onClick={handleNavigateAdmin}>
-                        Quản lý hệ thống
+                        System management
                     </p>
                 )}
                 <p className={cx('text-option-header')} onClick={handleNavigateMyOrder}>
-                    Quản lý đơn hàng
+                    Order management
                 </p>
                 <p className={cx('text-option-header')} onClick={handleLogout}>
-                    Đăng xuất
+                    Log out
                 </p>
             </div>
         );
@@ -114,7 +114,7 @@ function Header() {
                     </Col>
                     <Col span={8} className={cx('wrapper-account')}>
                         <div className={cx('wrapper-home')} onClick={handleNavigateHome}>
-                            <HomeOutlined style={{ fontSize: '3rem', color: 'rgb(128, 128, 137)' }} />
+                            <HomeOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
                             <span className={cx('ml-10', 'text-header')}>Home</span>
                         </div>
 
@@ -122,7 +122,7 @@ function Header() {
                             <div className={cx('auth-user')}>
                                 <UserOutlined
                                     onClick={user?.name ? undefined : handleNavigateLogin}
-                                    style={{ fontSize: '3rem', color: 'rgb(128, 128, 137)', cursor: 'pointer' }}
+                                    style={{ fontSize: '3rem', color: '#ffffff', cursor: 'pointer' }}
                                 />
                                 {user?.name ? (
                                     <>
@@ -147,7 +147,7 @@ function Header() {
 
                         <div onClick={handleNavigateOrder} className={cx('cart-icon')}>
                             <Badge count={order?.orderItems?.length} size="small">
-                                <ShoppingCartOutlined style={{ fontSize: '3rem', color: 'rgb(128, 128, 137)' }} />
+                                <ShoppingCartOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
                             </Badge>
                             <span className={cx('ml-10', 'text-header')}>Cart</span>
                         </div>

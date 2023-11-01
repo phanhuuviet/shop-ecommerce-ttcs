@@ -17,12 +17,12 @@ function HomePage() {
     const searchValueProduct = useSelector((state) => state.product.search);
     const searchDebounce = useDebounce(searchValueProduct, 500);
     const [stateProducts, setStateProducts] = useState([]);
-    const [limit, setLimit] = useState(5);
+    const [limit, setLimit] = useState(4);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
-        productService.getAllProduct(searchDebounce, limit).then((data) => {
+        productService.getAllProduct({ searchDebounce, limit }).then((data) => {
             setStateProducts(data?.data);
             setIsLoading(false);
         });
@@ -30,32 +30,34 @@ function HomePage() {
 
     return (
         <Loading isLoading={isLoading}>
-            <div className={cx('wrapper')}>
-                <div className={cx('slide')}>
-                    <SliderComponent alt="slider" width="20%" images={slide} />
-                </div>
-                <div className={cx('list-product')}>
-                    {stateProducts?.map((product) => {
-                        return (
-                            <CardProduct
-                                key={product._id}
-                                _id={product._id}
-                                name={product.name}
-                                countInStock={product.countInStock}
-                                description={product.description}
-                                image={product.image}
-                                price={product.price}
-                                rating={product.rating}
-                                type={product.type}
-                                sold={product.sold}
-                            />
-                        );
-                    })}
-                </div>
-                <div className={cx('see-more')}>
-                    <Button onClick={() => setLimit((prev) => prev + 5)} outline large>
-                        See more
-                    </Button>
+            <div style={{ backgroundColor: '#e9e9e9', paddingTop: '25px' }}>
+                <div className={cx('wrapper')}>
+                    <div className={cx('slide')}>
+                        <SliderComponent alt="slider" width="20%" images={slide} />
+                    </div>
+                    <div className={cx('list-product')}>
+                        {stateProducts?.map((product) => {
+                            return (
+                                <CardProduct
+                                    key={product._id}
+                                    _id={product._id}
+                                    name={product.name}
+                                    countInStock={product.countInStock}
+                                    description={product.description}
+                                    image={product.image}
+                                    price={product.price}
+                                    rating={product.rating}
+                                    type={product.type}
+                                    sold={product.sold}
+                                />
+                            );
+                        })}
+                    </div>
+                    <div className={cx('see-more')}>
+                        <Button onClick={() => setLimit((prev) => prev + 4)} outline large>
+                            See more
+                        </Button>
+                    </div>
                 </div>
             </div>
         </Loading>
