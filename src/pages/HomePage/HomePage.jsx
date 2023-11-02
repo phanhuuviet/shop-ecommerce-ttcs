@@ -32,15 +32,19 @@ function HomePage() {
         <Loading isLoading={isLoading}>
             <div style={{ backgroundColor: '#e9e9e9', paddingTop: '25px' }}>
                 <div className={cx('wrapper')}>
-                    <div className={cx('slide')}>
-                        <SliderComponent alt="slider" width="20%" images={slide} />
+                    <div className={cx('slide-wrapper')}>
+                        <div className={cx('slider')}>
+                            <SliderComponent alt="slider" width="20%" images={slide} />
+                        </div>
+
+                        <div className={cx('slide-image-right1')}>
+                            <img src={images.slideImageRight1} alt="slide1" width="100%" />
+                        </div>
+                        <div className={cx('slide-image-right2')}>
+                            <img src={images.slideImageRight2} alt="slide1" width="100%" />
+                        </div>
                     </div>
-                    <div className={cx('slide-image-right1')}>
-                        <img src={images.slideImageRight1} alt="slide1" width="100%" />
-                    </div>
-                    <div className={cx('slide-image-right2')}>
-                        <img src={images.slideImageRight2} alt="slide1" width="100%" />
-                    </div>
+
                     <div className={cx('list-product')}>
                         {stateProducts?.map((product) => {
                             return (

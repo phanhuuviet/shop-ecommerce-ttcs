@@ -1,5 +1,4 @@
 .wrapper {
-    position: relative;
     margin: 0 10%;
     padding-bottom: 30px;
     background-color: white;
@@ -18,10 +17,15 @@
     justify-content: center;
     margin-top: 20px;
 }
-.slide {
-    width: 67%;
+.slide-wrapper {
     position: relative;
+    width: 100%;
 }
+
+.slider {
+    width: 67%;
+}
+
 .slide-image-right1 {
     position: absolute;
     width: 32.5%;
@@ -32,7 +36,7 @@
 .slide-image-right2 {
     position: absolute;
     width: 32.5%;
-    top: 125px;
+    top: 50%;
     right: 0;
     z-index: 10;
 }
