@@ -92,3 +92,15 @@ span {
 .ant-card {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important;
 }
+.slick-arrow.slick-prev {
+    left: 0;
+    z-index: 10;
+}
+.slick-arrow.slick-next {
+    right: 1.25%;
+    z-index: 10;
+}
+.slick-prev:before,
+.slick-next:before {
+    font-size: 30px !important;
+}

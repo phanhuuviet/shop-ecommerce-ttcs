@@ -1,7 +1,7 @@
 import { Checkbox, Rate } from 'antd';
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
-import { BarsOutlined, PlusOutlined } from '@ant-design/icons';
+import { BarsOutlined, RightCircleOutlined } from '@ant-design/icons';
 
 import styles from './NavBarItem.module.scss';
 
@@ -19,7 +19,7 @@ function NavBarItem({ data }) {
                 return options?.map((option, index) => {
                     return (
                         <span key={index} className={cx('text-option')} onClick={() => handleNavigateType(option)}>
-                            <PlusOutlined /> {option}
+                            <RightCircleOutlined /> {option}
                         </span>
                     );
                 });
