@@ -8,6 +8,7 @@
 .header {
     display: flex;
     align-items: center;
+    font-size: 13px;
 
     & > * {
         margin: 0px;
@@ -25,7 +26,7 @@
 }
 
 .description {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2; /* number of lines to show */
@@ -34,10 +35,14 @@
 }
 
 .rating {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+
+    li {
+        margin-inline-end: 3px !important;
+    }
 }
 
 .sold {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-left: 4px;
 }

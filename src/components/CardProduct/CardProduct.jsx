@@ -20,7 +20,7 @@ function CardProduct({ _id, name, description, image, price, rating, sold }) {
                 hoverable
                 headStyle={{ height: '200px' }}
                 bodyStyle={{ padding: '10px' }}
-                cover={<img alt="example" style={{ height: '240px' }} src={image} />}
+                cover={<img alt="example" style={{ height: '200px' }} src={image} />}
                 onClick={() => handleNavigateDetailProduct(_id)}
             >
                 <div className={cx('header')}>
@@ -30,7 +30,7 @@ function CardProduct({ _id, name, description, image, price, rating, sold }) {
                 <div className={cx('description')}>{description}</div>
                 <div className={cx('rating')}>
                     <Rate allowHalf defaultValue={rating} />
-                    <span className={cx('sold')}> | đã bán {sold || '0'}</span>
+                    <span className={cx('sold')}> | sold {sold || '0'}</span>
                 </div>
                 <Button outline rounded>
                     Add to cart
