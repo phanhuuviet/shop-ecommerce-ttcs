@@ -1,7 +1,8 @@
 .wrapper {
-    width: var(--width-page);
-    padding: 10px 0px;
+    // width: var(--width-page);
+    padding: 8px 0px;
     width: 100%;
+    height: var(--height-header);
     background-color: #006b47;
     color: white;
 }

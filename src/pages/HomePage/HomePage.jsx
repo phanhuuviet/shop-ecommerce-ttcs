@@ -30,8 +30,8 @@ function HomePage() {
 
     return (
         <Loading isLoading={isLoading}>
-            <div style={{ backgroundColor: '#e9e9e9', paddingTop: '25px' }}>
-                <div className={cx('wrapper')}>
+            <div className={cx('wrapper')}>
+                <div className={cx('wrapper-content')}>
                     <div className={cx('slide-wrapper')}>
                         <div className={cx('slider')}>
                             <SliderComponent alt="slider" width="20%" images={slide} />

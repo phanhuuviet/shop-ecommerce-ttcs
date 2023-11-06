@@ -1,7 +1,7 @@
 import { Badge, Col, Popover, Row } from 'antd';
 import classNames from 'classnames/bind';
 import Search from 'antd/es/input/Search';
-import { CaretDownOutlined, HomeOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, HomeOutlined, ShoppingCartOutlined, UserOutlined, WechatOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -41,6 +41,10 @@ function Header() {
 
     const handleNavigateHome = () => {
         navigate('/');
+    };
+
+    const handleNavigateChat = () => {
+        navigate('/chat');
     };
 
     const handleNavigateAdmin = () => {
@@ -113,9 +117,16 @@ function Header() {
                         />
                     </Col>
                     <Col span={8} className={cx('wrapper-account')}>
-                        <div className={cx('wrapper-home')} onClick={handleNavigateHome}>
-                            <HomeOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
-                            <span className={cx('ml-10', 'text-header')}>Home</span>
+                        <div onClick={handleNavigateOrder} className={cx('cart-icon')}>
+                            <Badge count={order?.orderItems?.length} size="small">
+                                <ShoppingCartOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
+                            </Badge>
+                            <span className={cx('ml-10', 'text-header')}>Cart</span>
+                        </div>
+
+                        <div className={cx('wrapper-home')} onClick={handleNavigateChat}>
+                            <WechatOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
+                            <span className={cx('ml-10', 'text-header')}>Chat</span>
                         </div>
 
                         <Loading isLoading={loading}>
@@ -144,13 +155,6 @@ function Header() {
                                 )}
                             </div>
                         </Loading>
-
-                        <div onClick={handleNavigateOrder} className={cx('cart-icon')}>
-                            <Badge count={order?.orderItems?.length} size="small">
-                                <ShoppingCartOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
-                            </Badge>
-                            <span className={cx('ml-10', 'text-header')}>Cart</span>
-                        </div>
                     </Col>
                 </Row>
 

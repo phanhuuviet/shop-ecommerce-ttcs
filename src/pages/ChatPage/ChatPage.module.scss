@@ -1,0 +1,32 @@
+.wrapper {
+    display: flex;
+    justify-content: center;
+    background-color: var(--background-color);
+    height: calc(100vh - var(--height-header));
+}
+
+.wrapper-content {
+    width: var(--width-page);
+    display: flex;
+    column-gap: 16px;
+    padding: 20px 0;
+}
+
+.list-user {
+    width: 20%;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.title {
+    font-size: 3.6rem;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.box-chat {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 16px;
+}

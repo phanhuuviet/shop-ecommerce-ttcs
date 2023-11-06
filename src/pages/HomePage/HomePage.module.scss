@@ -1,4 +1,9 @@
 .wrapper {
+    background-color: var(--background-color);
+    padding-top: 24px;
+}
+
+.wrapper-content {
     margin: 0 10%;
     padding-bottom: 30px;
     background-color: white;

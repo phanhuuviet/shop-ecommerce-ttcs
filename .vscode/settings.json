@@ -10,11 +10,7 @@
     "workbench.editor.showTabs": true,
     "eslint.format.enable": true,
     "editor.formatOnSave": true,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "emmet.showSuggestionsAsSnippets": true,
-    "editor.snippetSuggestions": "top",
     "emmet.includeLanguages": {
         "javascript": "javascriptreact",
         "razor": "html",
@@ -28,6 +24,6 @@
     "scm.inputFontSize": 15,
     "debug.console.fontSize": 15,
     "markdown.preview.fontSize": 15,
-    "terminal.integrated.fontSize": 15,
-    "editor.fontSize": 13
+    "terminal.integrated.fontSize": 15
+    // "editor.fontSize": 13
 }

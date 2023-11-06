@@ -12,6 +12,7 @@ import SignUpPage from '../pages/SignUpPage/SignUpPage';
 import TypeProductPage from '../pages/TypeProductPage/TypeProductPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
+import ChatPage from '../pages/ChatPage/ChatPage';
 
 import Navbar from '../components/NavBar/NavBar';
 
@@ -29,6 +30,11 @@ export const routes = [
     {
         path: '/cart',
         page: CartPage,
+        layout: DefaultLayout,
+    },
+    {
+        path: '/chat',
+        page: ChatPage,
         layout: DefaultLayout,
     },
     {
