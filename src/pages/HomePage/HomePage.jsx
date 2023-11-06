@@ -17,7 +17,7 @@ function HomePage() {
     const searchValueProduct = useSelector((state) => state.product.search);
     const searchDebounce = useDebounce(searchValueProduct, 500);
     const [stateProducts, setStateProducts] = useState([]);
-    const [limit, setLimit] = useState(4);
+    const [limit, setLimit] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -49,22 +49,22 @@ function HomePage() {
                         {stateProducts?.map((product) => {
                             return (
                                 <CardProduct
-                                    key={product._id}
-                                    _id={product._id}
-                                    name={product.name}
-                                    countInStock={product.countInStock}
-                                    description={product.description}
-                                    image={product.image}
-                                    price={product.price}
-                                    rating={product.rating}
-                                    type={product.type}
-                                    sold={product.sold}
+                                    key={product?._id}
+                                    _id={product?._id}
+                                    name={product?.name}
+                                    countInStock={product?.countInStock}
+                                    description={product?.description}
+                                    image={product?.image}
+                                    price={product?.price}
+                                    rating={product?.rating}
+                                    type={product?.type}
+                                    sold={product?.sold}
                                 />
                             );
                         })}
                     </div>
                     <div className={cx('see-more')}>
-                        <Button onClick={() => setLimit((prev) => prev + 4)} outline large>
+                        <Button onClick={() => setLimit((prev) => prev + 5)} outline large>
                             See more
                         </Button>
                     </div>

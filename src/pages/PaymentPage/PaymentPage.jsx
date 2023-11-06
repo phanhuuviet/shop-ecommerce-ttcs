@@ -39,6 +39,7 @@ function OrderPage() {
     useEffect(() => {
         if (isSuccess && data?.status === 'OK') {
             message.success('Order successfully');
+            navigate('/');
         } else if (data?.status === 'err') {
             message.error(data?.message);
         } else if (isError) {
@@ -87,7 +88,7 @@ function OrderPage() {
                 <span onClick={() => navigate('/')}>Home page</span> - Payment
             </h3>
             <Row gutter={10}>
-                <Col span={17}>
+                <Col span={16}>
                     <FormMethodPayment
                         typeShipping={typeShipping}
                         setTypeShipping={setTypeShipping}
@@ -95,7 +96,7 @@ function OrderPage() {
                         setPaymentMethod={setPaymentMethod}
                     />
                 </Col>
-                <Col span={7}>
+                <Col span={8}>
                     <TableTotalMoney
                         isLoading={isLoading}
                         handlePurchase={handleCreateOrder}
