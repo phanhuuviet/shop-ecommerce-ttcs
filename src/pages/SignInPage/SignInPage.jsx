@@ -84,7 +84,9 @@ function SignInPage() {
                 <form onSubmit={(e) => handleSubmit(e)} className={cx('content')}>
                     <h1 className={cx('title')}>
                         <ShopOutlined style={{ fontSize: '3rem' }} />
-                        SHOP-ECOMMERCE
+                        <a href="/" style={{ color: 'black' }}>
+                            SHOP-ECOMMERCE
+                        </a>
                     </h1>
                     <div className={cx('form')}>
                         <h2 className={cx('form-title')}>Log in</h2>
