@@ -38,4 +38,8 @@
 
 .status {
     color: var(--active-status);
+
+    &.offline {
+        color: #ff8f9b;
+    }
 }

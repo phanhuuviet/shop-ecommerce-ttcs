@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import styles from './UserItem.module.scss';
 import * as userService from '../../services/userServices';
@@ -7,8 +7,15 @@ import images from '../../assets/images';
 
 const cx = classNames.bind(styles);
 
-function UserItem({ data, tempChat, setTempChat, currentUserId }) {
+function UserItem({ data, tempChat, setTempChat, currentUserId, onlineUser }) {
     const [partner, setPartner] = useState(null);
+
+    const status = useMemo(() => {
+        const chatMember = data?.members.find((id) => id !== currentUserId);
+        return onlineUser?.find((user) => user.userId === chatMember);
+    }, [onlineUser, data, currentUserId]);
+
+    console.log(status);
 
     // fetch data info of partner user
     useEffect(() => {
@@ -35,7 +42,7 @@ function UserItem({ data, tempChat, setTempChat, currentUserId }) {
             <img src={partner?.avatar || images.defaultAvatar} alt="AVT" className={cx('avatar')} />
             <div className={cx('wrapper-content')}>
                 <span className={cx('username')}>{partner?.name}</span>
-                <span className={cx('status')}>Hoat dong</span>
+                <span className={cx('status', { offline: !status })}>{status ? 'Online' : 'Offline'}</span>
             </div>
         </div>
     );

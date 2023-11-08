@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import InputEmoji from 'react-input-emoji';
 import { format } from 'timeago.js';
@@ -11,10 +11,11 @@ import images from '../../assets/images';
 
 const cx = classNames.bind(styles);
 
-function BoxChat({ data, currentUserId }) {
+function BoxChat({ data, currentUserId, setSendMessage, receivedMessage }) {
     const [message, setMessage] = useState('');
     const [conversation, setConversation] = useState([]);
     const [partner, setPartner] = useState(null);
+    const scroll = useRef();
 
     // fetch data info of partner user
     useEffect(() => {
@@ -32,6 +33,13 @@ function BoxChat({ data, currentUserId }) {
             getUserData(partnerId);
         }
     }, [currentUserId, data]);
+
+    useEffect(() => {
+        if (receivedMessage && receivedMessage?.chatId === data?._id) {
+            setConversation([...conversation, receivedMessage]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [receivedMessage]);
 
     // fetch message between two user
     useEffect(() => {
@@ -57,10 +65,24 @@ function BoxChat({ data, currentUserId }) {
                 text: message,
             };
 
-            await chatService.createMessage(payload);
+            // Send message to database
+            const { data: result } = await chatService.createMessage(payload);
             setMessage('');
+            setConversation([...conversation, result]);
+
+            // Send message to socket server
+            const receiverId = data?.members.find((id) => id !== currentUserId);
+            setSendMessage({ ...payload, receiverId });
         } catch (error) {}
     };
+
+    // scroll to bottom
+    useEffect(() => {
+        scroll.current?.scrollTo({
+            top: scroll.current?.scrollHeight,
+            behavior: 'smooth',
+        });
+    }, [conversation]);
 
     return (
         <div className={cx('wrapper')}>
@@ -70,11 +92,11 @@ function BoxChat({ data, currentUserId }) {
                         <img src={partner?.avatar || images.defaultAvatar} alt="avt" className={cx('avatar')} />
                         <span className={cx('username')}>{partner?.name}</span>
                     </div>
-                    <div className={cx('content')}>
+                    <div className={cx('content')} ref={scroll}>
                         {conversation &&
                             conversation?.map((chat, index) => {
                                 return chat?.senderId === currentUserId ? (
-                                    <div className={cx('message', 'message-right')}>
+                                    <div key={index} className={cx('message', 'message-right')}>
                                         <span className={cx('message-content')}>{chat?.text}</span>
                                         <span className={cx('message-time')}>{format(chat?.createdAt)}</span>
                                     </div>

@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { io } from 'socket.io-client';
 
 import styles from './ChatPage.module.scss';
 import UserItem from '../../components/UserItem/UserItem';
@@ -14,6 +15,38 @@ function ChatPage() {
 
     const [chats, setChats] = useState([]);
     const [tempChat, setTempChat] = useState(null);
+    const [onlineUser, setOnlineUser] = useState([]);
+    const [sendMessage, setSendMessage] = useState(null);
+    const [receivedMessage, setReceivedMessage] = useState(null);
+
+    const socket = useRef();
+
+    // Set up connect to socket socket
+    useEffect(() => {
+        if (user?.id) {
+            socket.current = io('http://localhost:8800');
+            socket.current.emit('new-user-add', user?.id);
+            socket.current.on('get-users', (user) => {
+                setOnlineUser(user);
+            });
+        }
+    }, [user]);
+
+    // Sending message to socket server
+    useEffect(() => {
+        if (sendMessage) {
+            socket.current.emit('send-message', sendMessage);
+        }
+    }, [sendMessage]);
+
+    // Receive message from socket server
+    useEffect(() => {
+        if (socket.current) {
+            socket.current.on('receive-message', (data) => {
+                setReceivedMessage(data);
+            });
+        }
+    });
 
     // fetch user chat of current user
     useEffect(() => {
@@ -46,13 +79,19 @@ function ChatPage() {
                                         currentUserId={user?.id}
                                         tempChat={tempChat}
                                         setTempChat={setTempChat}
+                                        onlineUser={onlineUser}
                                     />
                                 );
                             })}
                     </div>
                 </div>
                 <div className={cx('box-chat')}>
-                    <BoxChat data={tempChat} currentUserId={user?.id} />
+                    <BoxChat
+                        data={tempChat}
+                        currentUserId={user?.id}
+                        receivedMessage={receivedMessage}
+                        setSendMessage={setSendMessage}
+                    />
                 </div>
             </div>
         </div>

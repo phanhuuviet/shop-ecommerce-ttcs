@@ -26,11 +26,12 @@
         "react-query": "^3.39.3",
         "react-redux": "^8.1.2",
         "react-router-dom": "^6.14.2",
-        "react-scripts": "5.0.1",
+        "react-scripts": "^5.0.1",
         "react-slick": "^0.29.0",
         "redux-persist": "^6.0.0",
         "sass": "^1.64.2",
         "slick-carousel": "^1.8.1",
+        "socket.io-client": "^4.7.2",
         "styled-components": "^6.0.7",
         "timeago.js": "^4.0.2",
         "web-vitals": "^2.1.4"

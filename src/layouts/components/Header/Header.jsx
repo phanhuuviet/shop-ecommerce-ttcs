@@ -1,7 +1,7 @@
 import { Badge, Col, Popover, Row } from 'antd';
 import classNames from 'classnames/bind';
 import Search from 'antd/es/input/Search';
-import { CaretDownOutlined, HomeOutlined, ShoppingCartOutlined, UserOutlined, WechatOutlined } from '@ant-design/icons';
+import { CaretDownOutlined, ShoppingCartOutlined, UserOutlined, WechatOutlined, HomeOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -124,10 +124,17 @@ function Header() {
                             <span className={cx('ml-10', 'text-header')}>Cart</span>
                         </div>
 
-                        <div className={cx('wrapper-home')} onClick={handleNavigateChat}>
-                            <WechatOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
-                            <span className={cx('ml-10', 'text-header')}>Chat</span>
-                        </div>
+                        {user?.name ? (
+                            <div className={cx('wrapper-home')} onClick={handleNavigateChat}>
+                                <WechatOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
+                                <span className={cx('ml-10', 'text-header')}>Chat</span>
+                            </div>
+                        ) : (
+                            <div className={cx('wrapper-home')} onClick={handleNavigateHome}>
+                                <HomeOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
+                                <span className={cx('ml-10', 'text-header')}>Home</span>
+                            </div>
+                        )}
 
                         <Loading isLoading={loading}>
                             <div className={cx('auth-user')}>
