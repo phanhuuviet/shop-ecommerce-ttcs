@@ -15,6 +15,7 @@ import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import ChatPage from '../pages/ChatPage/ChatPage';
 
 import Navbar from '../components/NavBar/NavBar';
+import NoFooterLayout from '../layouts/NoFooterLayout/NoFooterLayout';
 
 export const routes = [
     {
@@ -35,7 +36,7 @@ export const routes = [
     {
         path: '/chat',
         page: ChatPage,
-        layout: DefaultLayout,
+        layout: NoFooterLayout,
     },
     {
         path: '/order',
