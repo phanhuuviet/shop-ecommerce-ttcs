@@ -1,4 +1,4 @@
-import { Form, Input, Button as ButtonFinish, Checkbox, Radio } from 'antd';
+import { Form, Input, Button as ButtonFinish, Radio } from 'antd';
 import DrawerComp from '../../DrawerComp/DrawerComp';
 import Loading from '../../Loading/Loading';
 import InputUpload from '../../InputUpload/InputUpload';
@@ -14,7 +14,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
         name: '',
         address: '',
         email: '',
-        isAdmin: false,
+        role: 1,
         phone: '',
         gender: 'Female',
         avatar: '',
@@ -41,7 +41,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
                     name: res?.data?.name,
                     address: res?.data?.address,
                     email: res?.data?.email,
-                    isAdmin: res?.data?.isAdmin,
+                    role: res?.data?.role,
                     phone: res?.data?.phone,
                     gender: res?.data?.gender,
                     avatar: res?.data?.avatar,
@@ -78,15 +78,14 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
 
     const handleOnChangeDetail = (e) => {
         setStateUserDetail({ ...stateUserDetail, [e.target.name]: e.target.value });
-        console.log(e.target.name, e.target.value);
     };
 
     const handleOnChangeImageDetail = (url) => {
         setStateUserDetail({ ...stateUserDetail, image: url });
     };
 
-    const handleOnChangeCheckboxDetail = (e) => {
-        setStateUserDetail({ ...stateUserDetail, [e.target.name]: e.target.checked });
+    const handleOnChangeRole = (e) => {
+        setStateUserDetail({ ...stateUserDetail, [e.target.name]: e.target.value });
     };
 
     return (
@@ -164,12 +163,12 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
                         </Radio.Group>
                     </Form.Item>
 
-                    <Form.Item label="Admin" name="admin">
-                        <Checkbox
-                            name="isAdmin"
-                            onChange={handleOnChangeCheckboxDetail}
-                            checked={stateUserDetail.isAdmin}
-                        ></Checkbox>
+                    <Form.Item label="Role" name="role">
+                        <Radio.Group onChange={handleOnChangeRole} name="role" value={stateUserDetail.role}>
+                            <Radio value={1}>User</Radio>
+                            <Radio value={2}>Seller</Radio>
+                            <Radio value={3}>Admin</Radio>
+                        </Radio.Group>
                     </Form.Item>
                     <Form.Item label="Avatar" name="avatar">
                         <InputUpload avatar={stateUserDetail.avatar} onChange={handleOnChangeImageDetail} />

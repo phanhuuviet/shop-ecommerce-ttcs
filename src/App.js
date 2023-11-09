@@ -11,6 +11,7 @@ import { updateUser } from './redux/slice/userSlice';
 import { useState } from 'react';
 import Loading from './components/Loading/Loading';
 import CustomFragment from './components/CustomFragment/CustomFragment';
+import * as role from './constants/index';
 
 function App() {
     const [loading, setIsLoading] = useState(false);
@@ -79,7 +80,7 @@ function App() {
                             const Page = route.page;
                             var Layout = DefaultLayout;
                             var Navbar = Fragment;
-                            const isCheckAuth = !route?.isPrivate || user?.isAdmin;
+                            const isCheckAdmin = !route?.isPrivate || user?.role === role.ROLE_ADMIN;
                             if (route.layout) {
                                 Layout = route.layout;
                             }
@@ -93,7 +94,7 @@ function App() {
                                 <Route
                                     key={index}
                                     exact
-                                    path={isCheckAuth ? route?.path : '/'}
+                                    path={isCheckAdmin ? route?.path : '/'}
                                     element={
                                         <Layout navbar={<Navbar />}>
                                             <Page />

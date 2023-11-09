@@ -13,6 +13,7 @@ import * as authService from '../../../services/authService';
 import { resetUser } from '../../../redux/slice/userSlice';
 import Loading from '../../../components/Loading/Loading';
 import { searchProduct } from '../../../redux/slice/productSlice';
+import * as role from '../../../constants/index';
 
 const cx = classNames.bind(styles);
 
@@ -82,7 +83,7 @@ function Header() {
                 <p className={cx('text-option-header')} onClick={handleNavigateProfile}>
                     User information
                 </p>
-                {user?.isAdmin && (
+                {user?.role === role.ROLE_ADMIN && (
                     <p className={cx('text-option-header')} onClick={handleNavigateAdmin}>
                         System management
                     </p>

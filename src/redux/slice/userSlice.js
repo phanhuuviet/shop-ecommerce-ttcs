@@ -9,7 +9,7 @@ const initialState = {
     gender: 'Male',
     access_token: '',
     id: '',
-    isAdmin: false,
+    role: 1,
 };
 
 export const userSlice = createSlice({
@@ -26,7 +26,7 @@ export const userSlice = createSlice({
                 access_token = '',
                 _id = '',
                 gender = 'Male',
-                isAdmin = false,
+                role = 1,
             } = action.payload;
             state.name = name;
             state.email = email;
@@ -36,7 +36,7 @@ export const userSlice = createSlice({
             state.id = _id;
             state.gender = gender;
             state.access_token = access_token;
-            state.isAdmin = isAdmin;
+            state.role = role;
         },
 
         resetUser: (state) => {
@@ -48,7 +48,7 @@ export const userSlice = createSlice({
             state.avatar = '';
             state.gender = 'Male';
             state.id = '';
-            state.isAdmin = false;
+            state.role = 1;
         },
     },
 });
