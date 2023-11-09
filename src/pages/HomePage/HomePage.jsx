@@ -22,7 +22,7 @@ function HomePage() {
 
     useEffect(() => {
         setIsLoading(true);
-        productService.getAllProduct({ searchDebounce, limit }).then((data) => {
+        productService.getAllProduct({ search: searchDebounce, limit }).then((data) => {
             setStateProducts(data?.data);
             setIsLoading(false);
         });
