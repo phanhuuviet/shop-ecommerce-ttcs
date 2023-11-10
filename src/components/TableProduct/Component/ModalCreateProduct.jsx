@@ -6,8 +6,10 @@ import Loading from '../../Loading/Loading';
 import * as productService from '../../../services/productService';
 import InputUpload from '../../InputUpload/InputUpload';
 import * as message from '../../Message/Message';
+import { useSelector } from 'react-redux';
 
 function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
+    const user = useSelector((state) => state?.user);
     const initialProduct = {
         name: '',
         price: '',
@@ -21,7 +23,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
     const [form] = Form.useForm();
 
     const mutation = useMutation({
-        mutationFn: (data) => productService.createProduct(data),
+        mutationFn: (data) => productService.createProduct({ access_token: user?.access_token, data }),
     });
 
     const { data, isLoading, isSuccess } = mutation;

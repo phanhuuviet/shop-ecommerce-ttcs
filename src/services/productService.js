@@ -25,8 +25,12 @@ const getAllType = async () => {
     return res.data;
 };
 
-const createProduct = async (data) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/create`, data);
+const createProduct = async ({ access_token, data }) => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/create`, data, {
+        headers: {
+            authorization: `Bearer ${access_token}`,
+        },
+    });
     return res.data;
 };
 
