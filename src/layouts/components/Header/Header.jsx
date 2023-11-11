@@ -1,7 +1,17 @@
 import { Badge, Col, Popover, Row } from 'antd';
 import classNames from 'classnames/bind';
 import Search from 'antd/es/input/Search';
-import { CaretDownOutlined, ShoppingCartOutlined, UserOutlined, WechatOutlined, HomeOutlined } from '@ant-design/icons';
+import {
+    CaretDownOutlined,
+    ShoppingCartOutlined,
+    UserOutlined,
+    WechatOutlined,
+    HomeOutlined,
+    SettingOutlined,
+    ShoppingOutlined,
+    DownSquareOutlined,
+    LoginOutlined,
+} from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -56,6 +66,10 @@ function Header() {
         navigate(`/user/${user?.name}`);
     };
 
+    const handleNavigateShop = () => {
+        navigate(`/system/shop`);
+    };
+
     const handleNavigateOrder = () => {
         if (user?.id) {
             navigate('/cart');
@@ -81,17 +95,28 @@ function Header() {
         return (
             <div>
                 <p className={cx('text-option-header')} onClick={handleNavigateProfile}>
+                    <UserOutlined />
                     User information
                 </p>
                 {user?.role === role.ROLE_ADMIN && (
                     <p className={cx('text-option-header')} onClick={handleNavigateAdmin}>
+                        <SettingOutlined />
                         System management
                     </p>
                 )}
+                {user?.role === role.ROLE_SELLER ||
+                    (user?.role === role.ROLE_ADMIN && (
+                        <p className={cx('text-option-header')} onClick={handleNavigateShop}>
+                            <ShoppingOutlined />
+                            Shop management
+                        </p>
+                    ))}
                 <p className={cx('text-option-header')} onClick={handleNavigateMyOrder}>
+                    <DownSquareOutlined />
                     Order management
                 </p>
                 <p className={cx('text-option-header')} onClick={handleLogout}>
+                    <LoginOutlined />
                     Log out
                 </p>
             </div>

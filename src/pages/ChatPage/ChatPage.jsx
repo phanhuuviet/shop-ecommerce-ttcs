@@ -7,6 +7,7 @@ import styles from './ChatPage.module.scss';
 import UserItem from '../../components/UserItem/UserItem';
 import BoxChat from '../../components/BoxChat/BoxChat';
 import * as chatService from '../../services/chatService';
+import Loading from '../../components/Loading/Loading';
 
 const cx = classNames.bind(styles);
 
@@ -18,6 +19,7 @@ function ChatPage() {
     const [onlineUser, setOnlineUser] = useState([]);
     const [sendMessage, setSendMessage] = useState(null);
     const [receivedMessage, setReceivedMessage] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
 
     const socket = useRef();
 
@@ -52,8 +54,10 @@ function ChatPage() {
     useEffect(() => {
         const getChats = async () => {
             try {
+                setIsLoading(true);
                 const { data } = await chatService.getUserChat(user?.id);
                 setChats(data);
+                setIsLoading(false);
             } catch (error) {
                 console.log(error);
             }
@@ -65,36 +69,38 @@ function ChatPage() {
     }, [user]);
 
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('wrapper-content')}>
-                <div className={cx('list-user')}>
-                    <h2 className={cx('title')}>Chats</h2>
-                    <div className={cx('chats')}>
-                        {chats.length > 0 &&
-                            chats.map((chat, index) => {
-                                return (
-                                    <UserItem
-                                        key={index}
-                                        data={chat}
-                                        currentUserId={user?.id}
-                                        tempChat={tempChat}
-                                        setTempChat={setTempChat}
-                                        onlineUser={onlineUser}
-                                    />
-                                );
-                            })}
+        <Loading isLoading={isLoading}>
+            <div className={cx('wrapper')}>
+                <div className={cx('wrapper-content')}>
+                    <div className={cx('list-user')}>
+                        <h2 className={cx('title')}>Chats</h2>
+                        <div className={cx('chats')}>
+                            {chats.length > 0 &&
+                                chats.map((chat, index) => {
+                                    return (
+                                        <UserItem
+                                            key={index}
+                                            data={chat}
+                                            currentUserId={user?.id}
+                                            tempChat={tempChat}
+                                            setTempChat={setTempChat}
+                                            onlineUser={onlineUser}
+                                        />
+                                    );
+                                })}
+                        </div>
+                    </div>
+                    <div className={cx('box-chat')}>
+                        <BoxChat
+                            data={tempChat}
+                            currentUserId={user?.id}
+                            receivedMessage={receivedMessage}
+                            setSendMessage={setSendMessage}
+                        />
                     </div>
                 </div>
-                <div className={cx('box-chat')}>
-                    <BoxChat
-                        data={tempChat}
-                        currentUserId={user?.id}
-                        receivedMessage={receivedMessage}
-                        setSendMessage={setSendMessage}
-                    />
-                </div>
             </div>
-        </div>
+        </Loading>
     );
 }
 

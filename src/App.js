@@ -81,6 +81,7 @@ function App() {
                             var Layout = DefaultLayout;
                             var Navbar = Fragment;
                             const isCheckAdmin = !route?.isPrivate || user?.role === role.ROLE_ADMIN;
+                            const isCheckSeller = !route?.isSeller || user?.role === role.ROLE_ADMIN;
                             if (route.layout) {
                                 Layout = route.layout;
                             }
@@ -94,7 +95,7 @@ function App() {
                                 <Route
                                     key={index}
                                     exact
-                                    path={isCheckAdmin ? route?.path : '/'}
+                                    path={isCheckAdmin || isCheckSeller ? route?.path : '/'}
                                     element={
                                         <Layout navbar={<Navbar />}>
                                             <Page />

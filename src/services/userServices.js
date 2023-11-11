@@ -35,6 +35,15 @@ const getOrder = async ({ id, access_token }) => {
     return res.data;
 };
 
+const getProduct = async ({ access_token }) => {
+    const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/product`, {
+        headers: {
+            authorization: `Bearer ${access_token}`,
+        },
+    });
+    return res.data;
+};
+
 const deleteUser = async ({ id, access_token }) => {
     const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/user/${id}`, {
         headers: {
@@ -69,4 +78,15 @@ const refreshToken = async () => {
     return res.data;
 };
 
-export { signUpUser, getUser, updateUser, refreshToken, getAllUser, deleteUser, deleteManyUser, axiosJWT, getOrder };
+export {
+    signUpUser,
+    getUser,
+    updateUser,
+    refreshToken,
+    getAllUser,
+    deleteUser,
+    deleteManyUser,
+    axiosJWT,
+    getOrder,
+    getProduct,
+};

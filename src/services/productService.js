@@ -58,7 +58,6 @@ const deleteProduct = async ({ id, access_token }) => {
 };
 
 const deleteManyProduct = async ({ _id, access_token }) => {
-    console.log({ _id: _id });
     const res = await axiosJWT.post(
         `${process.env.REACT_APP_API_URL}/product/delete-many`,
         { _id: _id },

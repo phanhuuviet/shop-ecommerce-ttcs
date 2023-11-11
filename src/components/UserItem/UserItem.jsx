@@ -15,8 +15,6 @@ function UserItem({ data, tempChat, setTempChat, currentUserId, onlineUser }) {
         return onlineUser?.find((user) => user.userId === chatMember);
     }, [onlineUser, data, currentUserId]);
 
-    console.log(status);
-
     // fetch data info of partner user
     useEffect(() => {
         const getUserData = async (partnerId) => {

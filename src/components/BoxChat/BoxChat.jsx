@@ -19,6 +19,7 @@ function BoxChat({ data, currentUserId, setSendMessage, receivedMessage }) {
 
     // fetch data info of partner user
     useEffect(() => {
+        const partnerId = data?.members.find((id) => id !== currentUserId);
         const getUserData = async (partnerId) => {
             try {
                 const { data: userData } = await userService.getUser(partnerId);
@@ -28,8 +29,7 @@ function BoxChat({ data, currentUserId, setSendMessage, receivedMessage }) {
             }
         };
 
-        if (currentUserId) {
-            const partnerId = data?.members.find((id) => id !== currentUserId);
+        if (currentUserId && partnerId) {
             getUserData(partnerId);
         }
     }, [currentUserId, data]);

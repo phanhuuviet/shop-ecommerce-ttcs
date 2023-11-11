@@ -16,6 +16,7 @@ import ChatPage from '../pages/ChatPage/ChatPage';
 
 import Navbar from '../components/NavBar/NavBar';
 import NoFooterLayout from '../layouts/NoFooterLayout/NoFooterLayout';
+import ShopPage from '../pages/ShopPage/ShopPage';
 
 export const routes = [
     {
@@ -63,6 +64,12 @@ export const routes = [
         page: AdminPage,
         layout: DefaultLayout,
         isPrivate: true,
+    },
+    {
+        path: '/system/shop',
+        page: ShopPage,
+        layout: DefaultLayout,
+        isSeller: true,
     },
     {
         path: '/product/:type',

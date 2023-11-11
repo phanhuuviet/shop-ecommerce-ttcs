@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 import { DeleteOutlined, EditOutlined, PlusOutlined, SearchOutlined } from '@ant-design/icons';
-import { useMutation, useQuery } from 'react-query';
+import { useMutation } from 'react-query';
 import Highlighter from 'react-highlight-words';
 
 import styles from './TableProduct.module.scss';
@@ -15,7 +15,7 @@ import { Button, Input, Space } from 'antd';
 
 const cx = classNames.bind(styles);
 
-function TableProduct() {
+function TableProduct({ isLoading, data, refetch }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isOpenDrawer, setIsOpenDrawer] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -170,12 +170,6 @@ function TableProduct() {
             render: renderAction,
         },
     ];
-    const getAllProduct = async () => {
-        const res = await productService.getAllProduct({ limit: 100 });
-        return res;
-    };
-
-    const { isLoading: isLoadingProduct, data: dataProduct, refetch } = useQuery(['products'], getAllProduct);
 
     // ----- DELETE PRODUCT -----
     const mutation = useMutation({
@@ -195,8 +189,8 @@ function TableProduct() {
             <div className={cx('table')}>
                 <TableComp
                     columns={columns}
-                    data={dataProduct}
-                    isLoading={isLoadingProduct}
+                    data={data}
+                    isLoading={isLoading}
                     onRow={(record, rowIndex) => {
                         return {
                             onClick: (event) => {
