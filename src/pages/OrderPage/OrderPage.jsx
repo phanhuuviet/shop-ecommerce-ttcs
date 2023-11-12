@@ -7,6 +7,7 @@ import styles from './OrderPage.module.scss';
 import CardOrder from '../../components/CardOrder/CardOrder';
 import * as userServices from '../../services/userServices';
 import Loading from '../../components/Loading/Loading';
+import { FrownOutlined } from '@ant-design/icons';
 
 const cx = classNames.bind(styles);
 
@@ -34,12 +35,18 @@ function OrderPage() {
                 <h3 className={cx('title')}>
                     <span onClick={() => navigate('/')}>Home page</span> - Cart
                 </h3>
-                <div className={cx('list-card')}>
-                    {data &&
-                        data.map((order, index) => {
+                {data?.length > 0 ? (
+                    <div className={cx('list-card')}>
+                        {data?.map((order, index) => {
                             return <CardOrder refetch={refetch} key={index} data={order} />;
                         })}
-                </div>
+                    </div>
+                ) : (
+                    <div className={cx('empty-order')}>
+                        <FrownOutlined className={cx('icon')} />
+                        <h2>No order to display</h2>
+                    </div>
+                )}
             </Loading>
         </div>
     );
