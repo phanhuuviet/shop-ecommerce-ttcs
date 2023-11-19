@@ -16,8 +16,11 @@ const getUser = async (id, access_token) => {
     return res.data;
 };
 
-const getAllUser = async ({ access_token }) => {
+const getAllUser = async ({ access_token, name }) => {
     const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user`, {
+        params: {
+            name: name,
+        },
         headers: {
             authorization: `Bearer ${access_token}`,
         },
@@ -40,6 +43,14 @@ const getProduct = async ({ access_token }) => {
         headers: {
             authorization: `Bearer ${access_token}`,
         },
+    });
+    return res.data;
+};
+
+const createChat = async ({ senderId, receiverId }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/chat`, {
+        senderId,
+        receiverId,
     });
     return res.data;
 };
@@ -89,4 +100,5 @@ export {
     axiosJWT,
     getOrder,
     getProduct,
+    createChat,
 };

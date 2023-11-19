@@ -8,25 +8,25 @@ import UserItem from '../../components/UserItem/UserItem';
 import BoxChat from '../../components/BoxChat/BoxChat';
 import * as chatService from '../../services/chatService';
 import Loading from '../../components/Loading/Loading';
+import SearchUser from '../../components/SearchUser/SearchUser';
+import { useQuery } from 'react-query';
 
 const cx = classNames.bind(styles);
 
 function ChatPage() {
     const user = useSelector((state) => state?.user);
 
-    const [chats, setChats] = useState([]);
     const [tempChat, setTempChat] = useState(null);
     const [onlineUser, setOnlineUser] = useState([]);
     const [sendMessage, setSendMessage] = useState(null);
     const [receivedMessage, setReceivedMessage] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
 
     const socket = useRef();
 
     // Set up connect to socket socket
     useEffect(() => {
         if (user?.id) {
-            socket.current = io('http://localhost:8800');
+            socket.current = io(process.env.REACT_APP_SOCKET_URL);
             socket.current.emit('new-user-add', user?.id);
             socket.current.on('get-users', (user) => {
                 setOnlineUser(user);
@@ -50,23 +50,14 @@ function ChatPage() {
         }
     });
 
-    // fetch user chat of current user
-    useEffect(() => {
-        const getChats = async () => {
-            try {
-                setIsLoading(true);
-                const { data } = await chatService.getUserChat(user?.id);
-                setChats(data);
-                setIsLoading(false);
-            } catch (error) {
-                console.log(error);
-            }
-        };
+    const getAllChats = async () => {
+        const res = await chatService.getUserChat(user?.id);
+        return res?.data;
+    };
 
-        if (user?.id) {
-            getChats();
-        }
-    }, [user]);
+    const { isLoading, data, refetch } = useQuery(['chats'], getAllChats, {
+        enabled: !!user,
+    });
 
     return (
         <Loading isLoading={isLoading}>
@@ -74,9 +65,12 @@ function ChatPage() {
                 <div className={cx('wrapper-content')}>
                     <div className={cx('list-user')}>
                         <h2 className={cx('title')}>Chats</h2>
+                        <div className={cx('search')}>
+                            <SearchUser refetchChats={refetch} setTempChat={setTempChat} />
+                        </div>
                         <div className={cx('chats')}>
-                            {chats.length > 0 &&
-                                chats.map((chat, index) => {
+                            {data?.length > 0 &&
+                                data?.map((chat, index) => {
                                     return (
                                         <UserItem
                                             key={index}
