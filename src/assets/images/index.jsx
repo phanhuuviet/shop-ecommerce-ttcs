@@ -8,6 +8,8 @@ import slideImg2 from './slide/slide-img2.jpg';
 import slideImageRight1 from './slide/slide-image-right1.png';
 import slideImageRight2 from './slide/slide-image-right2.png';
 import defaultAvatar from './defaultAvatar.png';
+import chungNhan from './chungNhan.png';
+import chungNhan2 from './chungNhan2.png';
 
 const images = {
     logo,
@@ -17,6 +19,8 @@ const images = {
     slideImageRight1,
     slideImageRight2,
     defaultAvatar,
+    chungNhan,
+    chungNhan2,
 };
 
 export const slide = [slide1, slide2, slide3];

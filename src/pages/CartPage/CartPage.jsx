@@ -35,10 +35,10 @@ function CartPage() {
 
     return (
         <div className={cx('wrapper')}>
-            <h3 className={cx('title')}>
-                <span onClick={() => navigate('/')}>Home page</span> - Cart
-            </h3>
-            <Row className={cx('flex-1')} gutter={10}>
+            <h2 className={cx('title')}>
+                <span onClick={() => navigate('/')}>Home Page</span> - Cart
+            </h2>
+            <Row className={cx('flex-1', 'wrapper-content')} gutter={10}>
                 <Col span={17}>
                     <ListOrderProduct />
                 </Col>

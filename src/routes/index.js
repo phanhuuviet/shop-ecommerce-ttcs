@@ -1,5 +1,8 @@
 import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout';
 import FullLayout from '../layouts/FullLayout/FullLayout';
+import NoFooterLayout from '../layouts/NoFooterLayout/NoFooterLayout';
+import PersonalLayout from '../layouts/PersonalLayout/PersonalLayout';
+
 import HomePage from '../pages/HomePage/HomePage';
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 import CartPage from '../pages/CartPage/CartPage';
@@ -13,10 +16,9 @@ import TypeProductPage from '../pages/TypeProductPage/TypeProductPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import ChatPage from '../pages/ChatPage/ChatPage';
+import ShopPage from '../pages/ShopPage/ShopPage';
 
 import Navbar from '../components/NavBar/NavBar';
-import NoFooterLayout from '../layouts/NoFooterLayout/NoFooterLayout';
-import ShopPage from '../pages/ShopPage/ShopPage';
 
 export const routes = [
     {
@@ -85,7 +87,7 @@ export const routes = [
     {
         path: '/user/:id',
         page: ProfilePage,
-        layout: FullLayout,
+        layout: PersonalLayout,
     },
     {
         path: '/*',

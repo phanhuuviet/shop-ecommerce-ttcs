@@ -33,7 +33,7 @@ function OrderPage() {
         <div className={cx('wrapper')}>
             <Loading isLoading={isLoading}>
                 <h3 className={cx('title')}>
-                    <span onClick={() => navigate('/')}>Home page</span> - Cart
+                    <span onClick={() => navigate('/')}>Home page</span> - Oder
                 </h3>
                 {data?.length > 0 ? (
                     <div className={cx('list-card')}>
