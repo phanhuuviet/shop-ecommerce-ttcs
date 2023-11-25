@@ -10,4 +10,11 @@ const logoutUser = async () => {
     return res.data;
 };
 
-export { loginUser, logoutUser };
+const refreshToken = async () => {
+    const res = await axios.post(`${process.env.REACT_APP_API_URL}/user/refresh-token`, {
+        withCredentials: true,
+    });
+    return res.data;
+};
+
+export { loginUser, logoutUser, refreshToken };

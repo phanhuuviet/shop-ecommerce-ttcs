@@ -18,7 +18,7 @@ function OrderPage() {
     const getOrder = async () => {
         const id = user?.id;
         if (id) {
-            const res = await userServices.getOrder({ id, access_token: user?.access_token });
+            const res = await userServices.getOrder({ id });
             return res.data;
         }
     };

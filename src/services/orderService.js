@@ -1,21 +1,14 @@
-import { axiosJWT } from './userServices';
+// import { axiosJWT } from './userServices';
+import axiosJWT from './axiosService';
 
-export const createOrder = async ({ access_token, ...rest }) => {
-    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/order/create`, rest, {
-        headers: {
-            authorization: `Bearer ${access_token}`,
-        },
-    });
+export const createOrder = async ({ ...rest }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/order/create`, rest);
 
     return res.data;
 };
 
-export const cancelOrder = async ({ access_token, id }) => {
-    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/order/${id}`, {
-        headers: {
-            authorization: `Bearer ${access_token}`,
-        },
-    });
+export const cancelOrder = async ({ id }) => {
+    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/order/${id}`);
 
     return res.data;
 };

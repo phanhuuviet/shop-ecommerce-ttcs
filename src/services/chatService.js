@@ -1,4 +1,4 @@
-import { axiosJWT } from './userServices';
+import axiosJWT from './axiosService';
 
 export const getUserChat = async (id) => {
     const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/chat/${id}`);

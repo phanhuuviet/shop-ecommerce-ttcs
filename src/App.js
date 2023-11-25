@@ -55,21 +55,21 @@ function App() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    userService.axiosJWT.interceptors.request.use(
-        async function (config) {
-            const currentTime = new Date();
-            const { userData } = handleDecoded();
-            if (userData?.exp < currentTime.getTime() / 1000) {
-                const data = await userService.refreshToken();
-                config.headers['token'] = `Bearer ${data?.access_token}`;
-            }
-            return config;
-        },
-        function (error) {
-            // Do something with request error
-            return Promise.reject(error);
-        },
-    );
+    // userService.axiosJWT.interceptors.request.use(
+    //     async function (config) {
+    //         const currentTime = new Date();
+    //         const { userData } = handleDecoded();
+    //         if (userData?.exp < currentTime.getTime() / 1000) {
+    //             const data = await userService.refreshToken();
+    //             config.headers['token'] = `Bearer ${data?.access_token}`;
+    //         }
+    //         return config;
+    //     },
+    //     function (error) {
+    //         // Do something with request error
+    //         return Promise.reject(error);
+    //     },
+    // );
 
     return (
         <div>

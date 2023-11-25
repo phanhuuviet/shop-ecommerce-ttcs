@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { axiosJWT } from './userServices';
+import axiosJWT from './axiosService';
 
 const getAllProduct = async ({ search, limit }) => {
     let res = {};
@@ -25,12 +25,8 @@ const getAllType = async () => {
     return res.data;
 };
 
-const createProduct = async ({ access_token, data }) => {
-    const res = await axios.post(`${process.env.REACT_APP_API_URL}/product/create`, data, {
-        headers: {
-            authorization: `Bearer ${access_token}`,
-        },
-    });
+const createProduct = async ({ data }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/product/create`, data);
     return res.data;
 };
 
@@ -39,34 +35,18 @@ const getDetailProduct = async (id) => {
     return res.data;
 };
 
-const updateProduct = async ({ id, access_token, data }) => {
-    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/product/${id}`, data, {
-        headers: {
-            authorization: `Bearer ${access_token}`,
-        },
-    });
+const updateProduct = async ({ id, data }) => {
+    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/product/${id}`, data);
     return res.data;
 };
 
-const deleteProduct = async ({ id, access_token }) => {
-    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/product/${id}`, {
-        headers: {
-            authorization: `Bearer ${access_token}`,
-        },
-    });
+const deleteProduct = async ({ id }) => {
+    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/product/${id}`);
     return res.data;
 };
 
-const deleteManyProduct = async ({ _id, access_token }) => {
-    const res = await axiosJWT.post(
-        `${process.env.REACT_APP_API_URL}/product/delete-many`,
-        { _id: _id },
-        {
-            headers: {
-                authorization: `Bearer ${access_token}`,
-            },
-        },
-    );
+const deleteManyProduct = async ({ _id }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/product/delete-many`, { _id: _id });
     return res.data;
 };
 
