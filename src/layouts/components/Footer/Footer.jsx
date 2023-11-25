@@ -15,9 +15,9 @@ function Footer() {
                 <li>RETURN AND REFUND POLICY</li>
             </div>
             <div className={cx('wapper-image')}>
-                <img src={images.chungNhan} alt="chungnhan" width="150px" />
-                <img src={images.chungNhan} alt="chungnhan" width="150px" />
-                <img src={images.chungNhan2} alt="chungnhan2" width="65px" />
+                <img src={images.certification} alt="chungnhan" width="150px" />
+                <img src={images.certification} alt="chungnhan" width="150px" />
+                <img src={images.certification2} alt="chungnhan2" width="65px" />
             </div>
             <div className={cx('wapper-content')}>
                 <h2>Công Ty TNHH VKV Ecommerce</h2>
