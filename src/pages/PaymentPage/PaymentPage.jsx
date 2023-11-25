@@ -87,7 +87,7 @@ function OrderPage() {
             <h3 className={cx('title')}>
                 <span onClick={() => navigate('/')}>Home page</span> - Payment
             </h3>
-            <Row gutter={10}>
+            <Row gutter={10} className={cx('wapper-content')}>
                 <Col span={16}>
                     <FormMethodPayment
                         typeShipping={typeShipping}
