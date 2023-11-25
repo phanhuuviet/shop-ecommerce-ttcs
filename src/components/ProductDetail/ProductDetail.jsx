@@ -3,39 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import { Col, Image, InputNumber, Rate, Row } from 'antd';
 import { AccountBookOutlined, CarOutlined } from '@ant-design/icons';
-import { useQuery } from 'react-query';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './ProductDetail.module.scss';
 import Button from '../Button/Button';
-import * as productService from '../../services/productService';
 import Loading from '../Loading/Loading';
 import { addOrderProduct } from '../../redux/slice/orderSlice';
 import * as messages from '../Message/Message';
 
 const cx = classNames.bind(styles);
 
-function ProductDetail() {
-    const params = useParams();
+function ProductDetail({ data, isLoading }) {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const location = useLocation();
     const user = useSelector((state) => state?.user);
     const [amountProduct, setAmountProduct] = useState(1);
-
-    const getProduct = async () => {
-        const id = params?.id;
-        if (id) {
-            const res = await productService.getDetailProduct(id);
-            return res.data;
-        }
-    };
-
-    const { isLoading, data } = useQuery({
-        queryKey: ['product-detail'],
-        queryFn: getProduct,
-        enabled: !!params?.id,
-    });
 
     const handleAddOrderProduct = () => {
         if (!user?.id) {

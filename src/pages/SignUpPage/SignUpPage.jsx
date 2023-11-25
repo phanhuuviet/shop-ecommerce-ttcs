@@ -187,9 +187,6 @@ function SignUpPage() {
                                 <span>{data?.message}</span>
                             </div>
                         )}
-                        <a className={cx('forgot-password')} href="/">
-                            Forgot password?
-                        </a>
                         <Loading isLoading={isLoading}>
                             <Button className={cx('btn-form')} primary large>
                                 Sign up

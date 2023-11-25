@@ -2,16 +2,22 @@ import { Card, Rate } from 'antd';
 import classNames from 'classnames/bind';
 
 import styles from './CardProduct.module.scss';
-import Button from '../Button/Button';
 import { useNavigate } from 'react-router-dom';
-import { convertPrice } from '../../utils';
+import { EnvironmentOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
-function CardProduct({ _id, name, description, image, price, rating, sold }) {
+function CardProduct({ _id, name, image, price, rating, sold, shop }) {
+    const [favorited, setFavorited] = useState(false);
     const navigate = useNavigate();
     const handleNavigateDetailProduct = (id) => {
         navigate(`/products/${id}`);
+    };
+
+    const handleFavorite = (e) => {
+        e.preventDefault();
+        setFavorited(!favorited);
     };
 
     return (
@@ -20,22 +26,29 @@ function CardProduct({ _id, name, description, image, price, rating, sold }) {
                 hoverable
                 headStyle={{ height: '200px' }}
                 bodyStyle={{ padding: '10px' }}
-                cover={<img alt="example" style={{ height: '200px' }} src={image} />}
+                cover={<img alt="example" style={{ height: '200px', position: 'relative' }} src={image} />}
                 onClick={() => handleNavigateDetailProduct(_id)}
             >
                 <div className={cx('header')}>
                     <h3 className={cx('title')}>{name}</h3>
-                    <h3 className={cx('price')}>${convertPrice(price)}</h3>
+                    <h3 className={cx('location')}>
+                        <EnvironmentOutlined />
+                        {shop?.address}
+                    </h3>
                 </div>
-                <div className={cx('description')}>{description}</div>
                 <div className={cx('rating')}>
-                    <Rate allowHalf defaultValue={rating} />
+                    <Rate allowHalf defaultValue={rating} disabled />
                     <span className={cx('sold')}> | sold {sold || '0'}</span>
                 </div>
-                <Button outline rounded>
-                    Add to cart
-                </Button>
+                <div className={cx('price')}>${price}</div>
             </Card>
+            <button className={cx('favorite-btn', { favorite: favorited })} onClick={(e) => handleFavorite(e)}>
+                {favorited ? (
+                    <HeartFilled style={{ fontSize: '20px', color: '#fff' }} />
+                ) : (
+                    <HeartOutlined style={{ fontSize: '20px' }} />
+                )}
+            </button>
         </div>
     );
 }

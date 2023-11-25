@@ -1,4 +1,4 @@
-import { Form, Input, Button as ButtonFinish, Modal } from 'antd';
+import { Form, Input, Button as ButtonFinish, Modal, Select } from 'antd';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -16,7 +16,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
         description: '',
         rating: '',
         image: '',
-        type: '',
+        type: 'Other',
         countInStock: '',
     };
     const [stateProduct, setStateProduct] = useState(initialProduct);
@@ -56,6 +56,11 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
         setStateProduct({ ...stateProduct, [e.target.name]: e.target.value });
     };
 
+    const handleOnChangeSelect = (value) => {
+        const newValue = value.split('-');
+        setStateProduct({ ...stateProduct, [newValue[0]]: newValue[1] });
+    };
+
     const handleOnChangeImage = (url) => {
         setStateProduct({ ...stateProduct, image: url });
     };
@@ -92,6 +97,25 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                     </Form.Item>
                     <Form.Item
                         label="Type"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input type product',
+                            },
+                        ]}
+                    >
+                        <Select value={stateProduct.type} onChange={(e) => handleOnChangeSelect(e)} name="type">
+                            <Select.Option value="type-Clothes">Clothes</Select.Option>
+                            <Select.Option value="type-Footwear">Footwear</Select.Option>
+                            <Select.Option value="type-Electronic device">Electronic device</Select.Option>
+                            <Select.Option value="type-Beauty">Beauty</Select.Option>
+                            <Select.Option value="type-Houseware">Houseware</Select.Option>
+                            <Select.Option value="type-Juck food">Juck food</Select.Option>
+                            <Select.Option value="type-Other">Other</Select.Option>
+                        </Select>
+                    </Form.Item>
+                    {/* <Form.Item
+                        label="Type"
                         name="type"
                         rules={[
                             {
@@ -101,7 +125,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                         ]}
                     >
                         <Input value={stateProduct.type} onChange={handleOnChange} name="type" />
-                    </Form.Item>
+                    </Form.Item> */}
                     <Form.Item
                         label="Count in stock"
                         name="countInStock"
@@ -162,7 +186,6 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                     >
                         <InputUpload avatar={stateProduct.image} onChange={handleOnChangeImage} />
                     </Form.Item>
-
                     <Form.Item
                         wrapperCol={{
                             offset: 8,

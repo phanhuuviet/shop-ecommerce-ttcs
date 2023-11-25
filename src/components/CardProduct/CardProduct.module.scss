@@ -1,5 +1,6 @@
 .div-card {
     padding-top: 3px;
+    position: relative;
 }
 .div-card:hover {
     margin-top: -3px;
@@ -7,22 +8,31 @@
 
 .header {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     font-size: 13px;
+    max-width: 180px;
 
     & > * {
         margin: 0px;
     }
 }
 
+.location {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
 .title {
     flex: 1;
     display: block;
-    width: 100px;
+    width: 100%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    margin-right: 8px;
+    font-weight: 600;
 }
 
 .description {
@@ -35,8 +45,7 @@
 }
 
 .rating {
-    margin-bottom: 5px;
-
+    width: fit-content;
     li {
         margin-inline-end: 3px !important;
     }
@@ -45,4 +54,32 @@
 .sold {
     font-size: 1.1rem;
     margin-left: 4px;
+}
+
+.price {
+    font-weight: 500;
+}
+
+.favorite-btn {
+    position: absolute;
+    bottom: 22px;
+    right: 22px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100rem;
+    outline: none;
+    border: 1px solid #000;
+    background-color: transparent;
+    &:hover {
+        cursor: pointer;
+    }
+
+    &.favorite {
+        background-color: #ee3529;
+        border-color: #ee3529;
+    }
+}
+
+.icon-heart {
+    font-size: 4rem;
 }

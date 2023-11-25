@@ -171,7 +171,10 @@ function Header() {
                                 {user?.name ? (
                                     <>
                                         <Popover content={content} trigger="click">
-                                            <div className={cx('username', 'text-header')}>{username}</div>
+                                            <div className={cx('username', 'text-header')}>
+                                                {username}
+                                                <CaretDownOutlined />
+                                            </div>
                                         </Popover>
                                     </>
                                 ) : (

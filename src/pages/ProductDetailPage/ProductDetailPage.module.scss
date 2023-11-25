@@ -1,6 +1,7 @@
 .wrapper {
     margin-top: 10px;
     padding: 0 120px;
+    background-color: #fff;
 }
 
 .title {
@@ -10,4 +11,73 @@
         font-size: 2rem;
         cursor: pointer;
     }
+}
+
+.shop {
+    display: flex;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.info-shop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100rem;
+    }
+}
+
+.shop-name {
+    font-weight: 500;
+}
+
+.shop-interact {
+    margin-top: 8px;
+}
+
+.interact-content {
+    margin-left: 4px;
+}
+
+.devine {
+    height: 100%;
+    border: 1px solid #000;
+    margin: 0px 8px;
+}
+
+.more-info-shop {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 20px;
+}
+
+.block-content {
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-title {
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.4);
+    margin-right: 0.75rem;
+}
+
+.content {
+    color: var(--primary-color);
+    white-space: nowrap;
+    text-align: right;
 }
