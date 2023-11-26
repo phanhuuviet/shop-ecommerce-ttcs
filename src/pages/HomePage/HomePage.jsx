@@ -10,6 +10,7 @@ import Button from '../../components/Button/Button';
 import * as productService from '../../services/productService';
 import { useDebounce } from '../../hooks/useDebounce';
 import Loading from '../../components/Loading/Loading';
+import TopProduct from '../../components/TopProduct/TopProduct';
 
 const cx = classNames.bind(styles);
 
@@ -17,16 +18,25 @@ function HomePage() {
     const searchValueProduct = useSelector((state) => state.product.search);
     const searchDebounce = useDebounce(searchValueProduct, 500);
     const [stateProducts, setStateProducts] = useState([]);
+    const [topProduct, setTopProduct] = useState([]);
     const [limit, setLimit] = useState(10);
     const [isLoading, setIsLoading] = useState(true);
 
+    // Get all product
     useEffect(() => {
         setIsLoading(true);
         productService.getAllProduct({ search: searchDebounce, limit }).then((data) => {
             setStateProducts(data?.data);
-            setIsLoading(false);
         });
+        setIsLoading(false);
     }, [searchDebounce, limit]);
+
+    // Get top product
+    useEffect(() => {
+        setIsLoading(true);
+        productService.getTopProduct().then((data) => setTopProduct(data?.data));
+        setIsLoading(false);
+    }, []);
 
     return (
         <Loading isLoading={isLoading}>
@@ -44,7 +54,9 @@ function HomePage() {
                             <img src={images.slideImageRight2} alt="slide1" width="100%" />
                         </div>
                     </div>
-
+                    <div className={cx('top-product')}>
+                        <TopProduct data={topProduct} />
+                    </div>
                     <div className={cx('list-product')}>
                         {stateProducts?.map((product) => {
                             return (

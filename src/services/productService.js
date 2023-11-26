@@ -25,6 +25,11 @@ const getAllType = async () => {
     return res.data;
 };
 
+const getTopProduct = async () => {
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/product/top`);
+    return res.data;
+};
+
 const createProduct = async ({ data }) => {
     const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/product/create`, data);
     return res.data;
@@ -56,6 +61,7 @@ export {
     createProduct,
     getDetailProduct,
     getAllType,
+    getTopProduct,
     updateProduct,
     deleteProduct,
     deleteManyProduct,

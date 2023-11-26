@@ -61,6 +61,7 @@ function TypeProductPage() {
                             rating={product?.rating}
                             type={product?.type}
                             sold={product?.sold}
+                            shop={product?.user}
                         />
                     );
                 })}

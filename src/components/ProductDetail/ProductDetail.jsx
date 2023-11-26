@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './ProductDetail.module.scss';
 import Button from '../Button/Button';
-import Loading from '../Loading/Loading';
 import { addOrderProduct } from '../../redux/slice/orderSlice';
 import * as messages from '../Message/Message';
 
