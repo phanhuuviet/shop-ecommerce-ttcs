@@ -1,0 +1,109 @@
+.wrapper {
+    margin-top: 30px; // Doan nay cung tu can chinh lai cho dep nhe
+}
+
+.wrapper-header {
+    padding: 0px 120px; // Doan nay t khong biet de bao nhieu nen de tam vay
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.wrapper-shop {
+    padding: 10px 16px;
+    min-width: 300px;
+}
+
+.shop-avatar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    & > img {
+        width: 45px;
+        height: 45px;
+        border-radius: 100rem;
+    }
+}
+
+.shop-name {
+    font-size: 1.6rem;
+}
+
+.shop-interact {
+    margin-top: 10px;
+}
+
+.button-interact {
+    margin-right: 16px;
+    font-weight: normal;
+
+    & * {
+        font-size: 1.2rem;
+    }
+}
+
+.content {
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.block {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.block-content {
+    color: var(--primary-color);
+}
+
+.wrapper-tab {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.tabs {
+    color: var(--primary-color);
+    padding: 16px 40px;
+    width: fit-content;
+    min-width: 150px;
+    text-align: center;
+    font-size: 1.3rem;
+
+    &.active {
+        border-bottom: 2px solid var(--primary-color);
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.wrapper-content {
+    padding: 0px 120px;
+}
+
+.block-type {
+    margin-top: 40px;
+
+    & > h2 {
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        font-size: 1.6rem;
+        color: rgba(0, 0, 0, 0.54);
+        font-weight: 500;
+    }
+}
+
+.list-product {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 20px;
+}
