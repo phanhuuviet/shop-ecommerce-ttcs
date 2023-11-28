@@ -16,9 +16,10 @@ import TypeProductPage from '../pages/TypeProductPage/TypeProductPage';
 import AdminPage from '../pages/AdminPage/AdminPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import ChatPage from '../pages/ChatPage/ChatPage';
-import ShopPage from '../pages/ShopPage/ShopPage';
+import ShopManagementPage from '../pages/ShopManagementPage/ShopManagementPage';
 
 import Navbar from '../components/NavBar/NavBar';
+import ShopPage from '../pages/ShopPage/ShopPage';
 
 export const routes = [
     {
@@ -52,6 +53,11 @@ export const routes = [
         layout: DefaultLayout,
     },
     {
+        path: '/shop/:id',
+        page: ShopPage,
+        layout: DefaultLayout,
+    },
+    {
         path: '/sign-in',
         page: SignInPage,
         layout: null,
@@ -69,9 +75,9 @@ export const routes = [
     },
     {
         path: '/system/shop',
-        page: ShopPage,
+        page: ShopManagementPage,
         layout: DefaultLayout,
-        isSeller: true,
+        isPrivate: true,
     },
     {
         path: '/product/:type',

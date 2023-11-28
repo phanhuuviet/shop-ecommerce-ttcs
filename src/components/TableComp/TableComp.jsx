@@ -58,7 +58,7 @@ function TableComp({
     }, [isSuccess]);
     const handleDeleteAll = () => {
         if (user && rowSelectedKey) {
-            mutation.mutate({ _id: rowSelectedKey, access_token: user?.access_token });
+            mutation.mutate({ _id: rowSelectedKey });
         }
     };
 

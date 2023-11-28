@@ -10,6 +10,7 @@ import slideImageRight2 from './slide/slide-image-right2.png';
 import defaultAvatar from './defaultAvatar.png';
 import certification from './certification.png';
 import certification2 from './certification2.png';
+import top from './top.png';
 
 const images = {
     logo,
@@ -21,6 +22,7 @@ const images = {
     defaultAvatar,
     certification,
     certification2,
+    top,
 };
 
 export const slide = [slide1, slide2, slide3];

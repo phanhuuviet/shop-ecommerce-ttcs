@@ -6,13 +6,10 @@ import classNames from 'classnames/bind';
 
 import styles from './CardOrder.module.scss';
 import * as orderService from '../../services/orderService';
-import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function CardOrder({ data, refetch }) {
-    const user = useSelector((state) => state?.user);
-
     const mutation = useMutation({
         mutationKey: ['order'],
         mutationFn: (data) => orderService.cancelOrder(data),
@@ -25,7 +22,7 @@ function CardOrder({ data, refetch }) {
     });
 
     const handleCancelOrder = (order) => {
-        const data = { access_token: user?.access_token, id: order?._id };
+        const data = { id: order?._id };
         mutation.mutate(data);
     };
 

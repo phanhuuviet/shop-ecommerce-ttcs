@@ -36,7 +36,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
         if (rowSelected && user && isOpenDrawer) {
             const getProductDetail = async (rowSelected) => {
                 setIsLoading(true);
-                const res = await userService.getUser(rowSelected, user?.access_token);
+                const res = await userService.getUser(rowSelected);
                 setStateUserDetail({
                     name: res?.data?.name,
                     address: res?.data?.address,
