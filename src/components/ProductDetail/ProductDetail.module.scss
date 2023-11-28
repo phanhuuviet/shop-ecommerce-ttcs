@@ -3,10 +3,22 @@
     padding-top: 16px;
 }
 
+.name-product {
+    width: 680px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .description {
     font-size: 1.4rem;
     line-height: 22px;
     color: rgb(120, 120, 120);
+
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .sold {

@@ -22,9 +22,9 @@ export default function ShopPage() {
     const { id } = useParams();
     const [isLoading, setIsLoading] = useState(false);
 
-    useEffect(() => {
-        const dataShop = userService.getUser(id);
-    }, [id]);
+    // useEffect(() => {
+    //     const dataShop = userService.getUser(id);
+    // }, [id]);
 
     return (
         <div className={cx('wrapper')}>
@@ -33,27 +33,40 @@ export default function ShopPage() {
                     <div
                         className={cx('wrapper-shop')}
                         style={{
-                            backgroundImage: `url(https://hoanghamobile.com/tin-tuc/wp-content/uploads/2023/07/anh-bia-dep-10.jpg)`,
+                            backgroundImage: `url(https://cdn.tgdd.vn//News/0//x-cach-tao-dang-voi-quan-ong-rong-cuc-dinh-chan-3-845x470.jpg)`,
                             backgroundRepeat: 'no-repeat',
+                            backgroundSize: 'cover',
                         }}
                     >
-                        <div className={cx('shop-avatar')}>
-                            <img src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg" alt="" />
-                            <p className={cx('shop-name')}>Shop's name</p>
-                        </div>
-                        <div className={cx('shop-interact')}>
-                            <Button addIcon={<PlusOutlined />} leftIcon small outline className={cx('button-interact')}>
-                                Follow
-                            </Button>
-                            <Button
-                                addIcon={<MessageOutlined />}
-                                leftIcon
-                                small
-                                outline
-                                className={cx('button-interact')}
-                            >
-                                Chat
-                            </Button>
+                        <div className={cx('shop-background')}>
+                            <div className={cx('shop-avatar')}>
+                                <img src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg" alt="" />
+                                <div>
+                                    <p className={cx('shop-name')}>Shop's Name</p>
+                                    <h4 className={cx('shop-status')}>Active 10 minutes ago</h4>
+                                </div>
+                            </div>
+
+                            <div className={cx('shop-interact')}>
+                                <Button
+                                    addIcon={<PlusOutlined />}
+                                    leftIcon
+                                    small
+                                    outline
+                                    className={cx('button-interact')}
+                                >
+                                    FOLLOW
+                                </Button>
+                                <Button
+                                    addIcon={<MessageOutlined />}
+                                    leftIcon
+                                    small
+                                    outline
+                                    className={cx('button-interact')}
+                                >
+                                    CHAT
+                                </Button>
+                            </div>
                         </div>
                     </div>
                     <div className={cx('content')}>

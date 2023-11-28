@@ -1,36 +1,55 @@
 .wrapper {
-    margin-top: 30px; // Doan nay cung tu can chinh lai cho dep nhe
+    background-color: var(--background-color);
 }
 
 .wrapper-header {
-    padding: 0px 120px; // Doan nay t khong biet de bao nhieu nen de tam vay
+    padding: 30px 10% 0px 10%;
+    background-color: #ffffff;
+}
+
+.wrapper-content {
+    margin: 0px 10% 0px 10%;
 }
 
 .box {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 50px;
 }
 
 .wrapper-shop {
-    padding: 10px 16px;
-    min-width: 300px;
+    min-width: 380px;
+    min-height: 130px;
+    color: #ffffff;
+}
+
+.shop-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 15px 20px 0px 20px;
+    min-height: 130px;
 }
 
 .shop-avatar {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 15px;
 
     & > img {
-        width: 45px;
-        height: 45px;
+        width: 65px;
+        height: 65px;
         border-radius: 100rem;
     }
 }
 
 .shop-name {
-    font-size: 1.6rem;
+    font-size: 2rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.shop-status {
+    font-size: 1.3rem;
+    font-weight: 200;
+    opacity: 0.8;
 }
 
 .shop-interact {
@@ -38,11 +57,19 @@
 }
 
 .button-interact {
-    margin-right: 16px;
-    font-weight: normal;
+    margin: 0px 10px;
+    font-weight: 300;
+    color: #ffffff;
+    padding: 4px 25px;
+    width: 150px;
 
     & * {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
+    }
+
+    &:hover {
+        color: red;
+        border-color: red;
     }
 }
 
@@ -50,44 +77,47 @@
     min-width: 300px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
 .block {
     display: flex;
     gap: 10px;
     align-items: center;
+    font-weight: 400;
+
+    span {
+        font-size: 1.6rem;
+    }
 }
 
 .block-content {
-    color: var(--primary-color);
+    color: var(--primary-color-hover);
 }
 
 .wrapper-tab {
-    margin-top: 16px;
+    margin-top: 10px;
     display: flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     align-items: center;
 }
 
 .tabs {
-    color: var(--primary-color);
+    color: var(--primary-color-hover);
     padding: 16px 40px;
     width: fit-content;
-    min-width: 150px;
+    min-width: 190px;
     text-align: center;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
 
     &.active {
-        border-bottom: 2px solid var(--primary-color);
+        border-bottom: 2px solid var(--primary-color-hover);
     }
 
     &:hover {
         cursor: pointer;
+        color: red;
     }
-}
-
-.wrapper-content {
-    padding: 0px 120px;
 }
 
 .block-type {
@@ -106,4 +136,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 20px;
+    background-color: #ffffff;
+    padding: 15px 2% 30px 2%;
 }
