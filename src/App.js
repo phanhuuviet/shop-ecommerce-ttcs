@@ -80,8 +80,8 @@ function App() {
                             const Page = route.page;
                             var Layout = DefaultLayout;
                             var Navbar = Fragment;
-                            const isCheckAdmin = !route?.isPrivate || user?.role === role.ROLE_ADMIN;
-                            const isCheckSeller = !route?.isSeller || user?.role === role.ROLE_ADMIN;
+                            const isPrivate = route?.isPrivate;
+                            const isAuth = user?.role === role.ROLE_ADMIN || user?.role === role.ROLE_SELLER;
                             if (route.layout) {
                                 Layout = route.layout;
                             }
@@ -95,7 +95,7 @@ function App() {
                                 <Route
                                     key={index}
                                     exact
-                                    path={isCheckAdmin || isCheckSeller ? route?.path : '/'}
+                                    path={isPrivate ? (isAuth ? route?.path : '/') : route?.path}
                                     element={
                                         <Layout navbar={<Navbar />}>
                                             <Page />

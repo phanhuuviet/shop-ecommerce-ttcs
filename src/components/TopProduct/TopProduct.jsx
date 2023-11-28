@@ -18,9 +18,9 @@ function TopProduct({ data }) {
         <div>
             <h2>Top product</h2>
             <Slider {...settings}>
-                {data?.map((product) => {
+                {data?.map((product, index) => {
                     return (
-                        <div className={cx('slider-wrapper')}>
+                        <div key={index} className={cx('slider-wrapper')}>
                             <div className={cx('image-wrapper')}>
                                 <img src={product?.image} alt="" className={cx('image-product')} />
                                 <p>Monthly Sales {product?.sold}</p>

@@ -77,7 +77,7 @@ export const routes = [
         path: '/system/shop',
         page: ShopManagementPage,
         layout: DefaultLayout,
-        isSeller: true,
+        isPrivate: true,
     },
     {
         path: '/product/:type',

@@ -8,7 +8,7 @@ axiosJWT.interceptors.request.use(async function (config) {
     let token = JSON.parse(localStorage.getItem('access_token'));
     if (tokenValid(token)) {
         config.headers.Accept = 'application/json';
-        config.headers.Authorization = token;
+        config.headers.Authorization = `Bearer ${token}`;
     } else {
         const data = await authService.refreshToken();
         config.headers.Authorization = data?.access_token;
