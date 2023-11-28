@@ -42,44 +42,51 @@ function HomePage() {
         <Loading isLoading={isLoading}>
             <div className={cx('wrapper')}>
                 <div className={cx('wrapper-content')}>
-                    <div className={cx('slide-wrapper')}>
-                        <div className={cx('slider')}>
-                            <SliderComponent alt="slider" width="20%" images={slide} />
-                        </div>
+                    <div className={cx('slide-product')}>
+                        <div className={cx('slide-wrapper')}>
+                            <div className={cx('slider')}>
+                                <SliderComponent alt="slider" width="20%" images={slide} />
+                            </div>
 
-                        <div className={cx('slide-image-right1')}>
-                            <img src={images.slideImageRight1} alt="slide1" width="100%" />
+                            <div className={cx('slide-image-right1')}>
+                                <img src={images.slideImageRight1} alt="slide1" width="100%" />
+                            </div>
+                            <div className={cx('slide-image-right2')}>
+                                <img src={images.slideImageRight2} alt="slide1" width="100%" />
+                            </div>
                         </div>
-                        <div className={cx('slide-image-right2')}>
-                            <img src={images.slideImageRight2} alt="slide1" width="100%" />
+                        <div className={cx('top-product')}>
+                            <TopProduct data={topProduct} />
                         </div>
                     </div>
-                    <div className={cx('top-product')}>
-                        <TopProduct data={topProduct} />
+                    <div className={cx('wrapper-discover')}>
+                        <p>DAILY DISCOVER</p>
                     </div>
-                    <div className={cx('list-product')}>
-                        {stateProducts?.map((product) => {
-                            return (
-                                <CardProduct
-                                    key={product?._id}
-                                    _id={product?._id}
-                                    name={product?.name}
-                                    countInStock={product?.countInStock}
-                                    description={product?.description}
-                                    image={product?.image}
-                                    price={product?.price}
-                                    rating={product?.rating}
-                                    type={product?.type}
-                                    sold={product?.sold}
-                                    shop={product?.user}
-                                />
-                            );
-                        })}
-                    </div>
-                    <div className={cx('see-more')}>
-                        <Button onClick={() => setLimit((prev) => prev + 5)} outline large>
-                            See more
-                        </Button>
+                    <div className={cx('wrapper-body')}>
+                        <div className={cx('list-product')}>
+                            {stateProducts?.map((product) => {
+                                return (
+                                    <CardProduct
+                                        key={product?._id}
+                                        _id={product?._id}
+                                        name={product?.name}
+                                        countInStock={product?.countInStock}
+                                        description={product?.description}
+                                        image={product?.image}
+                                        price={product?.price}
+                                        rating={product?.rating}
+                                        type={product?.type}
+                                        sold={product?.sold}
+                                        shop={product?.user}
+                                    />
+                                );
+                            })}
+                        </div>
+                        <div className={cx('see-more')}>
+                            <Button onClick={() => setLimit((prev) => prev + 5)} outline large>
+                                See more
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

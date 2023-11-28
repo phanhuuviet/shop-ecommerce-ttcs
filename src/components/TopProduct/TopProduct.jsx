@@ -16,7 +16,9 @@ function TopProduct({ data }) {
     };
     return (
         <div>
-            <h2>Top product</h2>
+            <div className={cx('title')}>
+                <p>TOP PRODUCTS</p>
+            </div>
             <Slider {...settings}>
                 {data?.map((product) => {
                     return (
