@@ -11,7 +11,7 @@ import * as UserService from '../../services/userServices';
 import Loading from '../../components/Loading/Loading';
 import { success, error } from '../../components/Message/Message';
 import { updateUser } from '../../redux/slice/userSlice';
-import { Radio } from 'antd';
+import { DatePicker, Radio } from 'antd';
 
 const cx = classNames.bind(styles);
 
@@ -24,6 +24,7 @@ function ProfilePage() {
     const [address, setAddress] = useState('');
     const [avatar, setAvatar] = useState('');
     const [gender, setGender] = useState('Male');
+    const [dateOfBirth, setDateOfBirth] = useState('');
 
     const mutation = useMutation({
         mutationFn: (data) => {
@@ -52,6 +53,7 @@ function ProfilePage() {
             setAddress(user.address);
             setAvatar(user.avatar);
             setGender(user.gender);
+            setDateOfBirth(user.dateOfBirth);
         }
     }, [user]);
 
@@ -79,9 +81,13 @@ function ProfilePage() {
         setAvatar(url);
     };
 
+    const handleOnChangeDate = (value) => {
+        setDateOfBirth(value.$d.toISOString());
+    };
+
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        mutation.mutate({ id: user?.id, email, name, phone, address, avatar, gender });
+        mutation.mutate({ id: user?.id, email, name, phone, address, avatar, gender, dateOfBirth });
     };
 
     return (
@@ -131,7 +137,21 @@ function ProfilePage() {
                                     <Radio value="Other">Other</Radio>
                                 </Radio.Group>
                             </Input>
-
+                            <Input
+                                value={phone}
+                                onChange={handleOnChangeDate}
+                                labelClassName={cx('label')}
+                                rectangle
+                                inline
+                                id="Date of birth"
+                            >
+                                <DatePicker
+                                    defaultValue={dateOfBirth}
+                                    onChange={handleOnChangeDate}
+                                    size="middle"
+                                    style={{ width: '100%' }}
+                                />
+                            </Input>
                             <Input
                                 value={address}
                                 onChange={handleOnChangeAddress}

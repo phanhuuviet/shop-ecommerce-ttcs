@@ -3,21 +3,14 @@ import classNames from 'classnames/bind';
 
 import styles from './CardProduct.module.scss';
 import { useNavigate } from 'react-router-dom';
-import { EnvironmentOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
-import { useState } from 'react';
+import { EnvironmentOutlined } from '@ant-design/icons';
 
 const cx = classNames.bind(styles);
 
 function CardProduct({ _id, name, image, price, rating, sold, shop }) {
-    const [favorited, setFavorited] = useState(false);
     const navigate = useNavigate();
     const handleNavigateDetailProduct = (id) => {
         navigate(`/products/${id}`);
-    };
-
-    const handleFavorite = (e) => {
-        e.preventDefault();
-        setFavorited(!favorited);
     };
 
     return (
@@ -31,10 +24,12 @@ function CardProduct({ _id, name, image, price, rating, sold, shop }) {
             >
                 <div className={cx('header')}>
                     <h3 className={cx('title')}>{name}</h3>
-                    <h3 className={cx('location')}>
-                        <EnvironmentOutlined />
-                        {shop?.address}
-                    </h3>
+                    {shop && (
+                        <h3 className={cx('location')}>
+                            <EnvironmentOutlined />
+                            {shop?.address}
+                        </h3>
+                    )}
                 </div>
                 <div className={cx('rating')}>
                     <Rate allowHalf defaultValue={rating} disabled />
@@ -42,13 +37,6 @@ function CardProduct({ _id, name, image, price, rating, sold, shop }) {
                 </div>
                 <div className={cx('price')}>${price}</div>
             </Card>
-            <button className={cx('favorite-btn', { favorite: favorited })} onClick={(e) => handleFavorite(e)}>
-                {favorited ? (
-                    <HeartFilled style={{ fontSize: '20px', color: '#fff' }} />
-                ) : (
-                    <HeartOutlined style={{ fontSize: '20px' }} />
-                )}
-            </button>
         </div>
     );
 }

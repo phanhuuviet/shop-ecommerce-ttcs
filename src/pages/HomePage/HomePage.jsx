@@ -24,18 +24,24 @@ function HomePage() {
 
     // Get all product
     useEffect(() => {
-        setIsLoading(true);
-        productService.getAllProduct({ search: searchDebounce, limit }).then((data) => {
-            setStateProducts(data?.data);
-        });
-        setIsLoading(false);
+        const getAllProduct = async () => {
+            setIsLoading(true);
+            await productService.getAllProduct({ search: searchDebounce, limit }).then((data) => {
+                setStateProducts(data?.data);
+            });
+            setIsLoading(false);
+        };
+        getAllProduct();
     }, [searchDebounce, limit]);
 
     // Get top product
     useEffect(() => {
-        setIsLoading(true);
-        productService.getTopProduct().then((data) => setTopProduct(data?.data));
-        setIsLoading(false);
+        const getTopProduct = async () => {
+            setIsLoading(true);
+            await productService.getTopProduct().then((data) => setTopProduct(data?.data));
+            setIsLoading(false);
+        };
+        getTopProduct();
     }, []);
 
     return (

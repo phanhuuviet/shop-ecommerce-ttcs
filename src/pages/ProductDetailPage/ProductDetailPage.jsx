@@ -36,6 +36,10 @@ function ProductDetailPage() {
         enabled: !!params?.id,
     });
 
+    const handleViewShop = () => {
+        navigate(`/shop/${data?.user?._id}`);
+    };
+
     return (
         <div className={cx('wrapper')}>
             <Loading isLoading={isLoading}>
@@ -53,7 +57,7 @@ function ProductDetailPage() {
                                     <WechatOutlined />
                                     <span className={cx('interact-content')}>Chat now</span>
                                 </Button>
-                                <Button small outline>
+                                <Button small outline onClick={handleViewShop}>
                                     <ShopOutlined />
                                     <span className={cx('interact-content')}>View shop</span>
                                 </Button>
@@ -69,7 +73,7 @@ function ProductDetailPage() {
                             </div>
                             <div className={cx('block-content')}>
                                 <span className={cx('content-title')}>Products</span>
-                                <span className={cx('content')}>37</span>
+                                <span className={cx('content')}>{shop?.totalProduct}</span>
                             </div>
                         </div>
                         <div className={cx('block')}>

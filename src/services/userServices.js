@@ -34,6 +34,11 @@ const getProduct = async () => {
     return res.data;
 };
 
+const getShopDetail = async (id) => {
+    const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/${id}/shop`);
+    return res.data;
+};
+
 const createChat = async ({ senderId, receiverId }) => {
     const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/chat`, {
         senderId,
@@ -58,14 +63,15 @@ const updateUser = async (id, data) => {
 };
 
 export {
-    signUpUser,
-    getUser,
-    updateUser,
     getAllUser,
+    getUser,
+    getOrder,
+    getProduct,
+    getShopDetail,
+    createChat,
+    signUpUser,
+    updateUser,
     deleteUser,
     deleteManyUser,
     axiosJWT,
-    getOrder,
-    getProduct,
-    createChat,
 };
