@@ -12,6 +12,8 @@ import Loading from '../../components/Loading/Loading';
 import { success, error } from '../../components/Message/Message';
 import { updateUser } from '../../redux/slice/userSlice';
 import { DatePicker, Radio } from 'antd';
+import convertISODateToLocalDate from '../../utils/convertISODateToLocalDate';
+import dayjs from 'dayjs';
 
 const cx = classNames.bind(styles);
 
@@ -82,7 +84,9 @@ function ProfilePage() {
     };
 
     const handleOnChangeDate = (value) => {
-        setDateOfBirth(value.$d.toISOString());
+        if (value) {
+            setDateOfBirth(value.$d.toISOString());
+        }
     };
 
     const handleSubmitForm = (e) => {
@@ -125,7 +129,7 @@ function ProfilePage() {
                                 id="phone"
                             />
                             <Input
-                                value={phone}
+                                value={gender}
                                 onChange={handleOnChangeGender}
                                 labelClassName={cx('label')}
                                 inline
@@ -137,16 +141,10 @@ function ProfilePage() {
                                     <Radio value="Other">Other</Radio>
                                 </Radio.Group>
                             </Input>
-                            <Input
-                                value={phone}
-                                onChange={handleOnChangeDate}
-                                labelClassName={cx('label')}
-                                rectangle
-                                inline
-                                id="Date of birth"
-                            >
+                            <Input labelClassName={cx('label')} rectangle inline id="Date of birth">
                                 <DatePicker
-                                    defaultValue={dateOfBirth}
+                                    format={'YYYY-MM-DD'}
+                                    value={dayjs(convertISODateToLocalDate(dateOfBirth || '2000-01-01'), 'YYYY-MM-DD')}
                                     onChange={handleOnChangeDate}
                                     size="middle"
                                     style={{ width: '100%' }}
