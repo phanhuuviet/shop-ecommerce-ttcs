@@ -35,7 +35,7 @@ const getProduct = async () => {
 };
 
 const getShopDetail = async (id) => {
-    const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/${id}/shop`);
+    const res = await axios.get(`${process.env.REACT_APP_API_URL}/user/${id}/shop`);
     return res.data;
 };
 
@@ -43,6 +43,20 @@ const createChat = async ({ senderId, receiverId }) => {
     const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/chat`, {
         senderId,
         receiverId,
+    });
+    return res.data;
+};
+
+const follow = async ({ shopId }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/user/follow`, {
+        shopId,
+    });
+    return res.data;
+};
+
+const unfollow = async ({ shopId }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/user/unfollow`, {
+        shopId,
     });
     return res.data;
 };
@@ -70,6 +84,8 @@ export {
     getShopDetail,
     createChat,
     signUpUser,
+    follow,
+    unfollow,
     updateUser,
     deleteUser,
     deleteManyUser,

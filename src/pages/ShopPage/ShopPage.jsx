@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useMemo, useState } from 'react';
 import classNames from 'classnames/bind';
 import {
@@ -9,6 +9,8 @@ import {
     PhoneOutlined,
     MailOutlined,
     PlusOutlined,
+    HeartOutlined,
+    CheckCircleOutlined,
 } from '@ant-design/icons';
 import { useQuery } from 'react-query';
 import { format } from 'timeago.js';
@@ -19,12 +21,16 @@ import CardProduct from '../../components/CardProduct/CardProduct';
 import * as userService from '../../services/userServices';
 import Loading from '../../components/Loading/Loading';
 import images from '../../assets/images';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 export default function ShopPage() {
+    const user = useSelector((state) => state.user);
     const { id } = useParams();
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [isFollow, setIsFollow] = useState(false);
 
     const getShopDetail = async () => {
         if (id) {
@@ -39,6 +45,21 @@ export default function ShopPage() {
         queryFn: getShopDetail,
         enabled: !!id,
     });
+
+    const handleFollow = async () => {
+        setIsLoading(true);
+        if (isFollow) {
+            await userService.unfollow({ shopId: data?._id });
+        } else {
+            if (user?.name) {
+                await userService.follow({ shopId: data?._id });
+            } else {
+                navigate('/sign-in');
+            }
+        }
+        setIsLoading(false);
+        setIsFollow(!isFollow);
+    };
 
     const convertType = useMemo(() => {
         if (data) {
@@ -57,7 +78,6 @@ export default function ShopPage() {
             return convertValue;
         }
     }, [data]);
-
     return (
         <Loading isLoading={isLoading}>
             <div className={cx('wrapper')}>
@@ -81,15 +101,39 @@ export default function ShopPage() {
                                 </div>
 
                                 <div className={cx('shop-interact')}>
-                                    <Button
-                                        addIcon={<PlusOutlined />}
-                                        leftIcon
-                                        small
-                                        outline
-                                        className={cx('button-interact')}
-                                    >
-                                        FOLLOW
-                                    </Button>
+                                    {data?._id === user.id ? (
+                                        <Button
+                                            addIcon={<HeartOutlined />}
+                                            leftIcon
+                                            small
+                                            outline
+                                            className={cx('button-interact', 'unhover')}
+                                        >
+                                            IT'S YOU
+                                        </Button>
+                                    ) : isFollow ? (
+                                        <Button
+                                            addIcon={<CheckCircleOutlined />}
+                                            leftIcon
+                                            small
+                                            outline
+                                            onClick={handleFollow}
+                                            className={cx('button-interact')}
+                                        >
+                                            FOLLOWED
+                                        </Button>
+                                    ) : (
+                                        <Button
+                                            addIcon={<PlusOutlined />}
+                                            leftIcon
+                                            small
+                                            outline
+                                            onClick={handleFollow}
+                                            className={cx('button-interact')}
+                                        >
+                                            FOLLOW
+                                        </Button>
+                                    )}
                                     <Button
                                         addIcon={<MessageOutlined />}
                                         leftIcon
