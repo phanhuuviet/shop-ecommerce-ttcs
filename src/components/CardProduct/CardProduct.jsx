@@ -21,6 +21,7 @@ function CardProduct({ _id, name, image, price, rating, sold, shop }) {
                 bodyStyle={{ padding: '10px' }}
                 cover={<img alt="example" style={{ height: '200px', position: 'relative' }} src={image} />}
                 onClick={() => handleNavigateDetailProduct(_id)}
+                className={cx('card-ant')}
             >
                 <div className={cx('header')}>
                     <h3 className={cx('title')}>{name}</h3>

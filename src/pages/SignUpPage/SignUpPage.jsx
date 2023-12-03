@@ -29,11 +29,11 @@ function SignUpPage() {
     const mutation = useMutation({
         mutationFn: (data) => signUpUser(data),
         onSuccess: () => {
-            messages.success('Đăng ký thành công');
+            messages.success('Sign up success');
             navigate('/sign-in');
         },
         onError: () => {
-            messages.error('Đăng ký thất bại');
+            messages.error('Sign up failed');
         },
     });
 
@@ -94,7 +94,9 @@ function SignUpPage() {
                 <form onSubmit={(e) => handleSubmit(e)} className={cx('content')}>
                     <h1 className={cx('title')}>
                         <ShopOutlined style={{ fontSize: '3rem' }} />
-                        SHOP-ECOMMERCE
+                        <a href="/" style={{ color: 'black' }}>
+                            SHOP VKV-ECOMMERCE
+                        </a>
                     </h1>
                     <div className={cx('form')}>
                         <h2 className={cx('form-title')}>Create your account</h2>

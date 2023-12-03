@@ -44,6 +44,7 @@ function Header() {
 
     const onSearch = (value) => {
         dispatch(searchProduct(value));
+        handleScrollSearch();
     };
 
     const handleNavigateLogin = () => {
@@ -121,6 +122,22 @@ function Header() {
                 </p>
             </div>
         );
+    };
+
+    // const { ServicesRef } = props;
+
+    // const handleScrollSearch = () => {
+    //     window.scrollTo({
+    //         top: ServicesRef,
+    //         behavior: `smooth`,
+    //     });
+    // };
+
+    const handleScrollSearch = () => {
+        window.scrollTo({
+            top: 635,
+            behavior: `smooth`,
+        });
     };
 
     return (

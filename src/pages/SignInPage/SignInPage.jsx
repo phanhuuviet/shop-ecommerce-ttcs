@@ -41,7 +41,7 @@ function SignInPage() {
 
     useEffect(() => {
         if (isSuccess && data?.status === 'OK') {
-            messages.success('Đăng nhập thành công');
+            messages.success('Logged in successfully');
             localStorage.setItem('access_token', JSON.stringify(data?.access_token));
             if (data?.access_token) {
                 const decoded = jwtDecode(data?.access_token);
@@ -85,7 +85,7 @@ function SignInPage() {
                     <h1 className={cx('title')}>
                         <ShopOutlined style={{ fontSize: '3rem' }} />
                         <a href="/" style={{ color: 'black' }}>
-                            SHOP-ECOMMERCE
+                            SHOP VKV-ECOMMERCE
                         </a>
                     </h1>
                     <div className={cx('form')}>

@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import SliderComponent from '../../components/Slider/Slider';
@@ -44,6 +44,23 @@ function HomePage() {
         getTopProduct();
     }, []);
 
+    const [handleClass, setHandleClass] = useState(cx('wrapper-discover'));
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 635) {
+            setHandleClass(cx('discover'));
+        } else {
+            setHandleClass(cx('wrapper-discover'));
+        }
+    });
+
+    const ServicesRef = useRef(null);
+
+    // useEffect(() => {
+    //     if (ServicesRef) {
+    //         console.log(ServicesRef.current.getBoundingClientRect());
+    //     }
+    // }, [ServicesRef]);
+
     return (
         <Loading isLoading={isLoading}>
             <div className={cx('wrapper')}>
@@ -65,8 +82,10 @@ function HomePage() {
                             <TopProduct data={topProduct} />
                         </div>
                     </div>
-                    <div className={cx('wrapper-discover')}>
-                        <p>DAILY DISCOVER</p>
+                    <div className={cx('discover-bg')}>
+                        <div className={handleClass} ref={ServicesRef}>
+                            DAILY DISCOVER
+                        </div>
                     </div>
                     <div className={cx('wrapper-body')}>
                         <div className={cx('list-product')}>

@@ -6,6 +6,14 @@
     top: -3px;
 }
 
+.card-ant {
+    border: none;
+
+    div {
+        margin: 0 !important;
+    }
+}
+
 .header {
     display: flex;
     flex-direction: column;
