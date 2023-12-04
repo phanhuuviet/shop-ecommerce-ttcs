@@ -12,3 +12,9 @@ export const cancelOrder = async ({ id }) => {
 
     return res.data;
 };
+
+export const confirmOrder = async ({ id }) => {
+    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/order/${id}/paid`);
+
+    return res.data;
+};

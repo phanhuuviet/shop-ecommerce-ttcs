@@ -21,9 +21,25 @@ function CardOrder({ data, refetch }) {
         },
     });
 
+    const mutationConfirmOrder = useMutation({
+        mutationKey: ['confirm-order'],
+        mutationFn: (data) => orderService.confirmOrder(data),
+        onSuccess: (data) => {
+            if (data?.status === 'OK') {
+                message.success(data?.message);
+                refetch();
+            }
+        },
+    });
+
     const handleCancelOrder = (order) => {
         const data = { id: order?._id };
         mutation.mutate(data);
+    };
+
+    const handleConfirmOrder = (order) => {
+        const data = { id: order?._id };
+        mutationConfirmOrder.mutate(data);
     };
 
     return (
@@ -67,7 +83,9 @@ function CardOrder({ data, refetch }) {
                         <Button outline onClick={() => handleCancelOrder(data)}>
                             Cancel order
                         </Button>
-                        <Button outline>Detail</Button>
+                        <Button primary onClick={() => handleConfirmOrder(data)}>
+                            Order Received
+                        </Button>
                     </div>
                 </section>
             </Card>
