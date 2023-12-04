@@ -219,7 +219,7 @@ function TableProduct({ isLoading, data, refetch }) {
                 isOpen={isDeleteModalOpen}
                 setIsOpen={setIsDeleteModalOpen}
                 rowSelected={rowSelected}
-                title="Bạn có chắc chắn xóa sản phẩm này"
+                title="Are you sure to delete this product"
                 refetch={refetch}
                 mutation={mutation}
             />

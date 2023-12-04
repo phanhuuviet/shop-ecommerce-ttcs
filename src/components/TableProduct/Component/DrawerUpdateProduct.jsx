@@ -79,7 +79,7 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
     };
 
     return (
-        <DrawerComp title="Chi tiết sản phẩm" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
+        <DrawerComp title="Product details" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
             <Loading isLoading={isLoadingUpdated}>
                 <Form
                     name="basic"

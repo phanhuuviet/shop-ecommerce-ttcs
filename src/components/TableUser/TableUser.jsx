@@ -220,7 +220,7 @@ function TableUser() {
                 isOpen={isDeleteModalOpen}
                 setIsOpen={setIsDeleteModalOpen}
                 rowSelected={rowSelected}
-                title="Bạn có chắc chắn xóa người dùng này"
+                title="Are you sure to delete this user"
                 refetch={refetch}
                 mutation={mutation}
             />

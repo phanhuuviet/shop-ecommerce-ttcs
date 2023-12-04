@@ -64,7 +64,6 @@ function ProductDetailPage() {
                             </section>
                         </div>
                     </div>
-                    <div className={cx('devine')}></div>
                     <div className={cx('more-info-shop')}>
                         <div className={cx('block')}>
                             <div className={cx('block-content')}>

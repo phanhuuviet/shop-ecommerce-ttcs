@@ -67,14 +67,9 @@
         font-size: 1.6rem;
     }
 
-    &:hover:not(.unhover) {
-        color: red;
-        border-color: red;
-    }
-
-    &.unhover:hover {
-        border-color: #ffffff;
-        cursor: not-allowed;
+    &:hover {
+        color: #ee4d2d;
+        border-color: #ee4d2d;
     }
 }
 
@@ -121,7 +116,7 @@
 
     &:hover {
         cursor: pointer;
-        color: red;
+        color: #ee4d2d;
     }
 }
 
