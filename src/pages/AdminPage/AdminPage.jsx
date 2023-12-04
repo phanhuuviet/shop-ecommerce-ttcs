@@ -1,24 +1,33 @@
 import { Menu } from 'antd';
 import { useState } from 'react';
 import { getItem } from '../../utils';
-import { AppstoreOutlined, UserOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, UserOutlined, QuestionCircleOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 
 import styles from './AdminPage.module.scss';
 import TableUser from '../../components/TableUser/TableUser';
 import TableProduct from '../../components/TableProduct/TableProduct';
 import * as productService from '../../services/productService';
+import * as contactService from '../../services/contactService';
 import { useQuery } from 'react-query';
+import TableRequest from '../../components/TableRequest/TableRequest';
+import TableReport from '../../components/TableReport/TableReport';
 
 const cx = classNames.bind(styles);
 
 function AdminPage() {
     const [keySelected, setKeySelected] = useState('user');
-    const items = [getItem('User', 'user', <UserOutlined />), getItem('Product', 'product', <AppstoreOutlined />)];
+    const items = [
+        getItem('User', 'user', <UserOutlined />),
+        getItem('Product', 'product', <AppstoreOutlined />),
+        getItem('Request', 'request', <QuestionCircleOutlined />),
+        getItem('Report', 'report', <ExclamationCircleOutlined />),
+    ];
     const handleOnClick = ({ key }) => {
         setKeySelected(key);
     };
 
+    // --- API GET ALL PRODUCT ---
     const getAllProduct = async () => {
         const res = await productService.getAllProduct({ limit: 100 });
         return res;
@@ -27,9 +36,37 @@ function AdminPage() {
     const {
         isLoading: isLoadingProduct,
         data: dataProduct,
-        refetch,
+        refetch: refetchProduct,
     } = useQuery(['products'], getAllProduct, {
         enabled: keySelected === 'product',
+    });
+
+    // --- API GET ALL REQUEST ---
+    const getAllRequest = async () => {
+        const res = await contactService.getAllRequest();
+        return res;
+    };
+
+    const {
+        isLoading: isLoadingRequest,
+        data: dataRequest,
+        refetchRequest,
+    } = useQuery(['requests'], getAllRequest, {
+        enabled: keySelected === 'request',
+    });
+
+    // --- API GET ALL REPORT ---
+    const getAllReport = async () => {
+        const res = await contactService.getAllReport();
+        return res;
+    };
+
+    const {
+        isLoading: isLoadingReport,
+        data: dataReport,
+        refetchReport,
+    } = useQuery(['reports'], getAllReport, {
+        enabled: keySelected === 'report',
     });
 
     const renderPage = (key) => {
@@ -37,7 +74,11 @@ function AdminPage() {
             case 'user':
                 return <TableUser />;
             case 'product':
-                return <TableProduct isLoading={isLoadingProduct} data={dataProduct} refetch={refetch} />;
+                return <TableProduct isLoading={isLoadingProduct} data={dataProduct} refetch={refetchProduct} />;
+            case 'request':
+                return <TableRequest isLoading={isLoadingRequest} data={dataRequest} refetch={refetchRequest} />;
+            case 'report':
+                return <TableReport isLoading={isLoadingReport} data={dataReport} refetch={refetchReport} />;
             default:
                 return <></>;
         }
