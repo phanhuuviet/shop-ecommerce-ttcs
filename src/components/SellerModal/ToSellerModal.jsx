@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
 
+import * as contactService from '../../services/contactService';
+import * as message from '../Message/Message';
+import checkStatusResponse from '../../utils/checkStatusResponse';
+
 function ToSellerModal() {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
@@ -9,12 +13,16 @@ function ToSellerModal() {
         setOpen(true);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
+        const response = await contactService.requestToSeller();
+        if (checkStatusResponse(response)) {
+            message.success('Request to seller successfully!');
+        } else {
+            message.error('Some things went wrong!');
+        }
+        setOpen(false);
+        setLoading(false);
     };
 
     const handleCancel = () => {
@@ -23,12 +31,10 @@ function ToSellerModal() {
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Open
-            </Button>
+            <span onClick={showModal}>Request to seller</span>
             <Modal
                 open={open}
-                title="Are you sure you want to become a seller?"
+                title="Are you sure you want to request become a seller?"
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[

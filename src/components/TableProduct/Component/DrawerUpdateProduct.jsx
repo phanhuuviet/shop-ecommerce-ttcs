@@ -7,6 +7,7 @@ import * as productService from '../../../services/productService';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
 import * as message from '../../Message/Message';
+import checkStatusResponse from '../../../utils/checkStatusResponse';
 
 function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch }) {
     const user = useSelector((state) => state.user);
@@ -50,7 +51,7 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
     }, [formUpdate, stateProductDetail]);
 
     useEffect(() => {
-        if (isSuccessUpdated && dataUpdated?.status === 'OK') {
+        if (isSuccessUpdated && checkStatusResponse(dataUpdated)) {
             setIsOpenDrawer(false);
             formUpdate.resetFields();
             setStateProductDetail(initialProduct);

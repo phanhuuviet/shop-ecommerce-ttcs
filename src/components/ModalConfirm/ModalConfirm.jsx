@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import * as message from '../Message/Message';
 import Loading from '../Loading/Loading';
+import checkStatusResponse from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -15,7 +16,7 @@ function ModalConfirm({ title, isOpen = false, setIsOpen, rowSelected, refetch, 
     const { isLoading, isSuccess, data, isError } = mutation;
 
     useEffect(() => {
-        if (isSuccess && data?.status === 'OK') {
+        if (isSuccess && checkStatusResponse(data)) {
             setIsOpen(false);
             message.success('Xóa thành công');
             if (refetch) {

@@ -105,13 +105,12 @@ function Header() {
                         System management
                     </p>
                 )}
-                {user?.role === role.ROLE_SELLER ||
-                    (user?.role === role.ROLE_ADMIN && (
-                        <p className={cx('text-option-header')} onClick={handleNavigateShop}>
-                            <ShoppingOutlined />
-                            Shop management
-                        </p>
-                    ))}
+                {(user?.role === role.ROLE_SELLER || user?.role === role.ROLE_ADMIN) && (
+                    <p className={cx('text-option-header')} onClick={handleNavigateShop}>
+                        <ShoppingOutlined />
+                        Shop management
+                    </p>
+                )}
                 <p className={cx('text-option-header')} onClick={handleNavigateMyOrder}>
                     <DownSquareOutlined />
                     Order management

@@ -1,26 +1,38 @@
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
+import { useSelector } from 'react-redux';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
+
+import * as contactService from '../../../services/contactService';
 import styles from './ModalReport.module.scss';
+import * as message from '../../../components/Message/Message';
 
 const cx = classNames.bind(styles);
 
 function ModalReport() {
+    const user = useSelector((state) => state.user);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
+    const [description, setDescription] = useState('');
+
     const showModal = () => {
         setOpen(true);
     };
-    const handleOk = () => {
+    const handleOk = async () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
+        await contactService.reportError({ description });
+        setLoading(false);
+        setOpen(false);
+        message.success('Report error success!');
+        setDescription('');
     };
     const handleCancel = () => {
         setOpen(false);
+    };
+    const hanleChangeDes = (e) => {
+        setDescription(e.target.value);
+        console.log(description);
     };
 
     return (
@@ -43,9 +55,16 @@ function ModalReport() {
                 ]}
             >
                 <form action="" className={cx('form-report')}>
-                    <div>Email: hosykhanh1108@gmail.com</div>
+                    <div>Email: {user?.email}</div>
                     <div>Description:</div>
-                    <textarea name="" id="" cols="70" rows="10" placeholder="Enter description"></textarea>
+                    <textarea
+                        value={description}
+                        onChange={(e) => hanleChangeDes(e)}
+                        cols="70"
+                        rows="10"
+                        placeholder="Enter description"
+                        style={{ resize: 'none' }}
+                    ></textarea>
                 </form>
             </Modal>
         </>

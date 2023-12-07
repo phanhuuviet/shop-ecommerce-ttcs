@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Button, Modal } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
-function RefuseModal() {
+import * as contactService from '../../services/contactService';
+import * as message from '../Message/Message';
+import checkStatusResponse from '../../utils/checkStatusResponse';
+
+function RefuseModal({ refetch, rowSelected }) {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -9,12 +14,17 @@ function RefuseModal() {
         setOpen(true);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
+        const response = await contactService.rejectToSeller({ id: rowSelected._id });
+        if (checkStatusResponse(response)) {
+            message.success('Reject request success!');
+            refetch();
+        } else {
+            message.error('Some things went wrong!');
+        }
+        setLoading(false);
+        setOpen(false);
     };
 
     const handleCancel = () => {
@@ -23,9 +33,10 @@ function RefuseModal() {
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Open
-            </Button>
+            <CloseOutlined
+                style={{ color: '#e94b23', fontSize: '30px', cursor: 'pointer' }}
+                onClick={() => showModal()}
+            />
             <Modal
                 open={open}
                 title="Are you sure to refuse this request?"

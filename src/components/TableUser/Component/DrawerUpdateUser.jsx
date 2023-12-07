@@ -7,6 +7,7 @@ import * as userService from '../../../services/userServices';
 import { useMutation } from 'react-query';
 import { useSelector } from 'react-redux';
 import * as message from '../../Message/Message';
+import checkStatusResponse from '../../../utils/checkStatusResponse';
 
 function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch }) {
     const user = useSelector((state) => state.user);
@@ -57,7 +58,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
     }, [formUpdate, stateUserDetail]);
 
     useEffect(() => {
-        if (isSuccessUpdated && dataUpdated?.status === 'OK') {
+        if (isSuccessUpdated && checkStatusResponse(dataUpdated)) {
             setIsOpenDrawer(false);
             formUpdate.resetFields();
             setStateUserDetail({});

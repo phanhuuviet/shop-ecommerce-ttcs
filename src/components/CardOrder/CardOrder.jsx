@@ -6,6 +6,7 @@ import classNames from 'classnames/bind';
 
 import styles from './CardOrder.module.scss';
 import * as orderService from '../../services/orderService';
+import checkStatusResponse from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -14,7 +15,7 @@ function CardOrder({ data, refetch }) {
         mutationKey: ['order'],
         mutationFn: (data) => orderService.cancelOrder(data),
         onSuccess: (data) => {
-            if (data?.status === 'OK') {
+            if (checkStatusResponse(data)) {
                 message.success(data?.message);
                 refetch();
             }
@@ -25,7 +26,7 @@ function CardOrder({ data, refetch }) {
         mutationKey: ['confirm-order'],
         mutationFn: (data) => orderService.confirmOrder(data),
         onSuccess: (data) => {
-            if (data?.status === 'OK') {
+            if (checkStatusResponse(data)) {
                 message.success(data?.message);
                 refetch();
             }

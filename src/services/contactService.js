@@ -10,8 +10,8 @@ const getAllReport = async () => {
     return res.data;
 };
 
-const reportError = async ({ email, description }) => {
-    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/request/error`, { email, description });
+const reportError = async ({ description }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/request/error`, { description });
     return res.data;
 };
 
@@ -20,8 +20,8 @@ const requestToSeller = async () => {
     return res.data;
 };
 
-const acceptToSeller = async ({ id }) => {
-    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/request/${id}/seller/accept`);
+const acceptToSeller = async ({ id, userId }) => {
+    const res = await axiosJWT.put(`${process.env.REACT_APP_API_URL}/request/${id}/seller/accept`, { userId });
     return res.data;
 };
 

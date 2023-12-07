@@ -14,6 +14,7 @@ import { updateUser } from '../../redux/slice/userSlice';
 import { DatePicker, Radio } from 'antd';
 import convertISODateToLocalDate from '../../utils/convertISODateToLocalDate';
 import dayjs from 'dayjs';
+import checkStatusResponse from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +39,7 @@ function ProfilePage() {
     const { data, isLoading, isSuccess, isError } = mutation;
 
     useEffect(() => {
-        if (isSuccess && data?.status === 'OK') {
+        if (isSuccess && checkStatusResponse(data)) {
             dispatch(updateUser({ _id: user.id, ...data?.data }));
             success('Cập nhật thành công');
         } else if (isError) {

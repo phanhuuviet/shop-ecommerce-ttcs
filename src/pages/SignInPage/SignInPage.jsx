@@ -16,6 +16,7 @@ import * as userService from '../../services/userServices';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../redux/slice/userSlice';
 import Input from '../../components/Input/Input';
+import checkStatusResponse from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -40,7 +41,7 @@ function SignInPage() {
     };
 
     useEffect(() => {
-        if (isSuccess && data?.status === 'OK') {
+        if (isSuccess && checkStatusResponse(data)) {
             messages.success('Logged in successfully');
             localStorage.setItem('access_token', JSON.stringify(data?.access_token));
             if (data?.access_token) {

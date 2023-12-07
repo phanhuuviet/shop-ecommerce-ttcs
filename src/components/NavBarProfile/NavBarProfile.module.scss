@@ -1,0 +1,54 @@
+.wrapper {
+    margin-top: 25px;
+}
+
+.wrapper-user {
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100rem;
+    }
+}
+
+.user-subtitle {
+    margin-left: 16px;
+
+    h2 {
+        font-size: 1.4rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-height: 1rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    span {
+        font-size: 1.2rem;
+        color: #888;
+        text-transform: capitalize;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.item-navbar {
+    font-size: 1.3rem;
+    list-style: none;
+    margin-bottom: 10px;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    span {
+        margin-left: 4px;
+    }
+}

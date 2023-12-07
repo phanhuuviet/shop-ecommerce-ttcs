@@ -8,6 +8,7 @@ import { useDebounce } from '../../hooks/useDebounce';
 import * as userService from '../../services/userServices';
 import images from '../../assets/images';
 import * as message from '../Message/Message';
+import checkStatusResponse from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -28,7 +29,7 @@ function SearchUser({ setTempChat, refetchChats }) {
 
     const handleCreateChat = async (user) => {
         const res = await userService.createChat({ senderId: currentUser?.id, receiverId: user?._id });
-        if (res?.status === 'OK') {
+        if (checkStatusResponse(res)) {
             setTempChat(res?.data);
             refetchChats();
             setSearchValue('');

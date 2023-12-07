@@ -17,9 +17,10 @@ import AdminPage from '../pages/AdminPage/AdminPage';
 import PaymentPage from '../pages/PaymentPage/PaymentPage';
 import ChatPage from '../pages/ChatPage/ChatPage';
 import ShopManagementPage from '../pages/ShopManagementPage/ShopManagementPage';
+import ShopPage from '../pages/ShopPage/ShopPage';
 
 import Navbar from '../components/NavBar/NavBar';
-import ShopPage from '../pages/ShopPage/ShopPage';
+import NavBarProfile from '../components/NavBarProfile/NavBarProfile';
 
 export const routes = [
     {
@@ -94,6 +95,7 @@ export const routes = [
         path: '/user/:id',
         page: ProfilePage,
         layout: PersonalLayout,
+        navbar: NavBarProfile,
     },
     {
         path: '/*',

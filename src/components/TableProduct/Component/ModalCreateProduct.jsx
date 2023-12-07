@@ -6,6 +6,7 @@ import Loading from '../../Loading/Loading';
 import * as productService from '../../../services/productService';
 import InputUpload from '../../InputUpload/InputUpload';
 import * as message from '../../Message/Message';
+import checkStatusResponse from '../../../utils/checkStatusResponse';
 
 function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
     const initialProduct = {
@@ -27,7 +28,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
     const { data, isLoading, isSuccess } = mutation;
 
     useEffect(() => {
-        if (isSuccess && data?.status === 'OK') {
+        if (isSuccess && checkStatusResponse(data)) {
             setIsOpen(false);
             form.resetFields();
             setStateProduct(initialProduct);

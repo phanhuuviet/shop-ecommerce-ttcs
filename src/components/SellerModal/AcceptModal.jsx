@@ -1,7 +1,12 @@
 import { useState } from 'react';
+import { CheckOutlined } from '@ant-design/icons';
 import { Button, Modal } from 'antd';
 
-function AcceptModal() {
+import * as contactService from '../../services/contactService';
+import checkStatusResponse from '../../utils/checkStatusResponse';
+import * as message from '../Message/Message';
+
+function AcceptModal({ refetch, rowSelected }) {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
 
@@ -9,12 +14,17 @@ function AcceptModal() {
         setOpen(true);
     };
 
-    const handleOk = () => {
+    const handleOk = async () => {
         setLoading(true);
-        setTimeout(() => {
-            setLoading(false);
-            setOpen(false);
-        }, 3000);
+        const response = await contactService.acceptToSeller({ id: rowSelected._id, userId: rowSelected.userId._id });
+        if (checkStatusResponse(response)) {
+            message.success('Accept request success!');
+            refetch();
+        } else {
+            message.success('Some things went wrong!');
+        }
+        setLoading(false);
+        setOpen(false);
     };
 
     const handleCancel = () => {
@@ -23,9 +33,10 @@ function AcceptModal() {
 
     return (
         <>
-            <Button type="primary" onClick={showModal}>
-                Open
-            </Button>
+            <CheckOutlined
+                style={{ color: '#38aa3b', fontSize: '30px', cursor: 'pointer', marginRight: '4px' }}
+                onClick={() => showModal()}
+            />
             <Modal
                 open={open}
                 title="Are you sure to accept this request?"

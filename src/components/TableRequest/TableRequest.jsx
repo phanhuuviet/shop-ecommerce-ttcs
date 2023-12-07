@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames/bind';
 
 import TableComp from '../TableComp/TableComp';
 import styles from './TableRequest.module.scss';
 import convertISODateToLocalDate from '../../utils/convertISODateToLocalDate';
+import RefuseModal from '../SellerModal/RefuseModal';
+import AcceptModal from '../SellerModal/AcceptModal';
 
 const cx = classNames.bind(styles);
 
@@ -15,14 +16,8 @@ function TableRequest({ isLoading, data, refetch }) {
             case 'Pending':
                 return (
                     <div>
-                        <CheckOutlined
-                            style={{ color: '#38aa3b', fontSize: '30px', cursor: 'pointer', marginRight: '4px' }}
-                            // onClick={() => setIsDeleteModalOpen(true)}
-                        />
-                        <CloseOutlined
-                            style={{ color: '#e94b23', fontSize: '30px', cursor: 'pointer' }}
-                            // onClick={() => setIsOpenDrawer(true)}
-                        />
+                        <AcceptModal refetch={refetch} rowSelected={rowSelected} />
+                        <RefuseModal refetch={refetch} rowSelected={rowSelected} />
                     </div>
                 );
             case 'Approved':
@@ -67,32 +62,13 @@ function TableRequest({ isLoading, data, refetch }) {
                     onRow={(record, rowIndex) => {
                         return {
                             onClick: (event) => {
-                                setRowSelected(record._id);
+                                setRowSelected(record);
                             },
                         };
                     }}
-                    // mutation={mutationDelMany}
                     refetch={refetch}
                 />
             </div>
-
-            {/* Drawer update product */}
-            {/* <DrawerUpdateUser
-                isOpenDrawer={isOpenDrawer}
-                setIsOpenDrawer={setIsOpenDrawer}
-                rowSelected={rowSelected}
-                refetch={refetch}
-            /> */}
-
-            {/* Modal delete product */}
-            {/* <ModalConfirm
-                isOpen={isDeleteModalOpen}
-                setIsOpen={setIsDeleteModalOpen}
-                rowSelected={rowSelected}
-                title="Are you sure to delete this user"
-                refetch={refetch}
-                mutation={mutation}
-            /> */}
         </div>
     );
 }
