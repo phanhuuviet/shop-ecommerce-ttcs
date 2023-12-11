@@ -61,8 +61,11 @@ function OrderPage() {
             };
             document.body.appendChild(script);
         };
-
-        addPaypalScript();
+        if (!window.paypal) {
+            addPaypalScript();
+        } else {
+            setSdkReady(true);
+        }
     }, []);
 
     const handleCreateOrder = (details) => {

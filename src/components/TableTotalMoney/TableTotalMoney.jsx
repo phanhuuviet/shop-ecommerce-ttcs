@@ -115,8 +115,8 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
             <div className={cx('button-wrapper')}>
                 {paymentMethod === 'paypal' && sdkReady ? (
                     <PayPalButton
-                        amount={`$${totalMemo}`}
-                        // shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
+                        amount={totalMemo}
+                        shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                         onSuccess={onSuccessPaypal}
                         onError={() => {
                             alert('error');
