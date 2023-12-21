@@ -78,6 +78,12 @@ export default function ShopPage() {
             return convertValue;
         }
     }, [data]);
+
+    const [scrollType, setScrollType] = useState('');
+    const handleScrollType = () => {
+        setScrollType(cx('block-type-scroll'));
+    };
+
     return (
         <Loading isLoading={isLoading}>
             <div className={cx('wrapper')}>
@@ -186,7 +192,9 @@ export default function ShopPage() {
                         {convertType &&
                             convertType?.map((productType, index) => (
                                 <div key={index} className={cx('tabs')}>
-                                    {productType?.type}
+                                    <a href={`#block-type-${index}`} onClick={handleScrollType}>
+                                        {productType?.type}
+                                    </a>
                                 </div>
                             ))}
                     </div>
@@ -195,7 +203,8 @@ export default function ShopPage() {
                     {convertType &&
                         convertType?.map((productType, index) => (
                             <div className={cx('block-type')} key={index}>
-                                <h2>{productType?.type}</h2>
+                                <div id={`block-type-${index}`} className={scrollType}></div>
+                                <div className={cx('type-product')}>{productType?.type}</div>
                                 <div className={cx('list-product')}>
                                     {productType?.element?.map((product, index2) => (
                                         <CardProduct
