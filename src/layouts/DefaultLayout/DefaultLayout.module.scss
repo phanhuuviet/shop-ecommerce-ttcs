@@ -4,3 +4,7 @@
     width: 100%;
     min-height: calc(100vh - var(--height-header));
 }
+
+html {
+    scroll-behavior: smooth;
+}

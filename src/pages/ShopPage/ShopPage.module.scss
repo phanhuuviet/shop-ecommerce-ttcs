@@ -9,6 +9,7 @@
 
 .wrapper-content {
     margin: 0px 10% 0px 10%;
+    padding-bottom: 10px;
 }
 
 .box {
@@ -110,6 +111,10 @@
     text-align: center;
     font-size: 1.6rem;
 
+    a {
+        color: var(--primary-color-hover);
+    }
+
     &.active {
         border-bottom: 2px solid var(--primary-color-hover);
     }
@@ -123,13 +128,19 @@
 .block-type {
     margin-top: 40px;
 
-    & > h2 {
+    .type-product {
         margin-bottom: 8px;
         text-transform: uppercase;
         font-size: 1.6rem;
         color: rgba(0, 0, 0, 0.54);
         font-weight: 500;
     }
+}
+
+.block-type-scroll {
+    position: relative;
+    top: -120px;
+    visibility: hidden;
 }
 
 .list-product {
