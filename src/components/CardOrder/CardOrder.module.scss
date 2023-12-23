@@ -53,3 +53,32 @@
         }
     }
 }
+
+.rate-star {
+    display: flex;
+    align-items: center;
+
+    & > h3 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-right: 16px;
+    }
+}
+
+.feed-back {
+    & > h3 {
+        font-size: 1.4rem;
+        font-weight: 500;
+        margin-right: 16px;
+        margin-bottom: 4px;
+    }
+
+    & > textarea {
+        width: 100%;
+    }
+}
+
+.rate-btn {
+    float: right;
+    margin-bottom: 8px;
+}

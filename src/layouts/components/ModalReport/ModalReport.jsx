@@ -32,7 +32,6 @@ function ModalReport() {
     };
     const hanleChangeDes = (e) => {
         setDescription(e.target.value);
-        console.log(description);
     };
 
     return (

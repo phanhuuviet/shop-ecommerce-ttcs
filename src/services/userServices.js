@@ -47,6 +47,15 @@ const createChat = async ({ senderId, receiverId }) => {
     return res.data;
 };
 
+const feedback = async ({ productId, message, rating, orderId }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/product/${productId}/feedback`, {
+        message,
+        rating,
+        orderId,
+    });
+    return res.data;
+};
+
 const follow = async ({ shopId }) => {
     const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/user/follow`, {
         shopId,
@@ -84,6 +93,7 @@ export {
     getShopDetail,
     createChat,
     signUpUser,
+    feedback,
     follow,
     unfollow,
     updateUser,
