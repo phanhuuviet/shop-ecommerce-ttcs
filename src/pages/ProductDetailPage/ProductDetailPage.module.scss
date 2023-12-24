@@ -16,6 +16,7 @@
 .shop {
     display: flex;
     margin-top: 30px;
+    margin-bottom: 40px;
     padding: 20px;
     border-top: 1px solid #e9e9e9;
 }
@@ -35,6 +36,7 @@
 
 .shop-name {
     font-weight: 500;
+    font-size: 16px;
 }
 
 .shop-interact {
@@ -83,4 +85,78 @@
     color: var(--primary-color-hover);
     white-space: nowrap;
     text-align: right;
+}
+
+.rate-product {
+    padding: 15px 2%;
+    border-top: 1px solid #e9e9e9;
+}
+
+.rate-title {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.star-rating {
+    background-color: #f4fffa;
+    padding: 30px 3%;
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.star-general {
+    width: 13%;
+}
+
+.star-value {
+    display: flex;
+    gap: 8px;
+    color: #ee4d2d;
+    margin-bottom: 5px;
+
+    h2 {
+        font-weight: 500;
+    }
+
+    h3 {
+        padding-top: 5px;
+        font-weight: 500;
+    }
+}
+
+.star-type {
+    display: flex;
+    gap: 20px;
+
+    li {
+        list-style: none;
+        cursor: pointer;
+        text-align: center;
+        width: 120px;
+        padding: 5px 0px;
+        background-color: #fff;
+        border: 1px solid #e9e9e9;
+    }
+
+    li:first-child {
+        color: #ee4d2d;
+        border: 1px solid #ee4d2d !important;
+    }
+}
+
+.star-comment {
+    text-align: center;
+    cursor: pointer;
+    width: 200px;
+    padding: 5px 0px;
+    margin-top: 8px;
+    background-color: #fff;
+    border: 1px solid #e9e9e9;
+}
+
+.rate-comment {
+    padding: 0px 3% 30px 3%;
+    margin-top: 20px;
+    border: 1px solid #e9e9e9;
 }

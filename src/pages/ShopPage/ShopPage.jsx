@@ -84,6 +84,22 @@ export default function ShopPage() {
         setScrollType(cx('block-type-scroll'));
     };
 
+    const [handleTab, setHandleTab] = useState(cx('wrapper-tab'));
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 170) {
+            setHandleTab(cx('wrapper-tab-scroll'));
+        } else {
+            setHandleTab(cx('wrapper-tab'));
+        }
+    });
+
+    const scrollToTop = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    };
+
     return (
         <Loading isLoading={isLoading}>
             <div className={cx('wrapper')}>
@@ -187,16 +203,20 @@ export default function ShopPage() {
                             </div>
                         </div>
                     </div>
-                    <div className={cx('wrapper-tab')}>
-                        <div className={cx('tabs', 'active')}>Home</div>
-                        {convertType &&
-                            convertType?.map((productType, index) => (
-                                <div key={index} className={cx('tabs')}>
-                                    <a href={`#block-type-${index}`} onClick={handleScrollType}>
-                                        {productType?.type}
-                                    </a>
-                                </div>
-                            ))}
+                    <div className={cx('wrapper-tab-bg')}>
+                        <div className={handleTab}>
+                            <div className={cx('tabs', 'active')} onClick={scrollToTop}>
+                                Home
+                            </div>
+                            {convertType &&
+                                convertType?.map((productType, index) => (
+                                    <div key={index} className={cx('tabs')}>
+                                        <a href={`#block-type-${index}`} onClick={handleScrollType}>
+                                            {productType?.type}
+                                        </a>
+                                    </div>
+                                ))}
+                        </div>
                     </div>
                 </div>
                 <div className={cx('wrapper-content')}>
