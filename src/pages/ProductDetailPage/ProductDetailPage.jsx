@@ -5,12 +5,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import * as productService from '../../services/productService';
 import { format } from 'timeago.js';
+import { Pagination, Rate } from 'antd';
 
 import ProductDetail from '../../components/ProductDetail/ProductDetail';
 import styles from './ProductDetailPage.module.scss';
 import Button from '../../components/Button/Button';
 import images from '../../assets/images';
 import Loading from '../../components/Loading/Loading';
+import TypeComment from '../../components/TypeComment/TypeComment';
 
 const cx = classNames.bind(styles);
 
@@ -19,6 +21,16 @@ function ProductDetailPage() {
     const navigate = useNavigate();
     const [shop, setShop] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const [paginate, setPaginate] = useState({
+        page: 0,
+        limit: 5,
+        total: 1,
+    });
+
+    const onChange = (currentPage, pageSize) => {
+        setPaginate({ ...paginate, page: currentPage - 1, limit: pageSize });
+    };
 
     const getProduct = async () => {
         const id = params?.id;
@@ -95,6 +107,45 @@ function ProductDetailPage() {
                                 <span className={cx('content')}>{shop?.phone}</span>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div className={cx('rate-product')}>
+                    <h2 className={cx('rate-title')}>ĐÁNH GIÁ SẢN PHẨM</h2>
+                    <div className={cx('star-rating')}>
+                        <div className={cx('star-general')}>
+                            <div className={cx('star-value')}>
+                                <h2>{data?.rating.toFixed(1)}</h2>
+                                <h3>out of 5</h3>
+                            </div>
+                            <div>
+                                <Rate allowHalf disabled value={data?.rating} />
+                            </div>
+                        </div>
+                        <div className={cx('star-element')}>
+                            <div className={cx('star-type')}>
+                                <li>All</li>
+                                <li>5 Star (1,1k)</li>
+                                <li>4 Star (84)</li>
+                                <li>3 Star (42)</li>
+                                <li>2 Star (16)</li>
+                                <li>1 Star (33)</li>
+                            </div>
+                            <div className={cx('star-comment')}>With comment (736)</div>
+                        </div>
+                    </div>
+                    <div className={cx('rate-comment')}>
+                        <div>
+                            {data?.feedback.map((feedback, index) => {
+                                return <TypeComment data={feedback} key={index} />;
+                            })}
+                        </div>
+
+                        <Pagination
+                            defaultCurrent={paginate?.page + 1}
+                            total={paginate?.total}
+                            onChange={onChange}
+                            style={{ textAlign: 'center', marginTop: '20px' }}
+                        />
                     </div>
                 </div>
             </Loading>

@@ -96,6 +96,12 @@
     color: var(--primary-color-hover);
 }
 
+.wrapper-tab-bg {
+    width: 100%;
+    height: 53px;
+    margin-top: 10px;
+}
+
 .wrapper-tab {
     margin-top: 10px;
     display: flex;
@@ -103,8 +109,20 @@
     align-items: center;
 }
 
+.wrapper-tab-scroll {
+    position: fixed;
+    display: flex;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    left: 10%;
+    right: 10%;
+    top: 100px;
+    z-index: 10;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e9e9e9;
+}
+
 .tabs {
-    color: var(--primary-color-hover);
     padding: 16px 40px;
     width: fit-content;
     min-width: 190px;
@@ -112,14 +130,20 @@
     font-size: 1.6rem;
 
     a {
-        color: var(--primary-color-hover);
+        color: #000000;
     }
 
     &.active {
+        color: var(--primary-color-hover);
         border-bottom: 2px solid var(--primary-color-hover);
     }
 
     &:hover {
+        cursor: pointer;
+        color: #ee4d2d;
+    }
+
+    :hover {
         cursor: pointer;
         color: #ee4d2d;
     }
@@ -139,7 +163,7 @@
 
 .block-type-scroll {
     position: relative;
-    top: -120px;
+    top: -192px;
     visibility: hidden;
 }
 

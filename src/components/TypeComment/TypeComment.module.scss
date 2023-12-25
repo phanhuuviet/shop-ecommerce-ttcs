@@ -1,0 +1,40 @@
+.comment {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 15px;
+    padding-top: 25px;
+    border-bottom: 1px solid #e9e9e9;
+
+    img {
+        width: 60px;
+        height: 60px;
+        border-radius: 100rem;
+    }
+}
+
+.content {
+    padding-top: 10px;
+}
+
+.name-shop {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.star {
+    li {
+        margin-inline-end: 3px !important;
+    }
+}
+
+.time {
+    color: #d5d5d5;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.text-comment {
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
