@@ -123,7 +123,6 @@
 }
 
 .tabs {
-    padding: 16px 40px;
     width: fit-content;
     min-width: 190px;
     text-align: center;
@@ -131,11 +130,13 @@
 
     a {
         color: #000000;
+        padding: 16px 40px;
     }
 
     &.active {
         color: var(--primary-color-hover);
         border-bottom: 2px solid var(--primary-color-hover);
+        padding: 16px 40px;
     }
 
     &:hover {

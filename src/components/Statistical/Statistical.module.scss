@@ -1,0 +1,41 @@
+.wrapper-statistic {
+    width: 400px;
+    background: linear-gradient(#36d1dc, #5b86e5);
+    padding: 40px 30px;
+    border-radius: 5px;
+    margin-left: 50px;
+}
+
+.content-statistic {
+    background-color: #ffffff;
+    height: 100px;
+    border-radius: 5px;
+    padding: 5px 10px;
+
+    span {
+        color: #3f8600;
+        font-size: 25px;
+    }
+
+    div:first-child {
+        height: 50px;
+    }
+}
+
+.wrapper-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.wrapper-simple {
+    width: 60%;
+    height: 400px;
+    margin-top: 20px;
+}
+
+.wrapper-pie-chart {
+    width: 400px;
+    height: 300px;
+    margin-top: 50px;
+}
