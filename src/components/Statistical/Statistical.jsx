@@ -6,13 +6,14 @@ import styles from './Statistical.module.scss';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { PieChart, Pie, Cell } from 'recharts';
 import { RiseOutlined } from '@ant-design/icons';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Loading from '../Loading/Loading';
 import { TYPE_PRODUCT } from '../../constants';
 
 const cx = classNames.bind(styles);
 
 function Statistical({ isLoading, data }) {
+    const [sum, setSum] = useState(0);
     const formatter = (value) => <CountUp end={value} separator="," />;
 
     const initialValue = useMemo(
@@ -35,6 +36,7 @@ function Statistical({ isLoading, data }) {
                     existedElement.inventory += product.countInStock;
                 }
             });
+            setSum((initialValue.sum = initialValue?.reduce((acc, curr) => acc + curr.revenue, 0)));
         }
     }, [data, initialValue]);
 
@@ -61,7 +63,7 @@ function Statistical({ isLoading, data }) {
                         <Col span={12}>
                             <Statistic
                                 title="Tổng doanh thu"
-                                value={initialValue?.reduce((acc, curr) => acc + curr.revenue, 0)}
+                                value={sum}
                                 formatter={formatter}
                                 className={cx('content-statistic')}
                                 suffix={<RiseOutlined />}
