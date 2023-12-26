@@ -27,7 +27,7 @@ function ShopManagementPage() {
             case 'product':
                 return <TableProduct isLoading={isLoadingProduct} data={dataProduct} refetch={refetch} />;
             case 'statistic':
-                return <Statistical />;
+                return <Statistical isLoading={isLoadingProduct} data={dataProduct?.data} />;
             default:
                 return <></>;
         }
