@@ -1,41 +1,79 @@
+.wrapper {
+    padding: 10px 0px 50px 30px;
+}
+
 .wrapper-statistic {
     width: 400px;
     background: linear-gradient(#36d1dc, #5b86e5);
-    padding: 40px 30px;
+    padding: 30px 20px;
     border-radius: 5px;
-    margin-left: 50px;
-}
 
-.content-statistic {
-    background-color: #ffffff;
-    height: 100px;
-    border-radius: 5px;
-    padding: 5px 10px;
+    .content-statistic {
+        background-color: #ffffff;
+        height: 100px;
+        border-radius: 5px;
+        padding: 5px 10px;
 
-    span {
-        color: #3f8600;
-        font-size: 25px;
-    }
+        span {
+            color: #3f8600;
+            font-size: 25px;
+        }
 
-    div:first-child {
-        height: 50px;
+        div:first-child {
+            height: 40px;
+        }
     }
 }
 
 .wrapper-container {
     display: flex;
-    gap: 150px;
-    margin-bottom: 50px;
-    margin-left: 50px;
+    gap: 30px;
+    margin: 30px 0px;
+}
+
+.container-pie-chart {
+    padding: 20px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+
+    .wrapper-pie-chart {
+        width: 450px;
+        height: 300px;
+        background-color: #ffffff;
+        border-radius: 5px;
+    }
+
+    .name-pie-chart {
+        text-align: center;
+        background: linear-gradient(#6cff95, #1e524e);
+        margin-top: 5px;
+        padding: 15px;
+        border-radius: 5px;
+        color: #ffffff;
+    }
 }
 
 .wrapper-simple {
-    width: 70%;
-    height: 420px;
     margin-top: 25px;
-}
+    padding: 20px;
+    background-color: #e9e9e9;
+    width: 740px;
+    border-radius: 5px;
 
-.wrapper-pie-chart {
-    width: 400px;
-    height: 300px;
+    .wrapper-simple-content {
+        width: 700px;
+        height: 420px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        padding: 20px 20px 10px 0px;
+    }
+
+    .name-simple {
+        text-align: center;
+        background: linear-gradient(#6cff95, #1e524e);
+        margin-top: 5px;
+        padding: 15px;
+        border-radius: 5px;
+        color: #ffffff;
+    }
 }

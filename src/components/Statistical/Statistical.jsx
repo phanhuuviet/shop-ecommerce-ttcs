@@ -82,77 +82,88 @@ function Statistical({ isLoading, data }) {
                     </Row>
                 </div>
 
-                <div className={cx('wrapper-simple')}>
-                    <ResponsiveContainer width="100%" height="100%">
-                        <BarChart
-                            width={500}
-                            height={300}
-                            data={initialValue}
-                            margin={{
-                                top: 5,
-                                right: 30,
-                                left: 20,
-                                bottom: 5,
-                            }}
-                        >
-                            <CartesianGrid strokeDasharray="3 3" />
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip />
-                            <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
-                            <Bar
-                                dataKey="revenue"
-                                fill="#82ca9d"
-                                activeBar={<Rectangle fill="gold" stroke="purple" />}
-                            />
-                        </BarChart>
-                    </ResponsiveContainer>
-                </div>
                 <div className={cx('wrapper-container')}>
-                    <div className={cx('wrapper-pie-chart')}>
+                    <div className={cx('container-pie-chart')}>
+                        <div className={cx('wrapper-pie-chart')}>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart width={400} height={400}>
+                                    <Pie
+                                        data={initialValue}
+                                        cx="50%"
+                                        cy="50%"
+                                        labelLine={false}
+                                        label={renderCustomizedLabel}
+                                        outerRadius={80}
+                                        fill="#8884d8"
+                                        dataKey="sold"
+                                    >
+                                        {initialValue.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                    <Legend />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
+                        <div className={cx('name-pie-chart')}>SỐ SẢN PHẨM BÁN ĐƯỢC THEO TỪNG LOẠI</div>
+                    </div>
+
+                    <div className={cx('container-pie-chart')}>
+                        <div className={cx('wrapper-pie-chart')}>
+                            <ResponsiveContainer width="100%" height="100%">
+                                <PieChart width={400} height={400}>
+                                    <Pie
+                                        data={initialValue}
+                                        cx="50%"
+                                        cy="50%"
+                                        labelLine={false}
+                                        label={renderCustomizedLabel}
+                                        outerRadius={80}
+                                        fill="#8884d8"
+                                        dataKey="inventory"
+                                    >
+                                        {initialValue.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                        ))}
+                                    </Pie>
+                                    <Tooltip />
+                                    <Legend />
+                                </PieChart>
+                            </ResponsiveContainer>
+                        </div>
+                        <div className={cx('name-pie-chart')}>SỐ SẢN PHẨM MỖI LOẠI TRONG KHO</div>
+                    </div>
+                </div>
+
+                <div className={cx('wrapper-simple')}>
+                    <div className={cx('wrapper-simple-content')}>
                         <ResponsiveContainer width="100%" height="100%">
-                            <PieChart width={400} height={400}>
-                                <Pie
-                                    data={initialValue}
-                                    cx="50%"
-                                    cy="50%"
-                                    labelLine={false}
-                                    label={renderCustomizedLabel}
-                                    outerRadius={80}
-                                    fill="#8884d8"
-                                    dataKey="sold"
-                                >
-                                    {initialValue.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
+                            <BarChart
+                                width={500}
+                                height={300}
+                                data={initialValue}
+                                margin={{
+                                    top: 5,
+                                    right: 30,
+                                    left: 20,
+                                    bottom: 5,
+                                }}
+                            >
+                                <CartesianGrid strokeDasharray="3 3" />
+                                <XAxis dataKey="name" />
+                                <YAxis />
                                 <Tooltip />
-                                <Legend />
-                            </PieChart>
+                                <Bar dataKey="pv" fill="#8884d8" activeBar={<Rectangle fill="pink" stroke="blue" />} />
+                                <Bar
+                                    dataKey="revenue"
+                                    fill="#82ca9d"
+                                    activeBar={<Rectangle fill="gold" stroke="purple" />}
+                                />
+                            </BarChart>
                         </ResponsiveContainer>
                     </div>
-                    <div className={cx('wrapper-pie-chart')}>
-                        <ResponsiveContainer width="100%" height="100%">
-                            <PieChart width={400} height={400}>
-                                <Pie
-                                    data={initialValue}
-                                    cx="50%"
-                                    cy="50%"
-                                    labelLine={false}
-                                    label={renderCustomizedLabel}
-                                    outerRadius={80}
-                                    fill="#8884d8"
-                                    dataKey="inventory"
-                                >
-                                    {initialValue.map((entry, index) => (
-                                        <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                    ))}
-                                </Pie>
-                                <Tooltip />
-                                <Legend />
-                            </PieChart>
-                        </ResponsiveContainer>
-                    </div>
+                    <div className={cx('name-simple')}>TỔNG DOANH THU THEO TỪNG LOẠI</div>
                 </div>
             </div>
         </Loading>
