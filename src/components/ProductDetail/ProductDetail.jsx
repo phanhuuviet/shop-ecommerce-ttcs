@@ -34,7 +34,7 @@ function ProductDetail({ data }) {
                     },
                 }),
             );
-            messages.success('Add to cart success!');
+            messages.success('Thêm vào giỏ hàng thành công!');
         }
     };
 
@@ -66,43 +66,45 @@ function ProductDetail({ data }) {
                 <p className={cx('description')}>{data?.description}</p>
                 <div>
                     <Rate allowHalf disabled value={data?.rating} />
-                    <span className={cx('sold')}> | sold {data?.sold}</span>
+                    <span className={cx('sold')}> | Đã bán {data?.sold}</span>
                 </div>
                 <div className={cx('line')}></div>
                 <div>
-                    <h1 className={cx('price')}>${data?.price} or $99/month span</h1>
-                    <span className={cx('price-description')}>Suggested payments with 6 month special finacing</span>
+                    <h1 className={cx('price')}>${data?.price} hoặc khoảng $99/tháng</h1>
+                    <span className={cx('price-description')}>
+                        Các khoản thanh toán được đề xuất với nguồn tài trợ đặc biệt 6 tháng
+                    </span>
                 </div>
                 <div className={cx('line')}></div>
                 <div className={cx('address-wrapper')}>
-                    Delivered to
+                    Giao tới
                     <span className={cx('address')}>Q. Hoàn Kiếm, P. Hàng Trống, Hà Nội</span> -
-                    <span className={cx('change-address')}>Change address</span>
+                    <span className={cx('change-address')}>Thay đổi địa chỉ</span>
                 </div>
                 <div className={cx('quantity-wrapper')}>
-                    <span>Amount</span>
+                    <span>Số lượng</span>
                     <div className={cx('quantity-btn')}>
                         <InputNumber min={1} max={data?.countInStock} defaultValue={1} onChange={onChange} />
                     </div>
                     <span className={cx('count-in-stock')}>
-                        Only <span>{data?.countInStock} items</span> left! Don't miss it
+                        Chỉ còn <span>{data?.countInStock} mặt hàng</span> mặt hàng thừa! Đừng bỏ lỡ nó
                     </span>
                 </div>
                 <div className={cx('buy-wrapper')}>
                     <Button primary large outline rounded>
-                        Buy now
+                        Mua ngay
                     </Button>
                     <Button onClick={handleAddOrderProduct} large outline rounded>
-                        Add to cart
+                        Thêm vào giỏ hàng
                     </Button>
                 </div>
                 <div className={cx('footer-wrapper')}>
                     <div className={cx('footer-item')}>
                         <CarOutlined className={cx('footer-icon')} />
                         <div>
-                            <h3>Free Delivery</h3>
+                            <h3>Giao hàng miễn phí</h3>
                             <a className={cx('footer-link')} href="/">
-                                Enter your postal code for Delivery Availability
+                                Nhập mã bưu điện của bạn để biết tình trạng giao hàng khả dụng
                             </a>
                         </div>
                     </div>
@@ -111,10 +113,10 @@ function ProductDetail({ data }) {
                     <div className={cx('footer-item')}>
                         <AccountBookOutlined className={cx('footer-icon')} />
                         <div>
-                            <h3>Return Delivery</h3>
-                            Free 30days Delivery Returns.
+                            <h3>Trả lại hàng</h3>
+                            Trả lại hàng miễn phí trong 30 ngày.
                             <a className={cx('footer-link')} href="/">
-                                Details
+                                Chi tiết
                             </a>
                         </div>
                     </div>

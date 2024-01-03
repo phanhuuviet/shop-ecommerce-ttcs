@@ -29,11 +29,11 @@ function SignUpPage() {
     const mutation = useMutation({
         mutationFn: (data) => signUpUser(data),
         onSuccess: () => {
-            messages.success('Sign up success');
+            messages.success('Đăng kí thành công');
             navigate('/sign-in');
         },
         onError: () => {
-            messages.error('Sign up failed');
+            messages.error('Đăng kí thất bại');
         },
     });
 
@@ -99,20 +99,18 @@ function SignUpPage() {
                         </a>
                     </h1>
                     <div className={cx('form')}>
-                        <h2 className={cx('form-title')}>Create your account</h2>
-                        <span className={cx('form-link')}>
-                            Already have an account ? <a href="/sign-in">Sign in here</a>
-                        </span>
+                        <h2 className={cx('form-title')}>Tạo tài khoản của bạn</h2>
+                        <span className={cx('form-link')}>Bạn có sẵn sàng để tạo một tài khoản ?</span>
                         <div className={cx('input')}>
                             <label htmlFor="name">
-                                Name<span className={cx('icon-asterisk')}>*</span>
+                                Tên<span className={cx('icon-asterisk')}>*</span>
                             </label>
                             <input
                                 value={name}
                                 className={cx('input-field')}
                                 id="name"
                                 type="text"
-                                placeholder="Enter your username"
+                                placeholder="Nhập tên của bạn"
                                 onChange={(e) => handleOnChangeName(e)}
                                 required
                             />
@@ -126,64 +124,68 @@ function SignUpPage() {
                                 className={cx('input-field')}
                                 id="email"
                                 type="text"
-                                placeholder="Enter your email"
+                                placeholder="Nhập email của bạn"
                                 onChange={(e) => handleOnChangeEmail(e)}
                                 required
                             />
                         </div>
                         <div className={cx('input')}>
                             <label htmlFor="password">
-                                Password<span className={cx('icon-asterisk')}>*</span>
+                                Mật khẩu<span className={cx('icon-asterisk')}>*</span>
                             </label>
                             <input
                                 value={password}
                                 className={cx('input-field')}
                                 id="password"
                                 type="password"
-                                placeholder="Enter your password"
+                                placeholder="Nhập mật khẩu của bạn"
                                 onChange={(e) => handleOnChangePassword(e)}
                                 required
                             />
                         </div>
                         <div className={cx('input')}>
                             <label htmlFor="re-enter-password">
-                                Re-enter password<span className={cx('icon-asterisk')}>*</span>
+                                Nhập lại mật khẩu<span className={cx('icon-asterisk')}>*</span>
                             </label>
                             <input
                                 value={confirmPassword}
                                 className={cx('input-field')}
                                 id="re-enter-password"
                                 type="password"
-                                placeholder="Re-enter your password"
+                                placeholder="Nhập lại mật khẩu của bạn"
                                 onChange={(e) => handleOnChangeConfirmPassword(e)}
                                 required
                             />
                         </div>
                         <div className={cx('input')}>
                             <label htmlFor="gender">
-                                Gender<span className={cx('icon-asterisk')}>*</span>
+                                Giới tính<span className={cx('icon-asterisk')}>*</span>
                             </label>
                             <Radio.Group onChange={(e) => handleOnChangeGender(e)} value={gender}>
-                                <Radio value="Male">Male</Radio>
-                                <Radio value="Female">Female</Radio>
-                                <Radio value="Other">Other</Radio>
+                                <Radio value="Male">Nam</Radio>
+                                <Radio value="Female">Nữ</Radio>
+                                <Radio value="Other">Khác</Radio>
                             </Radio.Group>
                         </div>
 
                         <div className={cx('input')}>
                             <label htmlFor="phone">
-                                Phone<span className={cx('icon-asterisk')}>*</span>
+                                Điện thoại<span className={cx('icon-asterisk')}>*</span>
                             </label>
                             <input
                                 value={phone}
                                 className={cx('input-field')}
                                 id="phone"
                                 type="text"
-                                placeholder="Enter your number phone"
+                                placeholder="Nhập số điện thoại của bạn"
                                 onChange={(e) => handleOnChangePhone(e)}
                                 required
                             />
                         </div>
+                        <div className={cx('sign-in')}>
+                            Bạn đã có tài khoản ? <a href="/sign-in">Đăng nhập tại đây</a>
+                        </div>
+
                         {isErr && (
                             <div className={cx('message-err')}>
                                 <span>{data?.message}</span>
@@ -191,7 +193,7 @@ function SignUpPage() {
                         )}
                         <Loading isLoading={isLoading}>
                             <Button className={cx('btn-form')} primary large>
-                                Sign up
+                                Đăng kí
                             </Button>
                         </Loading>
                     </div>

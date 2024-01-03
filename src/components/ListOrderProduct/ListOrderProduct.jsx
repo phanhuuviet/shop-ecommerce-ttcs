@@ -34,7 +34,7 @@ function ListOrderProduct() {
     // ----- FORMAT STRUCTURE FOR TABLE
     const columns = [
         {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
             render: (text, record) => {
                 return (
@@ -46,14 +46,14 @@ function ListOrderProduct() {
             },
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             render: (text) => {
                 return <span>${text}</span>;
             },
         },
         {
-            title: 'Amount',
+            title: 'Số lượng',
             dataIndex: 'amount',
             render: (text, record) => {
                 return (
@@ -67,14 +67,14 @@ function ListOrderProduct() {
             },
         },
         {
-            title: 'Total',
+            title: 'Tổng cộng',
             dataIndex: 'total',
             render: (text) => {
                 return <span className={cx('total')}>${text}</span>;
             },
         },
         {
-            title: 'Action',
+            title: 'Hoạt động',
             dataIndex: 'action',
             render: (text, record) => (
                 <div>

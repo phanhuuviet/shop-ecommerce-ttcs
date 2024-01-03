@@ -118,7 +118,7 @@ export default function ShopPage() {
                                     <img src={data?.avatar || images.defaultAvatar} alt="" />
                                     <div>
                                         <p className={cx('shop-name')}>{data?.name}</p>
-                                        <h4 className={cx('shop-status')}>Active 10 minutes ago</h4>
+                                        <h4 className={cx('shop-status')}>Hoạt động 10 phút trước</h4>
                                     </div>
                                 </div>
 
@@ -131,7 +131,7 @@ export default function ShopPage() {
                                             outline
                                             className={cx('button-interact', 'unhover')}
                                         >
-                                            IT'S YOU
+                                            LÀ BẠN
                                         </Button>
                                     ) : isFollow ? (
                                         <Button
@@ -142,7 +142,7 @@ export default function ShopPage() {
                                             onClick={handleFollow}
                                             className={cx('button-interact')}
                                         >
-                                            FOLLOWED
+                                            ĐÃ THEO DÕI
                                         </Button>
                                     ) : (
                                         <Button
@@ -153,7 +153,7 @@ export default function ShopPage() {
                                             onClick={handleFollow}
                                             className={cx('button-interact')}
                                         >
-                                            FOLLOW
+                                            THEO DÕI
                                         </Button>
                                     )}
                                     <Button
@@ -171,29 +171,29 @@ export default function ShopPage() {
                         <div className={cx('content')}>
                             <div className={cx('block')}>
                                 <AppstoreOutlined />
-                                <span>Products:</span>
+                                <span>Sản phẩm:</span>
                                 <span className={cx('block-content')}>{data?.totalProduct}</span>
                             </div>
                             <div className={cx('block')}>
                                 <UserOutlined />
-                                <span>Followers: </span>
+                                <span>Người theo dõi: </span>
                                 <span className={cx('block-content')}>{data?.followers.length}</span>
                             </div>
                             <div className={cx('block')}>
                                 <MessageOutlined />
-                                <span>Response Time: </span>
-                                <span className={cx('block-content')}>In a few hours</span>
+                                <span>Thời gian phản hồi: </span>
+                                <span className={cx('block-content')}>Sau vài giờ</span>
                             </div>
                         </div>
                         <div className={cx('content')}>
                             <div className={cx('block')}>
                                 <ClockCircleOutlined />
-                                <span>Joined: </span>
+                                <span>Đã tham gia: </span>
                                 <span className={cx('block-content')}>{format(data?.createdAt)}</span>
                             </div>
                             <div className={cx('block')}>
                                 <PhoneOutlined />
-                                <span>Phone: </span>
+                                <span>Điện thoại: </span>
                                 <span className={cx('block-content')}>{data?.phone}</span>
                             </div>
                             <div className={cx('block')}>
@@ -206,7 +206,7 @@ export default function ShopPage() {
                     <div className={cx('wrapper-tab-bg')}>
                         <div className={handleTab}>
                             <div className={cx('tabs', 'active')} onClick={scrollToTop}>
-                                Home
+                                Dạo
                             </div>
                             {convertType &&
                                 convertType?.map((productType, index) => (

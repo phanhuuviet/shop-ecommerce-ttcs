@@ -40,7 +40,7 @@ function UserItem({ data, tempChat, setTempChat, currentUserId, onlineUser }) {
             <img src={partner?.avatar || images.defaultAvatar} alt="AVT" className={cx('avatar')} />
             <div className={cx('wrapper-content')}>
                 <span className={cx('username')}>{partner?.name}</span>
-                <span className={cx('status', { offline: !status })}>{status ? 'Online' : 'Offline'}</span>
+                <span className={cx('status', { offline: !status })}>{status ? 'Trực tuyến' : 'Ngoại tuyến'}</span>
             </div>
         </div>
     );

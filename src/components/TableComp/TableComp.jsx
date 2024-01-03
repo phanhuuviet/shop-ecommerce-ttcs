@@ -76,7 +76,7 @@ function TableComp({
         <Loading isLoading={isUpdateLoading || isLoading}>
             {rowSelectedKey.length > 0 && (
                 <Dropdown menu={{ items }} placement="bottom">
-                    <Button>Action</Button>
+                    <Button>Hoạt động</Button>
                 </Dropdown>
             )}
 

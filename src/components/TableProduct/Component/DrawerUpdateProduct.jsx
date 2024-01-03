@@ -80,7 +80,7 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
     };
 
     return (
-        <DrawerComp title="Product details" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
+        <DrawerComp title="Thông tin chi tiết sản phẩm" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
             <Loading isLoading={isLoadingUpdated}>
                 <Form
                     name="basic"
@@ -98,36 +98,36 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
                     form={formUpdate}
                 >
                     <Form.Item
-                        label="Name"
+                        label="Tên"
                         name="name"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input name product',
+                                message: 'Vui lòng nhập tên sản phẩm',
                             },
                         ]}
                     >
                         <Input value={stateProductDetail.name} onChange={handleOnChangeDetail} name="name" />
                     </Form.Item>
                     <Form.Item
-                        label="Type"
+                        label="Loại"
                         name="type"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input type product',
+                                message: 'Vui lòng nhập loại sản phẩm',
                             },
                         ]}
                     >
                         <Input value={stateProductDetail.type} onChange={handleOnChangeDetail} name="type" />
                     </Form.Item>
                     <Form.Item
-                        label="Count in stock"
+                        label="Số lượng"
                         name="countInStock"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input count in stock',
+                                message: 'Vui lòng nhập số lượng trong kho',
                             },
                         ]}
                     >
@@ -138,36 +138,36 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
                         />
                     </Form.Item>
                     <Form.Item
-                        label="Price"
+                        label="Giá"
                         name="price"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input price',
+                                message: 'Vui lòng nhập giá',
                             },
                         ]}
                     >
                         <Input value={stateProductDetail.price} onChange={handleOnChangeDetail} name="price" />
                     </Form.Item>
                     <Form.Item
-                        label="Rating"
+                        label="Xếp hạng"
                         name="rating"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input rating',
+                                message: 'Vui lòng nhập xếp hạng',
                             },
                         ]}
                     >
                         <Input value={stateProductDetail.rating} onChange={handleOnChangeDetail} name="rating" />
                     </Form.Item>
                     <Form.Item
-                        label="Description"
+                        label="Miêu tả"
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input description',
+                                message: 'Vui lòng nhập miêu tả',
                             },
                         ]}
                     >
@@ -178,12 +178,12 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
                         />
                     </Form.Item>
                     <Form.Item
-                        label="Image"
+                        label="Ảnh"
                         name="image"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input description',
+                                message: 'Vui lòng chọn ảnh',
                             },
                         ]}
                     >
@@ -197,7 +197,7 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
                         }}
                     >
                         <ButtonFinish type="primary" htmlType="submit">
-                            Apply
+                            Áp dụng
                         </ButtonFinish>
                     </Form.Item>
                 </Form>

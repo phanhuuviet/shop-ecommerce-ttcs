@@ -84,7 +84,7 @@ function HomePage() {
                     </div>
                     <div className={cx('discover-bg')}>
                         <div className={handleClass} ref={ServicesRef}>
-                            DAILY DISCOVER
+                            KHÁM PHÁ HÀNG NGÀY
                         </div>
                     </div>
                     <div className={cx('wrapper-body')}>
@@ -109,7 +109,7 @@ function HomePage() {
                         </div>
                         <div className={cx('see-more')}>
                             <Button onClick={() => setLimit((prev) => prev + 5)} outline large>
-                                See more
+                                Xem thêm
                             </Button>
                         </div>
                     </div>

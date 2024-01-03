@@ -18,10 +18,10 @@ function RefuseModal({ refetch, rowSelected }) {
         setLoading(true);
         const response = await contactService.rejectToSeller({ id: rowSelected._id });
         if (checkStatusResponse(response)) {
-            message.success('Reject request success!');
+            message.success('Từ chối yêu cầu thành công!');
             refetch();
         } else {
-            message.error('Some things went wrong!');
+            message.error('Một số điều đã xảy ra sai sót!');
         }
         setLoading(false);
         setOpen(false);
@@ -39,15 +39,15 @@ function RefuseModal({ refetch, rowSelected }) {
             />
             <Modal
                 open={open}
-                title="Are you sure to refuse this request?"
+                title="Bạn có chắc chắn từ chối yêu cầu này không?"
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[
                     <Button key="back" onClick={handleCancel}>
-                        Cancel
+                        Quay lại
                     </Button>,
                     <Button key="submit" type="danger" loading={loading} onClick={handleOk}>
-                        Refuse
+                        Từ chối
                     </Button>,
                 ]}
             ></Modal>

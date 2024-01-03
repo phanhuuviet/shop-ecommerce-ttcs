@@ -39,12 +39,12 @@ function OrderPage() {
 
     useEffect(() => {
         if (isSuccess && checkStatusResponse(data)) {
-            message.success('Order successfully');
+            message.success('Đặt hàng thành công');
             navigate('/');
         } else if (data?.status === 'err') {
             message.error(data?.message);
         } else if (isError) {
-            message.error('Somethings wrong!');
+            message.error('Đã xảy ra lỗi!');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isError, isSuccess]);
@@ -89,7 +89,7 @@ function OrderPage() {
     return (
         <div className={cx('wrapper')}>
             <h3 className={cx('title')}>
-                <span onClick={() => navigate('/')}>Home page</span> - Payment
+                <span onClick={() => navigate('/')}>Trang chủ</span> - Thanh toán
             </h3>
             <Row gutter={10} className={cx('wapper-content')}>
                 <Col span={16}>
@@ -113,23 +113,23 @@ function OrderPage() {
             <Steps
                 items={[
                     {
-                        title: 'Choose product',
+                        title: 'Chọn sản phẩm',
                         status: 'finish',
                         icon: <UserOutlined />,
                     },
                     {
-                        title: 'Verification',
+                        title: 'Xác minh',
                         status: isLoading ? 'finish' : isSuccess ? 'finish' : 'process',
                         // status: isSuccess ? 'finish' : 'process',
                         icon: <SolutionOutlined />,
                     },
                     {
-                        title: 'Pay',
+                        title: 'Chi trả',
                         status: isLoading ? 'process' : isSuccess ? 'finish' : 'wait',
                         icon: isLoading ? <LoadingOutlined /> : <Loading3QuartersOutlined />,
                     },
                     {
-                        title: 'Done',
+                        title: 'Xong',
                         status: isSuccess ? 'finish' : 'wait',
                         icon: <SmileOutlined />,
                     },

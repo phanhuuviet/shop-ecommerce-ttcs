@@ -62,7 +62,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
             setIsOpenDrawer(false);
             formUpdate.resetFields();
             setStateUserDetail({});
-            message.success('Update user successfully');
+            message.success('Cập nhật người dùng thành công');
             if (refetch) {
                 refetch();
             }
@@ -90,7 +90,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
     };
 
     return (
-        <DrawerComp title="User detail" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
+        <DrawerComp title="Chi tiết người dùng" isOpen={isOpenDrawer} onClose={() => setIsOpenDrawer(false)}>
             <Loading isLoading={isLoading} delay="200">
                 <Form
                     name="basic"
@@ -108,12 +108,12 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
                     form={formUpdate}
                 >
                     <Form.Item
-                        label="Name"
+                        label="Tên"
                         name="name"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input username',
+                                message: 'Vui lòng nhập tên người dùng',
                             },
                         ]}
                     >
@@ -125,53 +125,53 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input email',
+                                message: 'Vui lòng nhập email',
                             },
                         ]}
                     >
                         <Input value={stateUserDetail.type} onChange={handleOnChangeDetail} name="email" />
                     </Form.Item>
                     <Form.Item
-                        label="Address"
+                        label="Địa chỉ"
                         name="address"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input address',
+                                message: 'Vui lòng nhập địa chỉ',
                             },
                         ]}
                     >
                         <Input value={stateUserDetail.address} onChange={handleOnChangeDetail} name="address" />
                     </Form.Item>
                     <Form.Item
-                        label="Phone"
+                        label="Điện thoại"
                         name="phone"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input phone',
+                                message: 'Vui lòng nhập số điện thoại',
                             },
                         ]}
                     >
                         <Input value={stateUserDetail.phone} onChange={handleOnChangeDetail} name="phone" />
                     </Form.Item>
 
-                    <Form.Item label="Gender" name="gender">
+                    <Form.Item label="Giới tính" name="gender">
                         <Radio.Group onChange={handleOnChangeDetail} name="gender" value={stateUserDetail.gender}>
-                            <Radio value="Male">Male</Radio>
-                            <Radio value="Female">Female</Radio>
-                            <Radio value="Other">Other</Radio>
+                            <Radio value="Male">Nam</Radio>
+                            <Radio value="Female">Nữ</Radio>
+                            <Radio value="Other">Khác</Radio>
                         </Radio.Group>
                     </Form.Item>
 
-                    <Form.Item label="Role" name="role">
+                    <Form.Item label="Vai trò" name="role">
                         <Radio.Group onChange={handleOnChangeRole} name="role" value={stateUserDetail.role}>
-                            <Radio value={1}>User</Radio>
-                            <Radio value={2}>Seller</Radio>
-                            <Radio value={3}>Admin</Radio>
+                            <Radio value={1}>Người dùng</Radio>
+                            <Radio value={2}>Người bán</Radio>
+                            <Radio value={3}>Quản trị viên</Radio>
                         </Radio.Group>
                     </Form.Item>
-                    <Form.Item label="Avatar" name="avatar">
+                    <Form.Item label="Hình đại diện" name="avatar">
                         <InputUpload avatar={stateUserDetail.avatar} onChange={handleOnChangeImageDetail} />
                     </Form.Item>
 
@@ -182,7 +182,7 @@ function DrawerUpdateUser({ isOpenDrawer, setIsOpenDrawer, rowSelected, refetch 
                         }}
                     >
                         <ButtonFinish type="primary" htmlType="submit">
-                            Apply
+                            Áp dụng
                         </ButtonFinish>
                     </Form.Item>
                 </Form>

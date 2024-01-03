@@ -16,7 +16,7 @@ const cx = classNames.bind(styles);
 function ShopManagementPage() {
     const [keySelected, setKeySelected] = useState('product');
     const items = [
-        getItem('Product', 'product', <AppstoreOutlined />),
+        getItem('Sản phẩm', 'product', <AppstoreOutlined />),
         getItem('Thống kê', 'statistic', <BarChartOutlined />),
     ];
     const handleOnClick = ({ key }) => {

@@ -42,7 +42,7 @@ function SignInPage() {
 
     useEffect(() => {
         if (isSuccess && checkStatusResponse(data)) {
-            messages.success('Logged in successfully');
+            messages.success('Đăng nhập thành công');
             localStorage.setItem('access_token', JSON.stringify(data?.access_token));
             if (data?.access_token) {
                 const decoded = jwtDecode(data?.access_token);
@@ -90,9 +90,9 @@ function SignInPage() {
                         </a>
                     </h1>
                     <div className={cx('form')}>
-                        <h2 className={cx('form-title')}>Log in</h2>
+                        <h2 className={cx('form-title')}>Đăng nhập</h2>
                         <span className={cx('form-link')}>
-                            Don't have account yet ? <a href="/sign-up">Sign up here</a>
+                            Bạn chưa có tài khoản ? <a href="/sign-up">Đăng ký tại đây</a>
                         </span>
 
                         <Input onChange={handleOnChangeEmail} value={email} id="email" required />
@@ -101,16 +101,16 @@ function SignInPage() {
                             type="password"
                             onChange={handleOnChangePassword}
                             value={password}
-                            id="password"
+                            id="Mật khẩu"
                             required
                         />
 
                         <a className={cx('forgot-password')} href="/">
-                            Forgot password?
+                            Quên mật khẩu?
                         </a>
                         <Loading isLoading={isLoading}>
                             <Button className={cx('btn-form')} primary large>
-                                Sign in
+                                Đăng nhập
                             </Button>
                         </Loading>
                     </div>

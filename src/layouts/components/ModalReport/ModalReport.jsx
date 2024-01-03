@@ -24,7 +24,7 @@ function ModalReport() {
         await contactService.reportError({ description });
         setLoading(false);
         setOpen(false);
-        message.success('Report error success!');
+        message.success('Báo lỗi thành công!');
         setDescription('');
     };
     const handleCancel = () => {
@@ -41,27 +41,27 @@ function ModalReport() {
             </div>
             <Modal
                 open={open}
-                title="Report"
+                title="Báo cáo"
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[
                     <Button key="back" onClick={handleCancel}>
-                        Return
+                        Trở lại
                     </Button>,
                     <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-                        Submit
+                        Nộp
                     </Button>,
                 ]}
             >
                 <form action="" className={cx('form-report')}>
                     <div>Email: {user?.email}</div>
-                    <div>Description:</div>
+                    <div>Nội dung:</div>
                     <textarea
                         value={description}
                         onChange={(e) => hanleChangeDes(e)}
                         cols="70"
                         rows="10"
-                        placeholder="Enter description"
+                        placeholder="Nhập nội dung"
                         style={{ resize: 'none' }}
                     ></textarea>
                 </form>

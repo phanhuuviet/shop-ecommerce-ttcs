@@ -97,27 +97,27 @@ function Header() {
             <div>
                 <p className={cx('text-option-header')} onClick={handleNavigateProfile}>
                     <UserOutlined />
-                    User information
+                    Thông tin người dùng
                 </p>
                 {user?.role === role.ROLE_ADMIN && (
                     <p className={cx('text-option-header')} onClick={handleNavigateAdmin}>
                         <SettingOutlined />
-                        System management
+                        Quản lý hệ thống
                     </p>
                 )}
                 {(user?.role === role.ROLE_SELLER || user?.role === role.ROLE_ADMIN) && (
                     <p className={cx('text-option-header')} onClick={handleNavigateShop}>
                         <ShoppingOutlined />
-                        Shop management
+                        Quản lý cửa hàng
                     </p>
                 )}
                 <p className={cx('text-option-header')} onClick={handleNavigateMyOrder}>
                     <DownSquareOutlined />
-                    Order management
+                    Quản lý đơn hàng
                 </p>
                 <p className={cx('text-option-header')} onClick={handleLogout}>
                     <LoginOutlined />
-                    Log out
+                    Đăng xuất
                 </p>
             </div>
         );
@@ -150,9 +150,9 @@ function Header() {
                     <Col span={12}>
                         <Search
                             className={cx('search-input')}
-                            placeholder="Search product..."
+                            placeholder="Tìm kiếm sản phẩm..."
                             allowClear
-                            enterButton="Search"
+                            enterButton="Tìm kiếm"
                             size="large"
                             onSearch={onSearch}
                             enter="true"
@@ -163,7 +163,7 @@ function Header() {
                             <Badge count={order?.orderItems?.length} size="small">
                                 <ShoppingCartOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
                             </Badge>
-                            <span className={cx('ml-10', 'text-header')}>Cart</span>
+                            <span className={cx('ml-10', 'text-header')}>Giỏ hàng</span>
                         </div>
 
                         {user?.name ? (
@@ -174,7 +174,7 @@ function Header() {
                         ) : (
                             <div className={cx('wrapper-home')} onClick={handleNavigateHome}>
                                 <HomeOutlined style={{ fontSize: '3rem', color: '#ffffff' }} />
-                                <span className={cx('ml-10', 'text-header')}>Home</span>
+                                <span className={cx('ml-10', 'text-header')}>Trang chủ</span>
                             </div>
                         )}
 
@@ -198,9 +198,9 @@ function Header() {
                                         onClick={handleNavigateLogin}
                                         className={cx('account', 'ml-10', 'text-header')}
                                     >
-                                        <span>Sign-in/Sign-up</span>
+                                        <span>Đăng nhập/Đăng kí</span>
                                         <span>
-                                            Account
+                                            Tài khoản
                                             <CaretDownOutlined />
                                         </span>
                                     </div>

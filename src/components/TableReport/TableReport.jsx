@@ -12,7 +12,7 @@ function TableReport({ isLoading, data, refetch }) {
 
     const columns = [
         {
-            title: 'Username',
+            title: 'Tên người dùng',
             dataIndex: ['userId', 'name'],
         },
         {
@@ -20,19 +20,19 @@ function TableReport({ isLoading, data, refetch }) {
             dataIndex: ['userId', 'email'],
         },
         {
-            title: 'Created At',
+            title: 'Thời điểm tạo',
             dataIndex: 'createdAt',
             render: (text) => convertISODateToLocalDate(text),
         },
         {
-            title: 'Description',
+            title: 'Miêu tả',
             dataIndex: 'description',
         },
     ];
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Report management</h2>
+            <h2 className={cx('title')}>Quản lý báo cáo</h2>
 
             <div className={cx('table')}>
                 <TableComp
