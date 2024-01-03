@@ -18,10 +18,10 @@ function AcceptModal({ refetch, rowSelected }) {
         setLoading(true);
         const response = await contactService.acceptToSeller({ id: rowSelected._id, userId: rowSelected.userId._id });
         if (checkStatusResponse(response)) {
-            message.success('Accept request success!');
+            message.success('Chấp nhận yêu cầu thành công!');
             refetch();
         } else {
-            message.success('Some things went wrong!');
+            message.success('Một số điều đã xảy ra sai sót!');
         }
         setLoading(false);
         setOpen(false);
@@ -39,15 +39,15 @@ function AcceptModal({ refetch, rowSelected }) {
             />
             <Modal
                 open={open}
-                title="Are you sure to accept this request?"
+                title="Bạn có chắc chắn chấp nhận yêu cầu này không?"
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[
                     <Button key="back" onClick={handleCancel}>
-                        Cancel
+                        Quay lại
                     </Button>,
                     <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-                        Accept
+                        Chập nhận
                     </Button>,
                 ]}
             ></Modal>

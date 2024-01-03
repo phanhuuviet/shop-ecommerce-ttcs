@@ -71,11 +71,11 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
     return (
         <div className={cx('total-wrapper')}>
             <div className={cx('shipping-address')}>
-                <span className={cx('address')}>Shipping address:</span>
+                <span className={cx('address')}>Địa chỉ giao hàng:</span>
                 <span className={cx('user-address')}>{user?.address}</span>
             </div>
             <div className={cx('total-table')}>
-                <h2>Invoice</h2>
+                <h2>Hóa đơn</h2>
                 <table className={cx('table')}>
                     <thead>
                         <tr>
@@ -85,19 +85,19 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                     </thead>
                     <tbody className={cx('table-body')}>
                         <tr>
-                            <td>Provisional</td>
+                            <td>Tạm thời</td>
                             <td>{priceMemo}</td>
                         </tr>
                         <tr>
-                            <td>Discount</td>
+                            <td>Giảm giá</td>
                             <td>5%</td>
                         </tr>
                         <tr>
-                            <td>Tax</td>
+                            <td>Thuế</td>
                             <td>{taxMemo * 100}%</td>
                         </tr>
                         <tr>
-                            <td>Delivery charges</td>
+                            <td>Phí vận chuyển</td>
                             <td>${deliveryChargeMemo}</td>
                         </tr>
                         <tr>
@@ -106,7 +106,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                             </td>
                         </tr>
                         <tr className={cx('total-money')}>
-                            <td>Total amount</td>
+                            <td>Tổng cộng</td>
                             <td>${totalMemo}</td>
                         </tr>
                     </tbody>
@@ -125,7 +125,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                 ) : (
                     <Loading isLoading={isLoading}>
                         <Button onClick={handlePurchase} large primary>
-                            Purchase
+                            Mua
                         </Button>
                     </Loading>
                 )}

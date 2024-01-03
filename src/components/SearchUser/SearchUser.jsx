@@ -34,7 +34,7 @@ function SearchUser({ setTempChat, refetchChats }) {
             refetchChats();
             setSearchValue('');
         } else {
-            message.error('Some thing went wrong!');
+            message.error('Đã xảy ra lỗi!');
         }
     };
 
@@ -61,7 +61,7 @@ function SearchUser({ setTempChat, refetchChats }) {
                 onChange={(e) => handleSearchUser(e)}
                 className={cx('input')}
                 type="text"
-                placeholder="Search user..."
+                placeholder="Tìm kiếm người dùng..."
             />
             <CloseCircleOutlined onClick={handleCloseBtn} className={cx('icon', 'right', { active: searchValue })} />
             <div className={cx('drop-down', { active: appearDropdown })}>
@@ -75,7 +75,7 @@ function SearchUser({ setTempChat, refetchChats }) {
                         );
                     })
                 ) : (
-                    <div className={cx('no-user')}>No user to display</div>
+                    <div className={cx('no-user')}>Không có người dùng nào để hiển thị</div>
                 )}
             </div>
         </div>

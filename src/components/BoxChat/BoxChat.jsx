@@ -110,16 +110,16 @@ function BoxChat({ data, currentUserId, setSendMessage, receivedMessage }) {
                     </div>
                     <div className={cx('footer')}>
                         <div className={cx('input')}>
-                            <InputEmoji value={message} onChange={handleChange} placeholder="Type a message" />
+                            <InputEmoji value={message} onChange={handleChange} placeholder="Nhập nội dung tin nhắn" />
                         </div>
                         <Button primary onClick={handleSendMessage}>
-                            Send
+                            Gửi
                         </Button>
                     </div>
                 </>
             ) : (
                 <div>
-                    <h2>Please choose a chat room</h2>
+                    <h2>Vui lòng chọn phòng trò chuyện</h2>
                 </div>
             )}
         </div>

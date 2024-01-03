@@ -9,10 +9,10 @@ function Footer() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('wapper-menu')}>
-                <li>PRIVACY POLICY</li>
-                <li>OPERATING REGULATIONS</li>
-                <li>SHIPPING POLICY</li>
-                <li>RETURN AND REFUND POLICY</li>
+                <li>CHÍNH SÁCH BẢO MẬT</li>
+                <li>QUY CHẾ HOẠT ĐỘNG</li>
+                <li>CHÍNH SÁCH VẬN CHUYỂN</li>
+                <li>CHÍNH SÁCH TRẢ HÀNG VÀ HOÀN TIỀN</li>
             </div>
             <div className={cx('wapper-image')}>
                 <img src={images.certification} alt="chungnhan" width="150px" />

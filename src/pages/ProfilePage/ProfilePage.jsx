@@ -99,8 +99,8 @@ function ProfilePage() {
         <>
             <div className={cx('wrapper')}>
                 <div className={cx('wrapper-header')}>
-                    <h2 className={cx('title')}>My profile</h2>
-                    <span className={cx('description')}>Manage profile information for account security</span>
+                    <h2 className={cx('title')}>Hồ sơ của tôi</h2>
+                    <span className={cx('description')}>Quản lý thông tin hồ sơ để bảo mật tài khoản</span>
                 </div>
                 <div className={cx('wrapper-content')}>
                     <Loading isLoading={isLoading}>
@@ -111,7 +111,7 @@ function ProfilePage() {
                                 labelClassName={cx('label')}
                                 rectangle
                                 inline
-                                id="name"
+                                id="Tên"
                             />
                             <Input
                                 value={email}
@@ -127,22 +127,22 @@ function ProfilePage() {
                                 labelClassName={cx('label')}
                                 rectangle
                                 inline
-                                id="phone"
+                                id="Điện thoại"
                             />
                             <Input
                                 value={gender}
                                 onChange={handleOnChangeGender}
                                 labelClassName={cx('label')}
                                 inline
-                                id="Gender"
+                                id="Giới tính"
                             >
                                 <Radio.Group onChange={handleOnChangeGender} value={gender}>
-                                    <Radio value="Male">Male</Radio>
-                                    <Radio value="Female">Female</Radio>
-                                    <Radio value="Other">Other</Radio>
+                                    <Radio value="Male">Nam</Radio>
+                                    <Radio value="Female">Nữ</Radio>
+                                    <Radio value="Other">Khác</Radio>
                                 </Radio.Group>
                             </Input>
-                            <Input labelClassName={cx('label')} rectangle inline id="Date of birth">
+                            <Input labelClassName={cx('label')} rectangle inline id="Ngày sinh">
                                 <DatePicker
                                     format={'YYYY-MM-DD'}
                                     value={dayjs(convertISODateToLocalDate(dateOfBirth || '2000-01-01'), 'YYYY-MM-DD')}
@@ -157,10 +157,10 @@ function ProfilePage() {
                                 labelClassName={cx('label')}
                                 rectangle
                                 inline
-                                id="address"
+                                id="Địa chỉ"
                             />
                             <div className={cx('update-btn')}>
-                                <Button primary>Save</Button>
+                                <Button primary>Lưu</Button>
                             </div>
                         </form>
                     </Loading>

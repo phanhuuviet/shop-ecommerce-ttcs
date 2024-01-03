@@ -79,7 +79,7 @@ function TableUser() {
                             width: 90,
                         }}
                     >
-                        Search
+                        Tìm kiếm
                     </Button>
                     <Button
                         onClick={() => clearFilters && handleReset(clearFilters)}
@@ -88,7 +88,7 @@ function TableUser() {
                             width: 90,
                         }}
                     >
-                        Reset
+                        Cài lại
                     </Button>
                     <Button
                         type="link"
@@ -101,7 +101,7 @@ function TableUser() {
                             setSearchedColumn(dataIndex);
                         }}
                     >
-                        Filter
+                        Lọc
                     </Button>
                     <Button
                         type="link"
@@ -110,7 +110,7 @@ function TableUser() {
                             close();
                         }}
                     >
-                        Close
+                        Đóng
                     </Button>
                 </Space>
             </div>
@@ -145,7 +145,7 @@ function TableUser() {
     });
     const columns = [
         {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
             sorter: (a, b) => a.name.length - b.name.length,
             ...getColumnSearchProps('name'),
@@ -155,16 +155,16 @@ function TableUser() {
             dataIndex: 'email',
         },
         {
-            title: 'Phone',
+            title: 'Điện thoại',
             dataIndex: 'phone',
             sorter: (a, b) => a.rating - b.rating,
         },
         {
-            title: 'Gender',
+            title: 'Giới tính ',
             dataIndex: 'gender',
         },
         {
-            title: 'Action',
+            title: 'Hoạt động',
             dataIndex: 'action',
             render: renderAction,
         },
@@ -188,7 +188,7 @@ function TableUser() {
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>User management</h2>
+            <h2 className={cx('title')}>Quản lý người dùng</h2>
 
             <div className={cx('table')}>
                 <TableComp
@@ -220,7 +220,7 @@ function TableUser() {
                 isOpen={isDeleteModalOpen}
                 setIsOpen={setIsDeleteModalOpen}
                 rowSelected={rowSelected}
-                title="Are you sure to delete this user"
+                title="Bạn có chắc chắn xóa người dùng này"
                 refetch={refetch}
                 mutation={mutation}
             />

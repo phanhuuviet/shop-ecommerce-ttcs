@@ -17,7 +17,7 @@ function TopProduct({ data }) {
     return (
         <div>
             <div className={cx('title')}>
-                <p>TOP PRODUCTS</p>
+                <p>SẢN PHẨM HÀNG ĐẦU</p>
             </div>
             <Slider {...settings}>
                 {data?.map((product, index) => {
@@ -25,7 +25,7 @@ function TopProduct({ data }) {
                         <div key={index} className={cx('slider-wrapper')}>
                             <div className={cx('image-wrapper')}>
                                 <img src={product?.image} alt="" className={cx('image-product')} />
-                                <p>Monthly Sales {product?.sold}</p>
+                                <p>Đã bán trên tháng {product?.sold}</p>
                             </div>
 
                             <span className={cx('name-product')}>{product?.name}</span>

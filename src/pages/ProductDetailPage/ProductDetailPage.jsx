@@ -56,7 +56,7 @@ function ProductDetailPage() {
         <div className={cx('wrapper')}>
             <Loading isLoading={isLoading}>
                 <h3 className={cx('title')}>
-                    <span onClick={() => navigate('/')}>Home</span> - Product details
+                    <span onClick={() => navigate('/')}>Trang chủ</span> - Thông tin chi tiết sản phẩm
                 </h3>
                 <ProductDetail data={data} />
                 <div className={cx('shop')}>
@@ -67,11 +67,11 @@ function ProductDetailPage() {
                             <section className={cx('shop-interact')}>
                                 <Button small primary>
                                     <WechatOutlined />
-                                    <span className={cx('interact-content')}>Chat now</span>
+                                    <span className={cx('interact-content')}>Chat ngay</span>
                                 </Button>
                                 <Button small outline onClick={handleViewShop}>
                                     <ShopOutlined />
-                                    <span className={cx('interact-content')}>View shop</span>
+                                    <span className={cx('interact-content')}>Xem shop</span>
                                 </Button>
                             </section>
                         </div>
@@ -83,27 +83,27 @@ function ProductDetailPage() {
                                 <span className={cx('content')}>{shop?.email}</span>
                             </div>
                             <div className={cx('block-content')}>
-                                <span className={cx('content-title')}>Products</span>
+                                <span className={cx('content-title')}>Sản phẩm</span>
                                 <span className={cx('content')}>{shop?.totalProduct}</span>
                             </div>
                         </div>
                         <div className={cx('block')}>
                             <div className={cx('block-content')}>
-                                <span className={cx('content-title')}>Response rate</span>
+                                <span className={cx('content-title')}>Tỷ lệ phản hồi</span>
                                 <span className={cx('content')}>22%</span>
                             </div>
                             <div className={cx('block-content')}>
-                                <span className={cx('content-title')}>Response time</span>
-                                <span className={cx('content')}>In a few hours</span>
+                                <span className={cx('content-title')}>Thời gian phản hồi</span>
+                                <span className={cx('content')}>Trong vài giờ</span>
                             </div>
                         </div>
                         <div className={cx('block')}>
                             <div className={cx('block-content')}>
-                                <span className={cx('content-title')}>Joined</span>
+                                <span className={cx('content-title')}>Đã tham gia</span>
                                 <span className={cx('content')}>{format(shop?.createdAt)}</span>
                             </div>
                             <div className={cx('block-content')}>
-                                <span className={cx('content-title')}>Phone</span>
+                                <span className={cx('content-title')}>Điện thoại</span>
                                 <span className={cx('content')}>{shop?.phone}</span>
                             </div>
                         </div>
@@ -115,7 +115,7 @@ function ProductDetailPage() {
                         <div className={cx('star-general')}>
                             <div className={cx('star-value')}>
                                 <h2>{data?.rating.toFixed(1)}</h2>
-                                <h3>out of 5</h3>
+                                <h3>trên 5</h3>
                             </div>
                             <div>
                                 <Rate allowHalf disabled value={data?.rating} />
@@ -123,14 +123,14 @@ function ProductDetailPage() {
                         </div>
                         <div className={cx('star-element')}>
                             <div className={cx('star-type')}>
-                                <li>All</li>
-                                <li>5 Star (1,1k)</li>
-                                <li>4 Star (84)</li>
-                                <li>3 Star (42)</li>
-                                <li>2 Star (16)</li>
-                                <li>1 Star (33)</li>
+                                <li>Tất cả</li>
+                                <li>5 Sao (1,1k)</li>
+                                <li>4 Sao (84)</li>
+                                <li>3 Sao (42)</li>
+                                <li>2 Sao (16)</li>
+                                <li>1 Sao (33)</li>
                             </div>
-                            <div className={cx('star-comment')}>With comment (736)</div>
+                            <div className={cx('star-comment')}>Có binh luận (736)</div>
                         </div>
                     </div>
                     <div className={cx('rate-comment')}>

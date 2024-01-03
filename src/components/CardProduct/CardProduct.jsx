@@ -34,7 +34,7 @@ function CardProduct({ _id, name, image, price, rating, sold, shop }) {
                 </div>
                 <div className={cx('rating')}>
                     <Rate allowHalf defaultValue={rating} disabled />
-                    <span className={cx('sold')}> | sold {sold || '0'}</span>
+                    <span className={cx('sold')}> | Đã bán {sold || '0'}</span>
                 </div>
                 <div className={cx('price')}>${price}</div>
             </Card>
