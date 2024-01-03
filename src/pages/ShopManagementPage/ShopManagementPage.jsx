@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import { AppstoreOutlined } from '@ant-design/icons';
+import { AppstoreOutlined, BarChartOutlined } from '@ant-design/icons';
 
 import styles from './ShopManagementPage.module.scss';
 import { useState } from 'react';
@@ -9,12 +9,16 @@ import { Menu } from 'antd';
 import TableProduct from '../../components/TableProduct/TableProduct';
 import * as userService from '../../services/userServices';
 import { useQuery } from 'react-query';
+import Statistical from '../../components/Statistical/Statistical';
 
 const cx = classNames.bind(styles);
 
 function ShopManagementPage() {
     const [keySelected, setKeySelected] = useState('product');
-    const items = [getItem('Product', 'product', <AppstoreOutlined />)];
+    const items = [
+        getItem('Product', 'product', <AppstoreOutlined />),
+        getItem('Thống kê', 'statistic', <BarChartOutlined />),
+    ];
     const handleOnClick = ({ key }) => {
         setKeySelected(key);
     };
@@ -22,6 +26,8 @@ function ShopManagementPage() {
         switch (key) {
             case 'product':
                 return <TableProduct isLoading={isLoadingProduct} data={dataProduct} refetch={refetch} />;
+            case 'statistic':
+                return <Statistical isLoading={isLoadingProduct} data={dataProduct?.data} />;
             default:
                 return <></>;
         }
