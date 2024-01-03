@@ -133,7 +133,7 @@ export default function ShopPage() {
                                         >
                                             IT'S YOU
                                         </Button>
-                                    ) : isFollow ? (
+                                    ) : data?.isFollowing ? (
                                         <Button
                                             addIcon={<CheckCircleOutlined />}
                                             leftIcon
