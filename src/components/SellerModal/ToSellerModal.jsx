@@ -17,9 +17,9 @@ function ToSellerModal() {
         setLoading(true);
         const response = await contactService.requestToSeller();
         if (checkStatusResponse(response)) {
-            message.success('Request to seller successfully!');
+            message.success('Yêu cầu lên người bán thành công!');
         } else {
-            message.error('Some things went wrong!');
+            message.error('Một số điều đã xảy ra sai sót!');
         }
         setOpen(false);
         setLoading(false);
@@ -31,18 +31,18 @@ function ToSellerModal() {
 
     return (
         <>
-            <span onClick={showModal}>Request to seller</span>
+            <span onClick={showModal}>Yêu cầu lên người bán</span>
             <Modal
                 open={open}
-                title="Are you sure you want to request become a seller?"
+                title="Bạn có chắc chắn muốn yêu cầu trở thành người bán?"
                 onOk={handleOk}
                 onCancel={handleCancel}
                 footer={[
                     <Button key="back" onClick={handleCancel}>
-                        Cancel
+                        Quay lại
                     </Button>,
                     <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-                        Accept
+                        Chấp nhận
                     </Button>,
                 ]}
             ></Modal>

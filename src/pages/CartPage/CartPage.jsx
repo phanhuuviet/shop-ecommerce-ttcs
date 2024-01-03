@@ -20,9 +20,9 @@ function CartPage() {
 
     const handlePurchase = () => {
         if (!user.phone || !user.address || !user.name) {
-            message.warning('You need to fill in complete information about name, address and phone number');
+            message.warning('Bạn cần điền đầy đủ thông tin về tên, địa chỉ và số điện thoại');
         } else if (listOrderChecked.length === 0) {
-            message.warning('You need choose at least one product to purchase');
+            message.warning('Bạn cần chọn ít nhất một sản phẩm để mua');
         } else {
             navigate('/order/payment');
         }
@@ -36,7 +36,7 @@ function CartPage() {
     return (
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>
-                <span onClick={() => navigate('/')}>Home Page</span> - Cart
+                <span onClick={() => navigate('/')}>Trang chủ</span> - Giỏ hàng
             </h2>
             <Row className={cx('flex-1', 'wrapper-content')} gutter={10}>
                 <Col span={17}>
@@ -49,22 +49,22 @@ function CartPage() {
             <Steps
                 items={[
                     {
-                        title: 'Choose product',
+                        title: 'Chọn sản phẩm',
                         status: 'process',
                         icon: <UserOutlined />,
                     },
                     {
-                        title: 'Verification',
+                        title: 'Xác minh',
                         status: 'wait',
                         icon: <SolutionOutlined />,
                     },
                     {
-                        title: 'Pay',
+                        title: 'Chi trả',
                         status: 'wait',
                         icon: <Loading3QuartersOutlined />,
                     },
                     {
-                        title: 'Done',
+                        title: 'Xong',
                         status: 'wait',
                         icon: <SmileOutlined />,
                     },

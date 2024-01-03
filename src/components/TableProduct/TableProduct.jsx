@@ -79,7 +79,7 @@ function TableProduct({ isLoading, data, refetch }) {
                             width: 90,
                         }}
                     >
-                        Search
+                        Tìm kiếm
                     </Button>
                     <Button
                         onClick={() => clearFilters && handleReset(clearFilters)}
@@ -88,7 +88,7 @@ function TableProduct({ isLoading, data, refetch }) {
                             width: 90,
                         }}
                     >
-                        Reset
+                        Cài lại
                     </Button>
                     <Button
                         type="link"
@@ -101,7 +101,7 @@ function TableProduct({ isLoading, data, refetch }) {
                             setSearchedColumn(dataIndex);
                         }}
                     >
-                        Filter
+                        Lọc
                     </Button>
                     <Button
                         type="link"
@@ -110,7 +110,7 @@ function TableProduct({ isLoading, data, refetch }) {
                             close();
                         }}
                     >
-                        Close
+                        Đóng
                     </Button>
                 </Space>
             </div>
@@ -145,27 +145,27 @@ function TableProduct({ isLoading, data, refetch }) {
     });
     const columns = [
         {
-            title: 'Name',
+            title: 'Tên',
             dataIndex: 'name',
             sorter: (a, b) => a.name.length - b.name.length,
             ...getColumnSearchProps('name'),
         },
         {
-            title: 'Price',
+            title: 'Giá',
             dataIndex: 'price',
             sorter: (a, b) => a.price - b.price,
         },
         {
-            title: 'Rating',
+            title: 'Xếp hạng',
             dataIndex: 'rating',
             sorter: (a, b) => a.rating - b.rating,
         },
         {
-            title: 'Type',
+            title: 'Loại',
             dataIndex: 'type',
         },
         {
-            title: 'Action',
+            title: 'Hoạt động',
             dataIndex: 'action',
             render: renderAction,
         },
@@ -182,9 +182,9 @@ function TableProduct({ isLoading, data, refetch }) {
     // -----
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Product management</h2>
+            <h2 className={cx('title')}>Quản lý sản phẩm</h2>
             <ButtonComp onClick={() => setIsModalOpen(true)} rightIcon addIcon={<PlusOutlined />} primary large>
-                Add product
+                Thêm sản phẩm
             </ButtonComp>
             <div className={cx('table')}>
                 <TableComp
@@ -219,7 +219,7 @@ function TableProduct({ isLoading, data, refetch }) {
                 isOpen={isDeleteModalOpen}
                 setIsOpen={setIsDeleteModalOpen}
                 rowSelected={rowSelected}
-                title="Are you sure to delete this product"
+                title="Bạn có chắc chắn xóa sản phẩm này không"
                 refetch={refetch}
                 mutation={mutation}
             />

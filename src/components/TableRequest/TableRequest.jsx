@@ -21,9 +21,9 @@ function TableRequest({ isLoading, data, refetch }) {
                     </div>
                 );
             case 'Approved':
-                return <span className={cx('approved-text')}>Approved</span>;
+                return <span className={cx('approved-text')}>Tán thành</span>;
             case 'Rejected':
-                return <span className={cx('rejected-text')}>Rejected</span>;
+                return <span className={cx('rejected-text')}>Loại bỏ</span>;
             default:
                 break;
         }
@@ -31,7 +31,7 @@ function TableRequest({ isLoading, data, refetch }) {
 
     const columns = [
         {
-            title: 'Username',
+            title: 'Tên người dùng',
             dataIndex: ['userId', 'name'],
         },
         {
@@ -39,12 +39,12 @@ function TableRequest({ isLoading, data, refetch }) {
             dataIndex: ['userId', 'email'],
         },
         {
-            title: 'Created At',
+            title: 'Thời điểm tạo',
             dataIndex: 'createdAt',
             render: (text) => convertISODateToLocalDate(text),
         },
         {
-            title: 'Action',
+            title: 'Hoạt động',
             dataIndex: 'status',
             render: renderAction,
         },
@@ -52,7 +52,7 @@ function TableRequest({ isLoading, data, refetch }) {
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Request to seller management</h2>
+            <h2 className={cx('title')}>Quản lý yêu cầu lên người bán</h2>
 
             <div className={cx('table')}>
                 <TableComp

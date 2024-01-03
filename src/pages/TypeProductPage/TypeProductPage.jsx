@@ -46,7 +46,7 @@ function TypeProductPage() {
 
     return (
         <Loading isLoading={isLoading}>
-            <h1 className={cx('title')}>Type of product</h1>
+            <h1 className={cx('title')}>Loại sản phẩm</h1>
             <div className={cx('content')}>
                 {products.map((product) => {
                     return (

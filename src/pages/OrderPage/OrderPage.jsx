@@ -33,7 +33,7 @@ function OrderPage() {
         <div className={cx('wrapper')}>
             <Loading isLoading={isLoading}>
                 <h3 className={cx('title')}>
-                    <span onClick={() => navigate('/')}>Home page</span> - Oder
+                    <span onClick={() => navigate('/')}>Trang chủ</span> - Đặt hàng
                 </h3>
                 {data?.length > 0 ? (
                     <div className={cx('list-card')}>
@@ -44,7 +44,7 @@ function OrderPage() {
                 ) : (
                     <div className={cx('empty-order')}>
                         <FrownOutlined className={cx('icon')} />
-                        <h2>No order to display</h2>
+                        <h2>Không có đơn hàng hàng nào để hiển thị</h2>
                     </div>
                 )}
             </Loading>

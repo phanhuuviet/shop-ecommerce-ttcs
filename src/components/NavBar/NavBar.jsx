@@ -15,7 +15,7 @@ function NavBar() {
     const { data } = useQuery(['types'], getAllType);
 
     const typeProduct = {
-        title: 'Product portfolio',
+        title: 'Danh mục sản phẩm',
         type: 'text',
         options: data?.data,
     };

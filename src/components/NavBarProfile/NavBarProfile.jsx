@@ -19,14 +19,14 @@ function NavBarProfile() {
                     <h2>Phan Huu Viet</h2>
                     <span>
                         <EditOutlined />
-                        Edit profile
+                        Chỉnh sửa hồ sơ
                     </span>
                 </div>
             </div>
             <ul className={cx('list-navbar')}>
                 <li className={cx('item-navbar')}>
                     <ProfileOutlined />
-                    <span>My profile</span>
+                    <span>Hồ sơ của tôi</span>
                 </li>
                 <li className={cx('item-navbar')}>
                     <ShopOutlined />

@@ -70,12 +70,12 @@ function CardOrder({ data, refetch }) {
         <div style={{ marginTop: '20px', width: '80%' }}>
             <Card bordered={false}>
                 <section className={cx('status-order')}>
-                    <h2>Status</h2>
+                    <h2>Trạng thái</h2>
                     <p>
-                        <span>Shipping:</span> {data?.isDelivered ? 'Shipped' : 'Not delivery'}
+                        <span>Đang chuyển hàng:</span> {data?.isDelivered ? 'Đã vận chuyển' : 'Chưa giao hàng'}
                     </p>
                     <p>
-                        <span>Paid:</span> {data?.isPaid ? 'Paid' : 'Not paid'}
+                        <span>Đã thanh toán:</span> {data?.isPaid ? 'Đã thanh toán' : 'Chưa thanh toán'}
                     </p>
                 </section>
                 <Divider style={{ margin: '16px 0px' }} />
@@ -90,10 +90,10 @@ function CardOrder({ data, refetch }) {
                                             <span>{orderItem?.name}</span>
                                         </article>
                                         <sub>
-                                            Amount: <span>{orderItem?.amount}</span>
+                                            Số lượng: <span>{orderItem?.amount}</span>
                                         </sub>
                                         <sub>
-                                            Price: <span>${orderItem?.price}</span>
+                                            Giá: <span>${orderItem?.price}</span>
                                         </sub>
                                     </div>
                                     {data?.isDelivered && data?.isPaid && !orderItem?.isRating && (
@@ -106,7 +106,7 @@ function CardOrder({ data, refetch }) {
                                                     setTempItem(orderItem);
                                                 }}
                                             >
-                                                Rate
+                                                Đánh giá
                                             </Button>
                                         </div>
                                     )}
@@ -117,15 +117,15 @@ function CardOrder({ data, refetch }) {
                 <Divider style={{ margin: '16px 0px' }} />
                 <section className={cx('control-order')}>
                     <p>
-                        Total amount: <span>${data?.totalPrice}</span>
+                        Tổng cộng: <span>${data?.totalPrice}</span>
                     </p>
                     {(!data?.isDelivered || !data?.isPaid) && (
                         <div>
                             <Button outline onClick={() => handleCancelOrder(data)}>
-                                Cancel order
+                                Hủy đơn hàng
                             </Button>
                             <Button primary onClick={() => handleConfirmOrder(data)}>
-                                Order Received
+                                Đã nhận đơn hàng
                             </Button>
                         </div>
                     )}
@@ -139,11 +139,11 @@ function CardOrder({ data, refetch }) {
                 onCancel={() => setIsOpenModal(false)}
             >
                 <div className={cx('rate-star')}>
-                    <h3>Product quality:</h3>
+                    <h3>Chất lượng sản phẩm:</h3>
                     <Rate allowHalf defaultValue={2.5} value={rateValue} onChange={(value) => setRateValue(value)} />
                 </div>
                 <div className={cx('feed-back')}>
-                    <h3>Feedback:</h3>
+                    <h3>Nhận xét:</h3>
                     <textarea
                         rows={6}
                         value={feedbackValue}

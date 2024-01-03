@@ -15,7 +15,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
         description: '',
         rating: '',
         image: '',
-        type: 'Other',
+        type: 'Khác',
         countInStock: '',
     };
     const [stateProduct, setStateProduct] = useState(initialProduct);
@@ -33,7 +33,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
             form.resetFields();
             setStateProduct(initialProduct);
             refetch();
-            message.success('Create product successfully');
+            message.success('Tạo sản phẩm thành công');
         } else if (data?.status === 'err') {
             message.error(data?.message);
         }
@@ -65,7 +65,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
     };
 
     return (
-        <Modal forceRender title="Create product" open={isOpen} onCancel={handleCancel} footer={null}>
+        <Modal forceRender title="Tạo sản phẩm" open={isOpen} onCancel={handleCancel} footer={null}>
             <Loading isLoading={isLoading}>
                 <Form
                     name="basic"
@@ -83,34 +83,34 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                     form={form}
                 >
                     <Form.Item
-                        label="Name"
+                        label="Tên"
                         name="name"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input name product',
+                                message: 'Vui lòng nhập tên sản phẩm',
                             },
                         ]}
                     >
                         <Input value={stateProduct.name} onChange={handleOnChange} name="name" />
                     </Form.Item>
                     <Form.Item
-                        label="Type"
+                        label="Loại"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input type product',
+                                message: 'Vui lòng nhập loại sản phẩm',
                             },
                         ]}
                     >
                         <Select value={stateProduct.type} onChange={(e) => handleOnChangeSelect(e)} name="type">
-                            <Select.Option value="type-Clothes">Clothes</Select.Option>
-                            <Select.Option value="type-Footwear">Footwear</Select.Option>
-                            <Select.Option value="type-Electronic device">Electronic device</Select.Option>
-                            <Select.Option value="type-Beauty">Beauty</Select.Option>
-                            <Select.Option value="type-Houseware">Houseware</Select.Option>
-                            <Select.Option value="type-Juck food">Juck food</Select.Option>
-                            <Select.Option value="type-Other">Other</Select.Option>
+                            <Select.Option value="type-Clothes">Quần áo</Select.Option>
+                            <Select.Option value="type-Footwear">Đồ ăn vặt</Select.Option>
+                            <Select.Option value="type-Electronic device">Thiết bị điện tử</Select.Option>
+                            <Select.Option value="type-Beauty">Sắc đẹp</Select.Option>
+                            <Select.Option value="type-Houseware">Đồ gia dụng</Select.Option>
+                            <Select.Option value="type-Juck food">Đồ ăn vặt</Select.Option>
+                            <Select.Option value="type-Other">Khác</Select.Option>
                         </Select>
                     </Form.Item>
                     {/* <Form.Item
@@ -126,60 +126,60 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                         <Input value={stateProduct.type} onChange={handleOnChange} name="type" />
                     </Form.Item> */}
                     <Form.Item
-                        label="Count in stock"
+                        label="Số lượng"
                         name="countInStock"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input count in stock',
+                                message: 'Vui lòng nhập số lượng trong kho',
                             },
                         ]}
                     >
                         <Input value={stateProduct.countInStock} onChange={handleOnChange} name="countInStock" />
                     </Form.Item>
                     <Form.Item
-                        label="Price"
+                        label="Giá"
                         name="price"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input price',
+                                message: 'Vui lòng nhập giá',
                             },
                         ]}
                     >
                         <Input value={stateProduct.price} onChange={handleOnChange} name="price" />
                     </Form.Item>
                     <Form.Item
-                        label="Rating"
+                        label="Xếp hạng"
                         name="rating"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input rating',
+                                message: 'Vui lòng nhập xếp hạng',
                             },
                         ]}
                     >
                         <Input value={stateProduct.rating} onChange={handleOnChange} name="rating" />
                     </Form.Item>
                     <Form.Item
-                        label="Description"
+                        label="Miêu tả"
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input description',
+                                message: 'Vui lòng nhập miêu tả',
                             },
                         ]}
                     >
                         <Input value={stateProduct.description} onChange={handleOnChange} name="description" />
                     </Form.Item>
                     <Form.Item
-                        label="Image"
+                        label="Ảnh"
                         name="image"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input description',
+                                message: 'Vui lòng chọn ảnh',
                             },
                         ]}
                     >
@@ -192,7 +192,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                         }}
                     >
                         <ButtonFinish type="primary" htmlType="submit">
-                            Submit
+                            Nộp
                         </ButtonFinish>
                     </Form.Item>
                 </Form>
