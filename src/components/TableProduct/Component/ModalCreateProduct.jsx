@@ -104,13 +104,13 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                         ]}
                     >
                         <Select value={stateProduct.type} onChange={(e) => handleOnChangeSelect(e)} name="type">
-                            <Select.Option value="type-Clothes">Quần áo</Select.Option>
-                            <Select.Option value="type-Footwear">Đồ ăn vặt</Select.Option>
-                            <Select.Option value="type-Electronic device">Thiết bị điện tử</Select.Option>
-                            <Select.Option value="type-Beauty">Sắc đẹp</Select.Option>
-                            <Select.Option value="type-Houseware">Đồ gia dụng</Select.Option>
-                            <Select.Option value="type-Juck food">Đồ ăn vặt</Select.Option>
-                            <Select.Option value="type-Other">Khác</Select.Option>
+                            <Select.Option value="type-Quần áo">Quần áo</Select.Option>
+                            <Select.Option value="type-Đồ ăn vặt">Đồ ăn vặt</Select.Option>
+                            <Select.Option value="type-Thiết bị điện tử">Thiết bị điện tử</Select.Option>
+                            <Select.Option value="type-Sắc đẹp">Sắc đẹp</Select.Option>
+                            <Select.Option value="type-Đồ gia dụng">Đồ gia dụng</Select.Option>
+                            <Select.Option value="type-Đồ ăn vặt">Đồ ăn vặt</Select.Option>
+                            <Select.Option value="type-Khác">Khác</Select.Option>
                         </Select>
                     </Form.Item>
                     {/* <Form.Item
@@ -150,24 +150,24 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                         <Input value={stateProduct.price} onChange={handleOnChange} name="price" />
                     </Form.Item>
                     <Form.Item
-                        label="Xếp hạng"
+                        label="Đánh giá"
                         name="rating"
                         rules={[
                             {
                                 required: true,
-                                message: 'Vui lòng nhập xếp hạng',
+                                message: 'Vui lòng nhập đánh giá',
                             },
                         ]}
                     >
                         <Input value={stateProduct.rating} onChange={handleOnChange} name="rating" />
                     </Form.Item>
                     <Form.Item
-                        label="Miêu tả"
+                        label="Mô tả"
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Vui lòng nhập miêu tả',
+                                message: 'Vui lòng nhập mô tả',
                             },
                         ]}
                     >

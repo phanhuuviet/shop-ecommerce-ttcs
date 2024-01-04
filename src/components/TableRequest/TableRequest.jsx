@@ -21,7 +21,7 @@ function TableRequest({ isLoading, data, refetch }) {
                     </div>
                 );
             case 'Approved':
-                return <span className={cx('approved-text')}>Tán thành</span>;
+                return <span className={cx('approved-text')}>Chấp nhận</span>;
             case 'Rejected':
                 return <span className={cx('rejected-text')}>Loại bỏ</span>;
             default:

@@ -162,12 +162,12 @@ function DrawerUpdateProduct({ isOpenDrawer, setIsOpenDrawer, rowSelected, refet
                         <Input value={stateProductDetail.rating} onChange={handleOnChangeDetail} name="rating" />
                     </Form.Item>
                     <Form.Item
-                        label="Miêu tả"
+                        label="Mô tả"
                         name="description"
                         rules={[
                             {
                                 required: true,
-                                message: 'Vui lòng nhập miêu tả',
+                                message: 'Vui lòng nhập mô tả',
                             },
                         ]}
                     >

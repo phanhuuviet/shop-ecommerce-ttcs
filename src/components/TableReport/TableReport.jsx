@@ -25,7 +25,7 @@ function TableReport({ isLoading, data, refetch }) {
             render: (text) => convertISODateToLocalDate(text),
         },
         {
-            title: 'Miêu tả',
+            title: 'Mô tả',
             dataIndex: 'description',
         },
     ];
