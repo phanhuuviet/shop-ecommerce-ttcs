@@ -8,6 +8,7 @@ import { Divider } from 'antd';
 import { addTotalPrice } from '../../redux/slice/orderSlice';
 import Loading from '../Loading/Loading';
 import { PayPalButton } from 'react-paypal-button-v2';
+import { exchangeUSDToVND } from '../../utils/exchangeUSDToVND';
 
 const cx = classNames.bind(styles);
 
@@ -67,7 +68,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
     const onSuccessPaypal = (details, data) => {
         handlePurchase(details);
     };
-
+    console.log(exchangeUSDToVND(totalMemo));
     return (
         <div className={cx('total-wrapper')}>
             <div className={cx('shipping-address')}>
@@ -98,7 +99,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                         </tr>
                         <tr>
                             <td>Phí vận chuyển</td>
-                            <td>${deliveryChargeMemo}</td>
+                            <td>₫{deliveryChargeMemo}</td>
                         </tr>
                         <tr>
                             <td colSpan={2}>
@@ -107,7 +108,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
                         </tr>
                         <tr className={cx('total-money')}>
                             <td>Tổng cộng</td>
-                            <td>${totalMemo}</td>
+                            <td>₫{totalMemo}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -115,7 +116,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
             <div className={cx('button-wrapper')}>
                 {paymentMethod === 'paypal' && sdkReady ? (
                     <PayPalButton
-                        amount={totalMemo}
+                        amount={exchangeUSDToVND(totalMemo)}
                         shippingPreference="NO_SHIPPING" // default is "GET_FROM_FILE"
                         onSuccess={onSuccessPaypal}
                         onError={() => {

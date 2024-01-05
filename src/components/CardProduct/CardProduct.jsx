@@ -1,9 +1,10 @@
 import { Card, Rate } from 'antd';
 import classNames from 'classnames/bind';
+import { EnvironmentOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './CardProduct.module.scss';
-import { useNavigate } from 'react-router-dom';
-import { EnvironmentOutlined } from '@ant-design/icons';
+import { numberFormatText } from '../../utils/numberFormatText';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +37,10 @@ function CardProduct({ _id, name, image, price, rating, sold, shop }) {
                     <Rate allowHalf defaultValue={rating} disabled />
                     <span className={cx('sold')}> | Đã bán {sold || '0'}</span>
                 </div>
-                <div className={cx('price')}>${price}</div>
+                <div className={cx('price')}>
+                    <span>₫</span>
+                    {numberFormatText(price)}
+                </div>
             </Card>
         </div>
     );

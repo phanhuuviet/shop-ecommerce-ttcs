@@ -101,7 +101,7 @@ function SignInPage() {
                             type="password"
                             onChange={handleOnChangePassword}
                             value={password}
-                            id="Mật khẩu"
+                            id="mật khẩu"
                             required
                         />
 

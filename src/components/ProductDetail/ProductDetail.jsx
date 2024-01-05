@@ -9,6 +9,7 @@ import styles from './ProductDetail.module.scss';
 import Button from '../Button/Button';
 import { addOrderProduct } from '../../redux/slice/orderSlice';
 import * as messages from '../Message/Message';
+import { numberFormatText } from '../../utils/numberFormatText';
 
 const cx = classNames.bind(styles);
 
@@ -70,7 +71,7 @@ function ProductDetail({ data }) {
                 </div>
                 <div className={cx('line')}></div>
                 <div>
-                    <h1 className={cx('price')}>${data?.price} hoặc khoảng $99/tháng</h1>
+                    <h1 className={cx('price')}>₫{numberFormatText(data?.price)} hoặc khoảng ₫99,000/tháng</h1>
                     <span className={cx('price-description')}>
                         Các khoản thanh toán được đề xuất với nguồn tài trợ đặc biệt 6 tháng
                     </span>

@@ -60,10 +60,6 @@ function ProfilePage() {
         }
     }, [user]);
 
-    const handleOnChangeEmail = (e) => {
-        setEmail(e.target.value);
-    };
-
     const handleOnChangeName = (e) => {
         setName(e.target.value);
     };
@@ -92,7 +88,7 @@ function ProfilePage() {
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        mutation.mutate({ id: user?.id, email, name, phone, address, avatar, gender, dateOfBirth });
+        mutation.mutate({ id: user?.id, name, phone, address, avatar, gender, dateOfBirth });
     };
 
     return (
@@ -113,14 +109,7 @@ function ProfilePage() {
                                 inline
                                 id="Tên"
                             />
-                            <Input
-                                value={email}
-                                onChange={handleOnChangeEmail}
-                                labelClassName={cx('label')}
-                                rectangle
-                                inline
-                                id="email"
-                            />
+                            <Input value={email} disable labelClassName={cx('label')} rectangle inline id="email" />
                             <Input
                                 value={phone}
                                 onChange={handleOnChangePhone}

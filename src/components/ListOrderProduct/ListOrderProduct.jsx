@@ -70,7 +70,7 @@ function ListOrderProduct() {
             title: 'Tổng cộng',
             dataIndex: 'total',
             render: (text) => {
-                return <span className={cx('total')}>${text}</span>;
+                return <span className={cx('total')}>₫{text}</span>;
             },
         },
         {

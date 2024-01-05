@@ -16,6 +16,7 @@ function Input({
     inline = false,
     rectangle = false,
     required = false,
+    disable = false,
 }) {
     const classes = cx('input', {
         inline,
@@ -26,10 +27,10 @@ function Input({
         [labelClassName]: labelClassName,
     });
 
-    const inputClasses = cx('input-field', { rectangle });
+    const inputClasses = cx('input-field', { rectangle, disable });
 
     if (!placeholder) {
-        placeholder = 'Enter your ' + id;
+        placeholder = 'Nhập ' + id;
     }
 
     if (!labelText) {
@@ -53,6 +54,7 @@ function Input({
                     placeholder={placeholder}
                     onChange={onChange}
                     required={required}
+                    disabled={disable}
                 />
             )}
         </div>

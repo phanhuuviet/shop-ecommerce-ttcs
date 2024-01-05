@@ -27,6 +27,12 @@
     &:focus {
         border-color: var(--primary-color);
     }
+
+    &.disable {
+        user-select: none;
+        cursor: not-allowed;
+        border: none;
+    }
 }
 
 .inline {

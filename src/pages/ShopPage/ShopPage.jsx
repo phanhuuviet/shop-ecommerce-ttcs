@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames/bind';
 import {
     MessageOutlined,
@@ -31,6 +31,8 @@ export default function ShopPage() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [isFollow, setIsFollow] = useState(false);
+    const [scrollType, setScrollType] = useState('');
+    const [handleTab, setHandleTab] = useState(cx('wrapper-tab'));
 
     const getShopDetail = async () => {
         if (id) {
@@ -47,18 +49,17 @@ export default function ShopPage() {
     });
 
     const handleFollow = async () => {
-        setIsLoading(true);
         if (isFollow) {
+            setIsFollow(!isFollow);
             await userService.unfollow({ shopId: data?._id });
         } else {
+            setIsFollow(!isFollow);
             if (user?.name) {
                 await userService.follow({ shopId: data?._id });
             } else {
                 navigate('/sign-in');
             }
         }
-        setIsLoading(false);
-        setIsFollow(!isFollow);
     };
 
     const convertType = useMemo(() => {
@@ -79,12 +80,10 @@ export default function ShopPage() {
         }
     }, [data]);
 
-    const [scrollType, setScrollType] = useState('');
     const handleScrollType = () => {
         setScrollType(cx('block-type-scroll'));
     };
 
-    const [handleTab, setHandleTab] = useState(cx('wrapper-tab'));
     window.addEventListener('scroll', () => {
         if (window.scrollY > 170) {
             setHandleTab(cx('wrapper-tab-scroll'));
@@ -99,6 +98,10 @@ export default function ShopPage() {
             behavior: 'smooth',
         });
     };
+
+    useEffect(() => {
+        if (data) setIsFollow(data?.isFollowing);
+    }, [data]);
 
     return (
         <Loading isLoading={isLoading}>
@@ -133,7 +136,7 @@ export default function ShopPage() {
                                         >
                                             LÀ BẠN
                                         </Button>
-                                    ) : data?.isFollowing ? (
+                                    ) : isFollow ? (
                                         <Button
                                             addIcon={<CheckCircleOutlined />}
                                             leftIcon

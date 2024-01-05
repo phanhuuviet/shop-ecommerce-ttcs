@@ -16,7 +16,7 @@ function NavBarProfile() {
             <div className={cx('wrapper-user')}>
                 <img src={user?.avatar || images.defaultAvatar} alt="" />
                 <div className={cx('user-subtitle')}>
-                    <h2>Phan Huu Viet</h2>
+                    <h2>{user?.name}</h2>
                     <span>
                         <EditOutlined />
                         Chỉnh sửa hồ sơ

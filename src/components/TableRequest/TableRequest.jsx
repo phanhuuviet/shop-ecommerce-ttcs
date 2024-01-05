@@ -52,7 +52,7 @@ function TableRequest({ isLoading, data, refetch }) {
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>Quản lý yêu cầu lên người bán</h2>
+            <h2 className={cx('title')}>Quản lý yêu cầu trở thành người bán</h2>
 
             <div className={cx('table')}>
                 <TableComp
