@@ -85,6 +85,28 @@ const updateUser = async (id, data) => {
     return res.data;
 };
 
+const getListCart = async () => {
+    const res = await axiosJWT.get(`${process.env.REACT_APP_API_URL}/user/cart`);
+    return res.data;
+};
+
+const createCart = async ({ name, amount, price, productId, image, shopId }) => {
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/user/cart`, {
+        name,
+        amount,
+        price,
+        productId,
+        image,
+        shopId,
+    });
+    return res.data;
+};
+
+const deleteCart = async ({ id }) => {
+    const res = await axiosJWT.delete(`${process.env.REACT_APP_API_URL}/user/cart/${id}`);
+    return res.data;
+};
+
 export {
     getAllUser,
     getUser,
@@ -99,5 +121,8 @@ export {
     updateUser,
     deleteUser,
     deleteManyUser,
+    getListCart,
+    createCart,
+    deleteCart,
     axiosJWT,
 };

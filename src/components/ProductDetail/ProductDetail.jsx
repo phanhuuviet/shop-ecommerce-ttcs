@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import classNames from 'classnames/bind';
 import { Col, Image, InputNumber, Rate, Row } from 'antd';
 import { AccountBookOutlined, CarOutlined } from '@ant-design/icons';
@@ -7,41 +7,46 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 import styles from './ProductDetail.module.scss';
 import Button from '../Button/Button';
-import { addOrderProduct } from '../../redux/slice/orderSlice';
 import * as messages from '../Message/Message';
 import { numberFormatText } from '../../utils/numberFormatText';
+import * as userService from '../../services/userServices';
+import checkStatusResponse from '../../utils/checkStatusResponse';
+import { message } from 'antd';
 
 const cx = classNames.bind(styles);
 
 function ProductDetail({ data }) {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
     const location = useLocation();
     const user = useSelector((state) => state?.user);
     const [amountProduct, setAmountProduct] = useState(1);
 
-    const handleAddOrderProduct = () => {
+    const handleAddOrderProduct = async () => {
         if (!user?.id) {
             navigate('/sign-in', { state: location?.pathname });
         } else {
-            dispatch(
-                addOrderProduct({
-                    orderItem: {
-                        name: data?.name,
-                        amount: amountProduct,
-                        price: data?.price,
-                        product: data?._id,
-                        image: data?.image,
-                    },
-                }),
-            );
-            messages.success('Thêm vào giỏ hàng thành công!');
+            const response = await userService.createCart({
+                name: data?.name,
+                amount: amountProduct,
+                price: data?.price,
+                productId: data?._id,
+                image: data?.image,
+                shopId: data?.user?._id,
+            });
+            if (checkStatusResponse(response)) {
+                message.success(response?.message);
+                console.log('..', response);
+            } else {
+                message.error(response?.message);
+            }
         }
     };
 
     const onChange = (value) => {
         setAmountProduct(value);
     };
+
+    // console.log(data);
 
     return (
         <Row>
