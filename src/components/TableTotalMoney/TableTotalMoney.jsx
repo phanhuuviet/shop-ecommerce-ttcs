@@ -14,17 +14,18 @@ const cx = classNames.bind(styles);
 
 function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMethod, sdkReady }) {
     const order = useSelector((state) => state?.order);
-    const listOrderChecked = order?.selectedProduct;
+    // const listOrderChecked = order?.selectedProduct;
     const dispatch = useDispatch();
 
     // use Memo
     const priceMemo = useMemo(() => {
-        if (listOrderChecked) {
-            return listOrderChecked?.reduce((total, cur) => total + cur.price * cur.amount, 0);
-        } else {
-            return 0;
-        }
-    }, [listOrderChecked]);
+        // if (listOrderChecked) {
+        //     return listOrderChecked?.reduce((total, cur) => total + cur.price * cur.amount, 0);
+        // } else {
+        //     return 0;
+        // }
+        // }, [listOrderChecked]);
+    });
 
     const taxMemo = useMemo(() => {
         if (priceMemo === 0) {
@@ -68,7 +69,7 @@ function TableTotalMoney({ handlePurchase, user, isLoading = false, paymentMetho
     const onSuccessPaypal = (details, data) => {
         handlePurchase(details);
     };
-    console.log(exchangeUSDToVND(totalMemo));
+    // console.log(exchangeUSDToVND(totalMemo));
     return (
         <div className={cx('total-wrapper')}>
             <div className={cx('shipping-address')}>
