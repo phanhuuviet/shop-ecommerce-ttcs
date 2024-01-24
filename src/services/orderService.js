@@ -2,7 +2,7 @@
 import axiosJWT from './axiosService';
 
 export const createOrder = async ({ ...rest }) => {
-    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/order/create`, rest);
+    const res = await axiosJWT.post(`${process.env.REACT_APP_API_URL}/order/create`, [rest]);
 
     return res.data;
 };
