@@ -50,7 +50,7 @@ function AdminPage() {
     const {
         isLoading: isLoadingRequest,
         data: dataRequest,
-        refetchRequest,
+        refetch: refetchRequest,
     } = useQuery(['requests'], getAllRequest, {
         enabled: keySelected === 'request',
     });
@@ -64,7 +64,7 @@ function AdminPage() {
     const {
         isLoading: isLoadingReport,
         data: dataReport,
-        refetchReport,
+        refetch: refetchReport,
     } = useQuery(['reports'], getAllReport, {
         enabled: keySelected === 'report',
     });
