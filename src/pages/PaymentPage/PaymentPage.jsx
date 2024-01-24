@@ -17,7 +17,7 @@ import {
     SolutionOutlined,
     UserOutlined,
 } from '@ant-design/icons';
-import checkStatusResponse from '../../utils/checkStatusResponse';
+import { checkStatusResponseArray } from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -38,7 +38,7 @@ function OrderPage() {
     const { data, isLoading, isError, isSuccess } = mutation;
 
     useEffect(() => {
-        if (isSuccess && checkStatusResponse(data)) {
+        if (isSuccess && checkStatusResponseArray(data)) {
             message.success('Đặt hàng thành công');
             navigate('/');
         } else if (data?.status === 'err') {
