@@ -105,7 +105,7 @@ function ModalCreateProduct({ isOpen, setIsOpen, refetch }) {
                     >
                         <Select value={stateProduct.type} onChange={(e) => handleOnChangeSelect(e)} name="type">
                             <Select.Option value="type-Quần áo">Quần áo</Select.Option>
-                            <Select.Option value="type-Đồ ăn vặt">Đồ ăn vặt</Select.Option>
+                            <Select.Option value="type-Giày dép">Giày dép</Select.Option>
                             <Select.Option value="type-Thiết bị điện tử">Thiết bị điện tử</Select.Option>
                             <Select.Option value="type-Sắc đẹp">Sắc đẹp</Select.Option>
                             <Select.Option value="type-Đồ gia dụng">Đồ gia dụng</Select.Option>
