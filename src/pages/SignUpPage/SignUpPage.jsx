@@ -2,7 +2,7 @@ import classNames from 'classnames/bind';
 import { Image, Radio } from 'antd';
 import { ShopOutlined } from '@ant-design/icons';
 import { useMutation } from 'react-query';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './SignUpPage.module.scss';
@@ -28,7 +28,11 @@ function SignUpPage() {
     // function call API
     const mutation = useMutation({
         mutationFn: (data) => signUpUser(data),
-        onSuccess: () => {
+        onSuccess: (data) => {
+            if (data?.status === 'err') {
+                messages.error(data?.message);
+                return;
+            }
             messages.success('Đăng kí thành công');
             navigate('/sign-in');
         },
@@ -39,11 +43,11 @@ function SignUpPage() {
 
     const { data, isLoading } = mutation;
 
-    useEffect(() => {
-        if (data?.status === 'err') {
-            setIsErr(true);
-        }
-    }, [data]);
+    // useEffect(() => {
+    //     if (data?.status === 'err') {
+    //         setIsErr(true);
+    //     }
+    // }, [data]);
 
     // function handle UI
     const handleOnChangeName = (e) => {
