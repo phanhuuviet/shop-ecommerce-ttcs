@@ -38,14 +38,16 @@ function OrderPage() {
     const { data, isLoading, isError, isSuccess } = mutation;
 
     useEffect(() => {
+        console.log(data);
         if (isSuccess && checkStatusResponseArray(data)) {
             message.success('Đặt hàng thành công');
             navigate('/');
-        } else if (data?.status === 'err') {
-            message.error(data?.message);
+        } else if (data?.[0]?.status === 'err') {
+            message.error(data?.[0]?.message);
         } else if (isError) {
             message.error('Đã xảy ra lỗi!');
         }
+        console.log(1234);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isError, isSuccess]);
 

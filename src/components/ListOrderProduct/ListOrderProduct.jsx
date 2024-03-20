@@ -59,7 +59,7 @@ function ListOrderProduct() {
                 return (
                     <InputNumber
                         min={1}
-                        max={10}
+                        // max={10}
                         defaultValue={record.amount}
                         onStep={(value, info) => onStep(value, info, record)}
                     />
