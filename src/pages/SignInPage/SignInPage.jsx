@@ -53,7 +53,7 @@ function SignInPage() {
             if (location?.state) {
                 navigate(location?.state);
             } else {
-                navigate('/');
+                navigate('/system/shop');
             }
         } else if (data?.status === 'err') {
             message.error(data?.message);
