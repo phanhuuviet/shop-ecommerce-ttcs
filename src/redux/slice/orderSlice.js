@@ -26,7 +26,7 @@ export const orderSlice = createSlice({
             if (itemOrder) {
                 itemOrder.amount += orderItem?.amount;
             } else {
-                state.orderItems.push(orderItem);
+                state.orderItems?.push(orderItem);
             }
         },
         increaseAmount: (state, action) => {

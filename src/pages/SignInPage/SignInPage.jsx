@@ -16,7 +16,7 @@ import * as userService from '../../services/userServices';
 import { useDispatch } from 'react-redux';
 import { updateUser } from '../../redux/slice/userSlice';
 import Input from '../../components/Input/Input';
-import checkStatusResponse from '../../utils/checkStatusResponse';
+import checkStatusResponse, { checkStatusCode } from '../../utils/checkStatusResponse';
 
 const cx = classNames.bind(styles);
 
@@ -41,7 +41,7 @@ function SignInPage() {
     };
 
     useEffect(() => {
-        if (isSuccess && checkStatusResponse(data)) {
+        if (isSuccess && checkStatusCode(data)) {
             messages.success('Đăng nhập thành công');
             localStorage.setItem('access_token', JSON.stringify(data?.access_token));
             if (data?.access_token) {
