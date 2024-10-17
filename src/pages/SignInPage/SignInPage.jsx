@@ -86,7 +86,7 @@ function SignInPage() {
                     <h1 className={cx('title')}>
                         <ShopOutlined style={{ fontSize: '3rem' }} />
                         <a href="/" style={{ color: 'black' }}>
-                            SHOP VKV-ECOMMERCE
+                            SHOP 2VN-ECOMMERCE
                         </a>
                     </h1>
                     <div className={cx('form')}>

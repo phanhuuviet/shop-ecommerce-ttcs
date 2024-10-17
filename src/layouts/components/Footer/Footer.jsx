@@ -20,14 +20,14 @@ function Footer() {
                 <img src={images.certification2} alt="chungnhan2" width="65px" />
             </div>
             <div className={cx('wapper-content')}>
-                <h2>Công Ty TNHH VKV Ecommerce</h2>
+                <h2>Công Ty TNHH 2VN Ecommerce</h2>
             </div>
             <p>
                 Địa chỉ: Phòng 401 tòa nhà 22B, ngõ 53, đường Tân Triều, huyện Thanh Trì, thành phố Hà Nội . Tổng đài hỗ
                 trợ: 19001010{' '}
             </p>
             <p>Chịu trách nhiệm nội dung: Phan Hữu Việt - Hồ Sỹ Khanh - Nguyễn Đăng Vũ</p>
-            <p>2023 - Bản quyền thuộc Công Ty TNHH VKV Ecommerce </p>
+            <p>2023 - Bản quyền thuộc Công Ty TNHH 2VN Ecommerce </p>
         </div>
     );
 }
