@@ -80,8 +80,16 @@ function App() {
                             const Page = route.page;
                             var Layout = DefaultLayout;
                             var Navbar = Fragment;
-                            const isPrivate = route?.isPrivate;
-                            const isAuth = user?.role === role.ROLE_ADMIN || user?.role === role.ROLE_SELLER;
+                            const isAdmin = route?.isAdmin;
+                            const isShop = route?.isShop;
+                            // const isAuth = user?.role === role.ROLE_ADMIN || user?.role === role.ROLE_SELLER;
+                            const path =
+                                (isAdmin && user?.role !== role.ROLE_ADMIN) ||
+                                (isShop && user?.role !== role.ROLE_SELLER && user?.role !== role.ROLE_ADMIN)
+                                    ? '/' // If user doesn't have the required role, redirect to "/"
+                                    : route?.path; // If route doesn't
+                            console.log(path);
+
                             if (route.layout) {
                                 Layout = route.layout;
                             }
@@ -95,7 +103,7 @@ function App() {
                                 <Route
                                     key={index}
                                     exact
-                                    path={isPrivate ? (isAuth ? route?.path : '/') : route?.path}
+                                    path={path}
                                     element={
                                         <Layout navbar={<Navbar />}>
                                             <Page />

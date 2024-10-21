@@ -72,13 +72,13 @@ export const routes = [
         path: '/system/admin',
         page: AdminPage,
         layout: DefaultLayout,
-        isPrivate: true,
+        isAdmin: true,
     },
     {
         path: '/system/shop',
         page: ShopManagementPage,
         layout: DefaultLayout,
-        isPrivate: true,
+        isShop: true,
     },
     {
         path: '/product/:type',
